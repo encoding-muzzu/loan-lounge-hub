@@ -27,6 +27,7 @@ import DocumentVerification from "./pages/DocumentVerification";
 import ApplicationInProcess from "./pages/ApplicationInProcess";
 import AdditionalInfoNeeded from "./pages/AdditionalInfoNeeded";
 import ApplicationApproved from "./pages/ApplicationApproved";
+import ApplicationNotApproved from "./pages/ApplicationNotApproved";
 
 const queryClient = new QueryClient();
 
@@ -67,10 +68,11 @@ const App = () => (
           <Route path="/upload-documents" element={<UploadDocuments />} />
           <Route path="/document-verification" element={<DocumentVerification />} />
           
-          {/* Application Status Screens - now separated */}
+          {/* Application Status Screens */}
           <Route path="/application-in-process" element={<ApplicationInProcess />} />
           <Route path="/additional-info-needed" element={<AdditionalInfoNeeded />} />
           <Route path="/application-approved" element={<ApplicationApproved />} />
+          <Route path="/application-not-approved" element={<ApplicationNotApproved />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

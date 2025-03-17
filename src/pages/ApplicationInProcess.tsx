@@ -26,12 +26,14 @@ const ApplicationInProcess = () => {
           </p>
           
           <div className="flex gap-1 mt-2 mb-8">
-            <div className="w-2 h-2 rounded-full bg-loan-blue"></div>
-            <div className="w-2 h-2 rounded-full bg-loan-blue"></div>
-            <div className="w-2 h-2 rounded-full bg-loan-blue"></div>
+            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse delay-150"></div>
+            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse delay-300"></div>
           </div>
           
-          <div className="w-48 h-2 bg-gray-200 rounded-full"></div>
+          <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="bg-loan-blue h-full w-1/3 animate-progress"></div>
+          </div>
         </div>
       </div>
     </StepLayout>
