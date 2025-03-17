@@ -21,8 +21,7 @@ const ProprietorRevenue = () => {
 
   const handleSubmit = () => {
     // In a real app, we would validate and submit the form here
-    alert('Form submitted successfully! Next steps would include document uploading and KYC verification.');
-    navigate('/welcome');
+    navigate('/proprietor/documents');
   };
 
   return (

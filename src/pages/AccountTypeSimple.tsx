@@ -25,7 +25,7 @@ const AccountTypeSimple = () => {
         navigate('/proprietor/details');
       } else {
         // For future implementation of private limited
-        navigate('/details');
+        navigate('/company/details');
       }
     }
   };

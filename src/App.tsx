@@ -15,6 +15,8 @@ import IndividualEmployeeDetails from "./pages/individual/IndividualEmployeeDeta
 import ProprietorDetails from "./pages/proprietor/ProprietorDetails";
 import ProprietorAddress from "./pages/proprietor/ProprietorAddress";
 import ProprietorRevenue from "./pages/proprietor/ProprietorRevenue";
+import ProprietorDocuments from "./pages/proprietor/ProprietorDocuments";
+import ProprietorKYC from "./pages/proprietor/ProprietorKYC";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/proprietor/details" element={<ProprietorDetails />} />
           <Route path="/proprietor/address" element={<ProprietorAddress />} />
           <Route path="/proprietor/revenue" element={<ProprietorRevenue />} />
+          <Route path="/proprietor/documents" element={<ProprietorDocuments />} />
+          <Route path="/proprietor/kyc" element={<ProprietorKYC />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
