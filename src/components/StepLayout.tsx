@@ -32,20 +32,19 @@ const StepLayout: React.FC<StepLayoutProps> = ({
     <div className="min-h-screen bg-white flex flex-col">
       <LoanHeader />
       
-      <div className="flex-1 container max-w-2xl mx-auto py-6 px-4">
-        <div className="mb-6">
-          {showBack && (
-            <Button
-              variant="ghost"
-              onClick={handleBack}
-              className="mb-2 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
-            >
-              <ChevronLeft className="h-5 w-5 mr-1" />
-              Back
-            </Button>
-          )}
-          <h1 className="text-2xl font-bold">{title}</h1>
-        </div>
+      <div className="flex-1 container mx-auto py-6 px-4">
+        {showBack && (
+          <Button
+            variant="ghost"
+            onClick={handleBack}
+            className="mb-2 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
+          >
+            <ChevronLeft className="h-5 w-5 mr-1" />
+            Back
+          </Button>
+        )}
+        
+        {title && <h1 className="text-2xl font-bold mb-6">{title}</h1>}
         
         {children}
       </div>
