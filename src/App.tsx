@@ -23,6 +23,7 @@ import FindingBestOffers from "./pages/FindingBestOffers";
 import AvailableOffers from "./pages/AvailableOffers";
 import KYCVerification from "./pages/KYCVerification";
 import UploadDocuments from "./pages/UploadDocuments";
+import DocumentVerification from "./pages/DocumentVerification";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,7 @@ const App = () => (
           <Route path="/available-offers" element={<AvailableOffers />} />
           <Route path="/kyc-verification" element={<KYCVerification />} />
           <Route path="/upload-documents" element={<UploadDocuments />} />
+          <Route path="/document-verification" element={<DocumentVerification />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -2,30 +2,41 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Menu, Check } from 'lucide-react';
+import { ArrowLeft, Menu, Check, Upload } from 'lucide-react';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+
+interface DocumentFile {
+  file: File | null;
+  uploaded: boolean;
+}
 
 const UploadDocuments = () => {
   const navigate = useNavigate();
-  const [documents, setDocuments] = useState({
-    panFront: false,
-    aadhaarFront: false,
-    aadhaarBack: false,
-    incomeProof: false
+  const [documents, setDocuments] = useState<Record<string, DocumentFile>>({
+    panFront: { file: null, uploaded: false },
+    aadhaarFront: { file: null, uploaded: false },
+    aadhaarBack: { file: null, uploaded: false },
+    incomeProof: { file: null, uploaded: false }
   });
 
-  const handleFileUpload = (documentType: keyof typeof documents) => {
-    setDocuments(prev => ({
-      ...prev,
-      [documentType]: true
-    }));
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, documentType: string) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setDocuments(prev => ({
+        ...prev,
+        [documentType]: { file, uploaded: true }
+      }));
+      toast.success(`${documentType} uploaded successfully`);
+    }
   };
 
   const handleSubmit = () => {
-    // Navigate to welcome screen or another screen after document upload
-    navigate('/welcome');
+    // Navigate to document verification screen
+    navigate('/document-verification');
   };
 
-  const allDocumentsUploaded = Object.values(documents).every(Boolean);
+  const allDocumentsUploaded = Object.values(documents).every(doc => doc.uploaded);
 
   return (
     <div className="min-h-screen bg-white flex flex-col p-4">
@@ -42,44 +53,96 @@ const UploadDocuments = () => {
         <h1 className="text-xl font-bold mb-6">Upload Documents</h1>
         
         <div className="flex flex-col gap-4 mb-8">
-          <div 
-            className={`p-4 rounded-md border flex justify-between items-center ${
-              documents.panFront ? 'border-loan-green' : 'border-gray-200'
-            }`}
-            onClick={() => handleFileUpload('panFront')}
-          >
-            <span className="font-medium">PAN Front</span>
-            {documents.panFront && <Check className="text-loan-green h-5 w-5" />}
+          <div className={`p-4 rounded-md border ${documents.panFront.uploaded ? 'border-loan-green' : 'border-gray-200'}`}>
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-medium">PAN Card (Front)</span>
+              {documents.panFront.uploaded && <Check className="text-loan-green h-5 w-5" />}
+            </div>
+            <div className="flex items-center gap-2">
+              <Input 
+                type="file" 
+                id="panFront"
+                onChange={(e) => handleFileChange(e, 'panFront')}
+                className="hidden"
+                accept="image/*,.pdf"
+              />
+              <label 
+                htmlFor="panFront" 
+                className="flex items-center gap-2 text-sm text-loan-blue cursor-pointer hover:underline"
+              >
+                <Upload size={16} />
+                {documents.panFront.file ? documents.panFront.file.name : 'Choose file'}
+              </label>
+            </div>
           </div>
           
-          <div 
-            className={`p-4 rounded-md border flex justify-between items-center ${
-              documents.aadhaarFront ? 'border-loan-green' : 'border-gray-200'
-            }`}
-            onClick={() => handleFileUpload('aadhaarFront')}
-          >
-            <span className="font-medium">Aadhaar Front</span>
-            {documents.aadhaarFront && <Check className="text-loan-green h-5 w-5" />}
+          <div className={`p-4 rounded-md border ${documents.aadhaarFront.uploaded ? 'border-loan-green' : 'border-gray-200'}`}>
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-medium">Aadhaar Card (Front)</span>
+              {documents.aadhaarFront.uploaded && <Check className="text-loan-green h-5 w-5" />}
+            </div>
+            <div className="flex items-center gap-2">
+              <Input 
+                type="file" 
+                id="aadhaarFront"
+                onChange={(e) => handleFileChange(e, 'aadhaarFront')}
+                className="hidden"
+                accept="image/*,.pdf"
+              />
+              <label 
+                htmlFor="aadhaarFront" 
+                className="flex items-center gap-2 text-sm text-loan-blue cursor-pointer hover:underline"
+              >
+                <Upload size={16} />
+                {documents.aadhaarFront.file ? documents.aadhaarFront.file.name : 'Choose file'}
+              </label>
+            </div>
           </div>
           
-          <div 
-            className={`p-4 rounded-md border flex justify-between items-center ${
-              documents.aadhaarBack ? 'border-loan-green' : 'border-gray-200'
-            }`}
-            onClick={() => handleFileUpload('aadhaarBack')}
-          >
-            <span className="font-medium">Aadhaar Back</span>
-            {documents.aadhaarBack && <Check className="text-loan-green h-5 w-5" />}
+          <div className={`p-4 rounded-md border ${documents.aadhaarBack.uploaded ? 'border-loan-green' : 'border-gray-200'}`}>
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-medium">Aadhaar Card (Back)</span>
+              {documents.aadhaarBack.uploaded && <Check className="text-loan-green h-5 w-5" />}
+            </div>
+            <div className="flex items-center gap-2">
+              <Input 
+                type="file" 
+                id="aadhaarBack"
+                onChange={(e) => handleFileChange(e, 'aadhaarBack')}
+                className="hidden"
+                accept="image/*,.pdf"
+              />
+              <label 
+                htmlFor="aadhaarBack" 
+                className="flex items-center gap-2 text-sm text-loan-blue cursor-pointer hover:underline"
+              >
+                <Upload size={16} />
+                {documents.aadhaarBack.file ? documents.aadhaarBack.file.name : 'Choose file'}
+              </label>
+            </div>
           </div>
           
-          <div 
-            className={`p-4 rounded-md border flex justify-between items-center ${
-              documents.incomeProof ? 'border-loan-green' : 'border-gray-200'
-            }`}
-            onClick={() => handleFileUpload('incomeProof')}
-          >
-            <span className="font-medium">Income Proof</span>
-            {documents.incomeProof && <Check className="text-loan-green h-5 w-5" />}
+          <div className={`p-4 rounded-md border ${documents.incomeProof.uploaded ? 'border-loan-green' : 'border-gray-200'}`}>
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-medium">Income Proof</span>
+              {documents.incomeProof.uploaded && <Check className="text-loan-green h-5 w-5" />}
+            </div>
+            <div className="flex items-center gap-2">
+              <Input 
+                type="file" 
+                id="incomeProof"
+                onChange={(e) => handleFileChange(e, 'incomeProof')}
+                className="hidden"
+                accept="image/*,.pdf"
+              />
+              <label 
+                htmlFor="incomeProof" 
+                className="flex items-center gap-2 text-sm text-loan-blue cursor-pointer hover:underline"
+              >
+                <Upload size={16} />
+                {documents.incomeProof.file ? documents.incomeProof.file.name : 'Choose file'}
+              </label>
+            </div>
           </div>
         </div>
         
@@ -89,7 +152,7 @@ const UploadDocuments = () => {
             disabled={!allDocumentsUploaded}
             className="loan-button w-full"
           >
-            Submit
+            Submit Documents
           </Button>
         </div>
       </div>
