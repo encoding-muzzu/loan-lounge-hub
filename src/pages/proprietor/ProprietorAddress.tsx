@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import StepLayout from '@/components/StepLayout';
 import FormField from '@/components/FormField';
+import { Building } from 'lucide-react';
 
 const ProprietorAddress = () => {
   const navigate = useNavigate();
@@ -30,7 +31,12 @@ const ProprietorAddress = () => {
   return (
     <StepLayout title="" backUrl="/proprietor/details">
       <div className="max-w-md mx-auto px-4">
-        <h1 className="text-lg font-medium mb-4">Enter <span className="text-[#0056D2]">Company</span> Address:</h1>
+        <div className="flex items-center gap-2 mb-6">
+          <Building className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Business <span className="text-[#0056D2]">Address Details</span></h1>
+        </div>
+        
+        <p className="text-gray-600 mb-6">Please enter your business's registered address</p>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <FormField
@@ -40,6 +46,7 @@ const ProprietorAddress = () => {
             <Input
               id="addressLine1"
               name="addressLine1"
+              placeholder="Building/Shop No., Street Name"
               value={formData.addressLine1}
               onChange={handleChange}
               className="loan-input"
@@ -53,6 +60,7 @@ const ProprietorAddress = () => {
             <Input
               id="addressLine2"
               name="addressLine2"
+              placeholder="Colony/Locality/Area (Optional)"
               value={formData.addressLine2}
               onChange={handleChange}
               className="loan-input"
@@ -66,6 +74,7 @@ const ProprietorAddress = () => {
             <Input
               id="city"
               name="city"
+              placeholder="City/Town/Village"
               value={formData.city}
               onChange={handleChange}
               className="loan-input"
@@ -79,6 +88,7 @@ const ProprietorAddress = () => {
             <Input
               id="state"
               name="state"
+              placeholder="State/Union Territory"
               value={formData.state}
               onChange={handleChange}
               className="loan-input"
@@ -92,6 +102,7 @@ const ProprietorAddress = () => {
             <Input
               id="country"
               name="country"
+              placeholder="Country"
               value={formData.country}
               onChange={handleChange}
               className="loan-input"
@@ -105,6 +116,7 @@ const ProprietorAddress = () => {
             <Input
               id="pincode"
               name="pincode"
+              placeholder="6-digit pincode"
               value={formData.pincode}
               onChange={handleChange}
               className="loan-input"

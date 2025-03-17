@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
@@ -21,46 +21,57 @@ const AdditionalInfoNeeded = () => {
           </AlertDescription>
         </Alert>
         
-        <Card className="mt-8 border-amber-100">
+        <Card className="mt-8 border-amber-100 shadow-sm">
           <CardContent className="pt-6">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
-                <AlertTriangle className="h-6 w-6 text-white" />
+              <div className="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center">
+                <FileText className="h-8 w-8 text-white" />
               </div>
             </div>
             
-            <h4 className="font-bold mb-4">Required Documents:</h4>
+            <h4 className="font-bold text-lg text-center mb-6">Required Documents</h4>
             
-            <ul className="space-y-2 mb-6">
-              <li className="flex items-start gap-2">
+            <ul className="space-y-4 mb-6">
+              <li className="flex items-start gap-3 bg-amber-50 p-3 rounded-lg">
                 <div className="min-w-4 mt-1">
-                  <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-amber-500"></div>
                 </div>
-                <span>Last 3 months' bank statements</span>
+                <div>
+                  <p className="font-medium">Bank Statements</p>
+                  <p className="text-sm text-gray-600">Last 3 months' statements from all accounts</p>
+                </div>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-3 bg-amber-50 p-3 rounded-lg">
                 <div className="min-w-4 mt-1">
-                  <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-amber-500"></div>
                 </div>
-                <span>Recent utility bill (not older than 3 months)</span>
+                <div>
+                  <p className="font-medium">Utility Bill</p>
+                  <p className="text-sm text-gray-600">Recent bill (not older than 3 months) as address proof</p>
+                </div>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-3 bg-amber-50 p-3 rounded-lg">
                 <div className="min-w-4 mt-1">
-                  <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-amber-500"></div>
                 </div>
-                <span>Selfie with your PAN card</span>
+                <div>
+                  <p className="font-medium">Identity Verification</p>
+                  <p className="text-sm text-gray-600">Selfie with your PAN card for verification</p>
+                </div>
               </li>
             </ul>
             
-            <p className="text-sm text-gray-700 mb-4">
-              Please provide these documents as soon as possible to avoid delays.
-            </p>
+            <div className="bg-amber-50 p-4 rounded-lg mb-6">
+              <p className="text-amber-800 text-sm">
+                <strong>Note:</strong> Please provide these documents as soon as possible to avoid delays in processing your application.
+              </p>
+            </div>
             
             <Button 
               onClick={() => navigate('/upload-documents')}
-              className="w-full loan-button"
+              className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3"
             >
-              Upload Documents
+              Upload Documents Now
             </Button>
           </CardContent>
         </Card>

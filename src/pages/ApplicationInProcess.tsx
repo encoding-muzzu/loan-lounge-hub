@@ -1,23 +1,37 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import StepLayout from '@/components/StepLayout';
 
 const ApplicationInProcess = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = [
+    { text: "Verifying your information" },
+    { text: "Checking loan eligibility" },
+    { text: "Preparing loan offer" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep(prev => (prev + 1) % steps.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <StepLayout title="Application Status" showBack={false}>
       <div className="flex flex-col max-w-2xl mx-auto">
         <Alert className="bg-blue-50 border-blue-100 mb-4">
-          <Clock className="h-5 w-5 text-loan-blue" />
-          <AlertTitle className="text-loan-blue font-bold">Application In Process</AlertTitle>
+          <Clock className="h-5 w-5 text-[#0056D2]" />
+          <AlertTitle className="text-[#0056D2] font-bold">Application In Process</AlertTitle>
           <AlertDescription className="text-gray-700">
             Your application is being reviewed by the lender
           </AlertDescription>
         </Alert>
         
         <div className="flex-1 flex flex-col items-center justify-center text-center mt-8">
-          <div className="w-16 h-16 rounded-full bg-loan-blue flex items-center justify-center mb-4">
+          <div className="w-16 h-16 rounded-full bg-[#0056D2] flex items-center justify-center mb-4">
             <Clock className="h-8 w-8 text-white" />
           </div>
           
@@ -25,14 +39,26 @@ const ApplicationInProcess = () => {
             Please wait while we process your application. This typically takes 24-48 hours.
           </p>
           
-          <div className="flex gap-1 mt-2 mb-8">
-            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse"></div>
-            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse delay-150"></div>
-            <div className="w-2 h-2 rounded-full bg-loan-blue animate-pulse delay-300"></div>
+          <p className="text-[#0056D2] font-medium mb-4">
+            {steps[activeStep].text}
+          </p>
+          
+          <div className="flex gap-6 mt-2 mb-8">
+            {steps.map((step, index) => (
+              <button 
+                key={index} 
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeStep ? 'bg-[#0056D2] scale-125' : 'bg-gray-300'}`}
+                onClick={() => setActiveStep(index)}
+                aria-label={`Step ${index + 1}: ${step.text}`}
+              />
+            ))}
           </div>
           
-          <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div className="bg-loan-blue h-full w-1/3 animate-progress"></div>
+          <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div 
+              className="bg-[#0056D2] h-full transition-all duration-500 ease-in-out"
+              style={{ width: `${(activeStep + 1) * (100 / steps.length)}%` }}
+            ></div>
           </div>
         </div>
       </div>

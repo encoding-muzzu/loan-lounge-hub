@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import StepLayout from '@/components/StepLayout';
 import FormField from '@/components/FormField';
+import { MapPin } from 'lucide-react';
 
 const IndividualAddress = () => {
   const navigate = useNavigate();
@@ -30,7 +31,12 @@ const IndividualAddress = () => {
   return (
     <StepLayout title="" backUrl="/individual/details">
       <div className="max-w-md mx-auto px-4">
-        <h1 className="text-lg font-medium mb-4">Address:</h1>
+        <div className="flex items-center gap-2 mb-6">
+          <MapPin className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Personal <span className="text-[#0056D2]">Address Details</span></h1>
+        </div>
+        
+        <p className="text-gray-600 mb-6">Please enter your current residential address information</p>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <FormField
@@ -40,6 +46,7 @@ const IndividualAddress = () => {
             <Input
               id="addressLine1"
               name="addressLine1"
+              placeholder="House/Flat/Building No., Street Name"
               value={formData.addressLine1}
               onChange={handleChange}
               className="loan-input"
@@ -53,6 +60,7 @@ const IndividualAddress = () => {
             <Input
               id="addressLine2"
               name="addressLine2"
+              placeholder="Colony/Locality/Area (Optional)"
               value={formData.addressLine2}
               onChange={handleChange}
               className="loan-input"
@@ -66,6 +74,7 @@ const IndividualAddress = () => {
             <Input
               id="city"
               name="city"
+              placeholder="City/Town/Village"
               value={formData.city}
               onChange={handleChange}
               className="loan-input"
@@ -79,6 +88,7 @@ const IndividualAddress = () => {
             <Input
               id="state"
               name="state"
+              placeholder="State/Union Territory"
               value={formData.state}
               onChange={handleChange}
               className="loan-input"
@@ -92,6 +102,7 @@ const IndividualAddress = () => {
             <Input
               id="country"
               name="country"
+              placeholder="Country"
               value={formData.country}
               onChange={handleChange}
               className="loan-input"
@@ -105,6 +116,7 @@ const IndividualAddress = () => {
             <Input
               id="pincode"
               name="pincode"
+              placeholder="6-digit pincode"
               value={formData.pincode}
               onChange={handleChange}
               className="loan-input"
