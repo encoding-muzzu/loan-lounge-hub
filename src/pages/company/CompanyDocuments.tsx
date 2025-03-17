@@ -10,27 +10,29 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { ArrowLeft, Menu, Upload } from 'lucide-react';
+import { ArrowLeft, Menu } from 'lucide-react';
 import { Label } from '@/components/ui/label';
-import FormField from '@/components/FormField';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Textarea } from '@/components/ui/textarea';
 
 const CompanyDocuments = () => {
   const navigate = useNavigate();
   const [documents, setDocuments] = useState({
     bankStatement: '',
+    fiscalYear: '',
+    bankStatementNumber: '',
     bankStatementUpload: null,
-    invoiceNumber: '',
-    invoiceUpload: null,
+    projectionFiscalYear: '',
     projectionNumber: '',
     projectionUpload: null,
     financialStatementNumber: '',
-    fiscalYear: '',
+    financialFiscalYear: '',
     financialUpload: null,
     securityType: 'secured',
+    purpose: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setDocuments(prev => ({ ...prev, [name]: value }));
   };
@@ -73,140 +75,162 @@ const CompanyDocuments = () => {
       
       <div className="flex-1">
         <div className="mb-6">
-          <h1 className="text-xl font-medium">
-            Documents <span className="font-bold">Upload</span>
+          <h1 className="text-xl font-bold">
+            Documents <span className="font-normal">Upload</span>
           </h1>
         </div>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
-          {/* Bank Statement */}
-          <div className="mb-4">
-            <label htmlFor="bankStatement" className="block text-sm mb-1">Bank Statement:</label>
-            <Select
-              onValueChange={(value) => handleSelectChange('bankStatement', value)}
-              value={documents.bankStatement}
-            >
-              <SelectTrigger className="w-full border rounded-md">
-                <SelectValue placeholder="Select" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="statement1">Statement 1</SelectItem>
-                <SelectItem value="statement2">Statement 2</SelectItem>
-                <SelectItem value="statement3">Statement 3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          {/* Bank Statement Section */}
+          <div className="mb-6">
+            <h2 className="font-medium mb-2">Bank Statements</h2>
+            
+            {/* Fiscal Year */}
+            <div className="mb-3">
+              <Label htmlFor="fiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
+              <Select
+                onValueChange={(value) => handleSelectChange('fiscalYear', value)}
+                value={documents.fiscalYear}
+              >
+                <SelectTrigger className="w-full border rounded-md">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2023">2023</SelectItem>
+                  <SelectItem value="2022">2022</SelectItem>
+                  <SelectItem value="2021">2021</SelectItem>
+                  <SelectItem value="2020">2020</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {/* Bank Statement Upload */}
-          <div className="mb-4">
-            <Label htmlFor="bankStatementUpload" className="block text-sm mb-1">File attachment:</Label>
-            <div className="flex gap-2">
+            {/* Number */}
+            <div className="mb-3">
+              <Label htmlFor="bankStatementNumber" className="block text-sm mb-1">Number</Label>
               <Input
-                id="bankStatementUpload"
-                type="file"
+                id="bankStatementNumber"
+                name="bankStatementNumber"
+                value={documents.bankStatementNumber}
+                onChange={handleChange}
                 className="border rounded-md w-full"
-                onChange={(e) => handleFileChange(e, 'bankStatementUpload')}
               />
+            </div>
+            
+            {/* File attachment */}
+            <div className="mb-4">
+              <Label htmlFor="bankStatementUpload" className="block text-sm mb-1">File attachment</Label>
+              <div className="border rounded-md px-3 py-2 bg-gray-50">
+                <Input
+                  id="bankStatementUpload"
+                  type="file"
+                  className="border-0 p-0 bg-transparent"
+                  onChange={(e) => handleFileChange(e, 'bankStatementUpload')}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Invoice Number */}
-          <div className="mb-4">
-            <Label htmlFor="invoiceNumber" className="block text-sm mb-1">Number:</Label>
-            <Input
-              id="invoiceNumber"
-              name="invoiceNumber"
-              value={documents.invoiceNumber}
-              onChange={handleChange}
-              className="border rounded-md w-full"
-            />
-          </div>
+          {/* Projection Section */}
+          <div className="mb-6">
+            <h2 className="font-medium mb-2">Projection</h2>
+            
+            {/* Fiscal Year */}
+            <div className="mb-3">
+              <Label htmlFor="projectionFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
+              <Select
+                onValueChange={(value) => handleSelectChange('projectionFiscalYear', value)}
+                value={documents.projectionFiscalYear}
+              >
+                <SelectTrigger className="w-full border rounded-md">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2023">2023</SelectItem>
+                  <SelectItem value="2022">2022</SelectItem>
+                  <SelectItem value="2021">2021</SelectItem>
+                  <SelectItem value="2020">2020</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {/* Invoice Upload */}
-          <div className="mb-4">
-            <Label htmlFor="invoiceUpload" className="block text-sm mb-1">File attachment:</Label>
-            <div className="flex gap-2">
+            {/* Number */}
+            <div className="mb-3">
+              <Label htmlFor="projectionNumber" className="block text-sm mb-1">Number</Label>
               <Input
-                id="invoiceUpload"
-                type="file"
+                id="projectionNumber"
+                name="projectionNumber"
+                value={documents.projectionNumber}
+                onChange={handleChange}
                 className="border rounded-md w-full"
-                onChange={(e) => handleFileChange(e, 'invoiceUpload')}
               />
+            </div>
+            
+            {/* File attachment */}
+            <div className="mb-4">
+              <Label htmlFor="projectionUpload" className="block text-sm mb-1">File attachment</Label>
+              <div className="border rounded-md px-3 py-2 bg-gray-50">
+                <Input
+                  id="projectionUpload"
+                  type="file"
+                  className="border-0 p-0 bg-transparent"
+                  onChange={(e) => handleFileChange(e, 'projectionUpload')}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Projection Number */}
-          <div className="mb-4">
-            <Label htmlFor="projectionNumber" className="block text-sm mb-1">Number:</Label>
-            <Input
-              id="projectionNumber"
-              name="projectionNumber"
-              value={documents.projectionNumber}
-              onChange={handleChange}
-              className="border rounded-md w-full"
-            />
-          </div>
+          {/* Financial Statement Section */}
+          <div className="mb-6">
+            <h2 className="font-medium mb-2">Financial Statement Number</h2>
+            
+            {/* Fiscal Year */}
+            <div className="mb-3">
+              <Label htmlFor="financialFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
+              <Select
+                onValueChange={(value) => handleSelectChange('financialFiscalYear', value)}
+                value={documents.financialFiscalYear}
+              >
+                <SelectTrigger className="w-full border rounded-md">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2023">2023</SelectItem>
+                  <SelectItem value="2022">2022</SelectItem>
+                  <SelectItem value="2021">2021</SelectItem>
+                  <SelectItem value="2020">2020</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {/* Projection Upload */}
-          <div className="mb-4">
-            <Label htmlFor="projectionUpload" className="block text-sm mb-1">File attachment:</Label>
-            <div className="flex gap-2">
+            {/* Number */}
+            <div className="mb-3">
+              <Label htmlFor="financialStatementNumber" className="block text-sm mb-1">Number</Label>
               <Input
-                id="projectionUpload"
-                type="file"
+                id="financialStatementNumber"
+                name="financialStatementNumber"
+                value={documents.financialStatementNumber}
+                onChange={handleChange}
                 className="border rounded-md w-full"
-                onChange={(e) => handleFileChange(e, 'projectionUpload')}
               />
             </div>
-          </div>
-
-          {/* Financial Statement Number */}
-          <div className="mb-4">
-            <Label htmlFor="financialStatementNumber" className="block text-sm mb-1">Financial Statement Number:</Label>
-            <Input
-              id="financialStatementNumber"
-              name="financialStatementNumber"
-              value={documents.financialStatementNumber}
-              onChange={handleChange}
-              className="border rounded-md w-full"
-            />
-          </div>
-
-          {/* Fiscal Year */}
-          <div className="mb-4">
-            <Label htmlFor="fiscalYear" className="block text-sm mb-1">Fiscal Year:</Label>
-            <Select
-              onValueChange={(value) => handleSelectChange('fiscalYear', value)}
-              value={documents.fiscalYear}
-            >
-              <SelectTrigger className="w-full border rounded-md">
-                <SelectValue placeholder="Select" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="2023">2023</SelectItem>
-                <SelectItem value="2022">2022</SelectItem>
-                <SelectItem value="2021">2021</SelectItem>
-                <SelectItem value="2020">2020</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Financial Statement Upload */}
-          <div className="mb-4">
-            <Label htmlFor="financialUpload" className="block text-sm mb-1">File attachment:</Label>
-            <div className="flex gap-2">
-              <Input
-                id="financialUpload"
-                type="file"
-                className="border rounded-md w-full"
-                onChange={(e) => handleFileChange(e, 'financialUpload')}
-              />
+            
+            {/* File attachment */}
+            <div className="mb-4">
+              <Label htmlFor="financialUpload" className="block text-sm mb-1">File attachment</Label>
+              <div className="border rounded-md px-3 py-2 bg-gray-50">
+                <Input
+                  id="financialUpload"
+                  type="file"
+                  className="border-0 p-0 bg-transparent"
+                  onChange={(e) => handleFileChange(e, 'financialUpload')}
+                />
+              </div>
             </div>
           </div>
 
           {/* Type of Security */}
-          <div className="mb-6">
-            <Label className="block text-sm mb-2">Type of security:</Label>
+          <div className="mb-4">
+            <Label className="block text-sm mb-2 font-medium">Type of security:</Label>
             <RadioGroup 
               defaultValue={documents.securityType}
               className="flex gap-4"
@@ -222,8 +246,22 @@ const CompanyDocuments = () => {
               </div>
             </RadioGroup>
           </div>
+
+          {/* Purpose */}
+          <div className="mb-6">
+            <Label htmlFor="purpose" className="block text-sm mb-2 font-medium">Purpose:</Label>
+            <Textarea
+              id="purpose"
+              name="purpose"
+              value={documents.purpose}
+              onChange={handleChange}
+              className="w-full border rounded-md"
+              placeholder="Add text"
+              rows={4}
+            />
+          </div>
           
-          <div className="flex justify-end mt-8">
+          <div className="flex justify-center mt-8 mb-4">
             <Button 
               type="submit"
               className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
