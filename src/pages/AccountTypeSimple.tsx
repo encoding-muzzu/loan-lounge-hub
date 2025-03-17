@@ -19,8 +19,12 @@ const AccountTypeSimple = () => {
 
   const handleContinue = () => {
     if (accountType) {
-      // In a real app, you would save this to state management or context
-      navigate('/details');
+      if (accountType === 'individual') {
+        navigate('/individual/details');
+      } else {
+        // For future implementation
+        navigate('/details');
+      }
     }
   };
 

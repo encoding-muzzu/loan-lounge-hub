@@ -9,6 +9,9 @@ import NotFound from "./pages/NotFound";
 import Welcome from "./pages/Welcome";
 import AccountType from "./pages/AccountType";
 import AccountTypeSimple from "./pages/AccountTypeSimple";
+import IndividualDetails from "./pages/individual/IndividualDetails";
+import IndividualAddress from "./pages/individual/IndividualAddress";
+import IndividualEmployeeDetails from "./pages/individual/IndividualEmployeeDetails";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/account-type" element={<AccountTypeSimple />} />
           <Route path="/account-type-details" element={<AccountType />} />
+          <Route path="/individual/details" element={<IndividualDetails />} />
+          <Route path="/individual/address" element={<IndividualAddress />} />
+          <Route path="/individual/employee-details" element={<IndividualEmployeeDetails />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
