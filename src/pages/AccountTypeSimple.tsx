@@ -24,7 +24,7 @@ const AccountTypeSimple = () => {
       } else if (accountType === 'soleProprietor') {
         navigate('/proprietor/details');
       } else {
-        // For future implementation of private limited
+        // For private limited
         navigate('/company/details');
       }
     }

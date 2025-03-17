@@ -15,8 +15,10 @@ import IndividualEmployeeDetails from "./pages/individual/IndividualEmployeeDeta
 import ProprietorDetails from "./pages/proprietor/ProprietorDetails";
 import ProprietorAddress from "./pages/proprietor/ProprietorAddress";
 import ProprietorRevenue from "./pages/proprietor/ProprietorRevenue";
-import ProprietorDocuments from "./pages/proprietor/ProprietorDocuments";
 import ProprietorKYC from "./pages/proprietor/ProprietorKYC";
+import CompanyDetails from "./pages/company/CompanyDetails";
+import CompanyDocuments from "./pages/company/CompanyDocuments";
+import CompanyKYC from "./pages/company/CompanyKYC";
 
 const queryClient = new QueryClient();
 
@@ -41,8 +43,12 @@ const App = () => (
           <Route path="/proprietor/details" element={<ProprietorDetails />} />
           <Route path="/proprietor/address" element={<ProprietorAddress />} />
           <Route path="/proprietor/revenue" element={<ProprietorRevenue />} />
-          <Route path="/proprietor/documents" element={<ProprietorDocuments />} />
           <Route path="/proprietor/kyc" element={<ProprietorKYC />} />
+          
+          {/* Private Limited account type routes */}
+          <Route path="/company/details" element={<CompanyDetails />} />
+          <Route path="/company/documents" element={<CompanyDocuments />} />
+          <Route path="/company/kyc" element={<CompanyKYC />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

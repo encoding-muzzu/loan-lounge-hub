@@ -21,7 +21,7 @@ const ProprietorRevenue = () => {
 
   const handleSubmit = () => {
     // In a real app, we would validate and submit the form here
-    navigate('/proprietor/documents');
+    navigate('/proprietor/kyc');
   };
 
   return (
