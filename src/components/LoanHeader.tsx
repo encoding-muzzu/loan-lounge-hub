@@ -1,47 +1,26 @@
 
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-interface LoanHeaderProps {
-  title: string;
-  showBack?: boolean;
-  previousPath?: string;
-}
-
-const LoanHeader: React.FC<LoanHeaderProps> = ({ 
-  title, 
-  showBack = true, 
-  previousPath 
-}) => {
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    if (previousPath) {
-      navigate(previousPath);
-    } else {
-      navigate(-1);
-    }
-  };
-
+const LoanHeader: React.FC = () => {
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
-      <div className="flex items-center gap-3">
-        {showBack && (
-          <button 
-            onClick={handleBack}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            aria-label="Go back"
-          >
-            <ArrowLeft className="h-5 w-5 text-gray-700" />
-          </button>
-        )}
-        <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
+    <header className="bg-white border-b border-gray-200">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link to="/" className="flex items-center space-x-2">
+          <div className="h-8 w-8 rounded-full bg-loan-red text-white flex items-center justify-center font-bold">L</div>
+          <span className="font-bold text-xl">Loan Lounge</span>
+        </Link>
+        
+        <nav className="hidden md:flex space-x-6">
+          <Link to="/welcome" className="text-gray-600 hover:text-loan-red transition-colors">Home</Link>
+          <Link to="/support" className="text-gray-600 hover:text-loan-red transition-colors">Support</Link>
+        </nav>
+        
+        <div className="flex items-center space-x-4">
+          <Link to="/login" className="text-loan-red hover:text-red-700 transition-colors font-medium">Login</Link>
+        </div>
       </div>
-      <div className="w-12 h-12 rounded-full bg-loan-red flex items-center justify-center text-white font-bold">
-        L
-      </div>
-    </div>
+    </header>
   );
 };
 
