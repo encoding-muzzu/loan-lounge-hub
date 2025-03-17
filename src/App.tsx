@@ -17,6 +17,7 @@ import ProprietorAddress from "./pages/proprietor/ProprietorAddress";
 import ProprietorRevenue from "./pages/proprietor/ProprietorRevenue";
 import ProprietorKYC from "./pages/proprietor/ProprietorKYC";
 import CompanyDetails from "./pages/company/CompanyDetails";
+import CompanyDetailsNext from "./pages/company/CompanyDetailsNext";
 import CompanyDocuments from "./pages/company/CompanyDocuments";
 import CompanyKYC from "./pages/company/CompanyKYC";
 
@@ -47,6 +48,7 @@ const App = () => (
           
           {/* Private Limited account type routes */}
           <Route path="/company/details" element={<CompanyDetails />} />
+          <Route path="/company/details-next" element={<CompanyDetailsNext />} />
           <Route path="/company/documents" element={<CompanyDocuments />} />
           <Route path="/company/kyc" element={<CompanyKYC />} />
           
