@@ -2,72 +2,97 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { ArrowLeft, Menu } from 'lucide-react';
 import { Label } from '@/components/ui/label';
-import StepLayout from '@/components/StepLayout';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const CompanyKYC = () => {
   const navigate = useNavigate();
-  const [kycOption, setKycOption] = useState<string | null>(null);
+  const [kycOption, setKycOption] = useState<string>('ekyc');
 
-  const handleContinue = () => {
-    // In a real app, we would route based on the selected KYC option
-    alert('KYC process initialized! The selected method is: ' + kycOption);
+  const handleOptionChange = (value: string) => {
+    setKycOption(value);
+  };
+
+  const handleBack = () => {
+    navigate('/company/documents');
+  };
+
+  const handleNext = () => {
+    // This would typically lead to the next screen in the flow
+    // For now we'll navigate to the welcome page as a placeholder
     navigate('/welcome');
   };
 
   return (
-    <StepLayout title="" backUrl="/company/documents">
-      <div className="max-w-md mx-auto px-4">
-        <h1 className="text-xl font-bold mb-6">KYC Verification</h1>
-        
-        <p className="mb-6 text-gray-600">
-          Please select one of the following KYC verification methods to proceed with your application.
-        </p>
-        
-        <RadioGroup value={kycOption || ""} onValueChange={setKycOption} className="space-y-4">
-          <div className="border border-gray-300 rounded-md p-4 flex items-start gap-3">
-            <RadioGroupItem value="ekyc" id="ekyc" className="mt-1" />
-            <div>
-              <Label htmlFor="ekyc" className="font-medium">Option 1: eKYC</Label>
-              <p className="text-sm text-gray-600 mt-1">
-                Complete KYC electronically using your Aadhaar and OTP verification. This is the fastest method.
-              </p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-md p-4 flex items-start gap-3">
-            <RadioGroupItem value="vkyc" id="vkyc" className="mt-1" />
-            <div>
-              <Label htmlFor="vkyc" className="font-medium">Option 2: VKYC (Video KYC)</Label>
-              <p className="text-sm text-gray-600 mt-1">
-                Complete verification through a video call with our representative. Requires scheduling an appointment.
-              </p>
-            </div>
-          </div>
-          
-          <div className="border border-gray-300 rounded-md p-4 flex items-start gap-3">
-            <RadioGroupItem value="upload" id="upload" className="mt-1" />
-            <div>
-              <Label htmlFor="upload" className="font-medium">Option 3: Upload Documents</Label>
-              <p className="text-sm text-gray-600 mt-1">
-                Upload additional identity and address proof documents for manual verification.
-              </p>
-            </div>
-          </div>
-        </RadioGroup>
-        
-        <div className="flex justify-center mt-8">
-          <Button 
-            onClick={handleContinue}
-            disabled={!kycOption}
-            className="bg-[#32CD32] hover:bg-green-600 text-white w-full"
+    <div className="min-h-screen bg-white flex flex-col p-4">
+      <div className="flex justify-between items-center mb-6">
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#0056D2] text-white">
+          <ArrowLeft size={20} onClick={handleBack} />
+        </div>
+        <div className="w-10 h-10 flex items-center justify-center">
+          <Menu size={20} />
+        </div>
+      </div>
+      
+      <div className="flex-1">
+        <div className="mb-6">
+          <h1 className="text-xl font-medium">
+            KYC <span className="font-bold">Verification</span>
+          </h1>
+          <p className="text-sm text-gray-600 mt-2">
+            Please select one of the KYC verification methods below to continue with your application.
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <RadioGroup 
+            value={kycOption}
+            onValueChange={handleOptionChange}
+            className="space-y-4"
           >
-            Proceed with {kycOption} Verification
+            <div className="flex items-start space-x-3 p-4 border border-gray-200 rounded-md">
+              <RadioGroupItem value="ekyc" id="ekyc" className="mt-1" />
+              <div>
+                <Label htmlFor="ekyc" className="font-medium">eKYC</Label>
+                <p className="text-sm text-gray-500 mt-1">
+                  Complete your KYC electronically using your Aadhaar and PAN details.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-3 p-4 border border-gray-200 rounded-md">
+              <RadioGroupItem value="vkyc" id="vkyc" className="mt-1" />
+              <div>
+                <Label htmlFor="vkyc" className="font-medium">Video KYC (VKYC)</Label>
+                <p className="text-sm text-gray-500 mt-1">
+                  Complete your KYC through a video call with our verification team.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-3 p-4 border border-gray-200 rounded-md">
+              <RadioGroupItem value="documents" id="documents" className="mt-1" />
+              <div>
+                <Label htmlFor="documents" className="font-medium">Upload Documents</Label>
+                <p className="text-sm text-gray-500 mt-1">
+                  Upload documents for ID and address proof verification.
+                </p>
+              </div>
+            </div>
+          </RadioGroup>
+        </div>
+
+        <div className="flex justify-end mt-8">
+          <Button 
+            onClick={handleNext}
+            className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
+          >
+            Continue
           </Button>
         </div>
       </div>
-    </StepLayout>
+    </div>
   );
 };
 

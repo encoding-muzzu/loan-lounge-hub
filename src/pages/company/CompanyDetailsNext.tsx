@@ -11,6 +11,7 @@ import {
   SelectValue 
 } from '@/components/ui/select';
 import { ArrowLeft, Menu } from 'lucide-react';
+import { Label } from '@/components/ui/label';
 
 const CompanyDetailsNext = () => {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ const CompanyDetailsNext = () => {
     loanType: '',
     entityType: '',
     email: '',
+    gstin: '',
+    cin: '',
+    udhyam: '',
     phoneNumber: ''
   });
 
@@ -37,7 +41,7 @@ const CompanyDetailsNext = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col p-4">
       <div className="flex justify-between items-center mb-6">
-        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-red-500 text-white">
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#0056D2] text-white">
           <ArrowLeft size={20} onClick={() => navigate('/company/details')} />
         </div>
         <div className="w-10 h-10 flex items-center justify-center">
@@ -48,7 +52,7 @@ const CompanyDetailsNext = () => {
       <div className="flex-1">
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <div className="mb-4">
-            <label htmlFor="loanType" className="block text-sm mb-1">Loan Type:</label>
+            <Label htmlFor="loanType" className="block text-sm mb-1">Loan Type:</Label>
             <Select
               onValueChange={(value) => handleSelectChange('loanType', value)}
               value={formData.loanType}
@@ -67,7 +71,7 @@ const CompanyDetailsNext = () => {
           </div>
           
           <div className="mb-4">
-            <label htmlFor="entityType" className="block text-sm mb-1">Type of Entity:</label>
+            <Label htmlFor="entityType" className="block text-sm mb-1">Type of Entity:</Label>
             <Select
               onValueChange={(value) => handleSelectChange('entityType', value)}
               value={formData.entityType}
@@ -85,7 +89,7 @@ const CompanyDetailsNext = () => {
           </div>
           
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm mb-1">Email:</label>
+            <Label htmlFor="email" className="block text-sm mb-1">Email:</Label>
             <Input
               id="email"
               name="email"
@@ -98,7 +102,43 @@ const CompanyDetailsNext = () => {
           </div>
           
           <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block text-sm mb-1">Phone number:</label>
+            <Label htmlFor="gstin" className="block text-sm mb-1">GSTIN:</Label>
+            <Input
+              id="gstin"
+              name="gstin"
+              placeholder="Enter GSTIN number"
+              value={formData.gstin}
+              onChange={handleChange}
+              className="border rounded-md w-full"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <Label htmlFor="cin" className="block text-sm mb-1">CIN:</Label>
+            <Input
+              id="cin"
+              name="cin"
+              placeholder="Enter CIN number"
+              value={formData.cin}
+              onChange={handleChange}
+              className="border rounded-md w-full"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <Label htmlFor="udhyam" className="block text-sm mb-1">Udhyam:</Label>
+            <Input
+              id="udhyam"
+              name="udhyam"
+              placeholder="Enter Udhyam number"
+              value={formData.udhyam}
+              onChange={handleChange}
+              className="border rounded-md w-full"
+            />
+          </div>
+          
+          <div className="mb-4">
+            <Label htmlFor="phoneNumber" className="block text-sm mb-1">Phone number:</Label>
             <Input
               id="phoneNumber"
               name="phoneNumber"
@@ -112,7 +152,7 @@ const CompanyDetailsNext = () => {
           <div className="flex justify-end mt-8">
             <Button 
               type="submit"
-              className="rounded-full px-6 bg-red-500 hover:bg-red-600 text-white"
+              className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
             >
               Next
             </Button>
