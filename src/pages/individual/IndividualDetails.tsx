@@ -28,7 +28,7 @@ const IndividualDetails = () => {
   return (
     <StepLayout title="" backUrl="/account-type">
       <div className="max-w-md mx-auto px-4">
-        <h1 className="text-lg font-medium mb-4">Enter your <span className="text-[#E53935]">Details:</span></h1>
+        <h1 className="text-lg font-medium mb-4">Enter your <span className="text-[#0056D2]">Details:</span></h1>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <FormField
@@ -91,7 +91,7 @@ const IndividualDetails = () => {
           <div className="flex justify-end mt-6">
             <Button 
               type="submit"
-              className="rounded-full bg-[#E53935] hover:bg-red-700 text-white px-6 py-2"
+              className="loan-button"
             >
               Next
             </Button>

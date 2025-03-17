@@ -81,7 +81,7 @@ const IndividualEmployeeDetails = () => {
           <div className="flex justify-center mt-8">
             <Button 
               type="submit"
-              className="rounded-full bg-[#E53935] hover:bg-red-700 text-white px-6 py-2 w-full"
+              className="loan-button w-full"
             >
               Proceed with consent
             </Button>

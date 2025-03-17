@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 0 82% 56%;  /* Red #E53935 */
+    --primary: 214 100% 41%;  /* Blue #0056D2 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -23,26 +23,26 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 120 68% 50%;  /* Green #32CD32 */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 0 82% 56%;
+    --ring: 214 100% 41%;  /* Blue #0056D2 */
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 82% 56%;
+    --sidebar-primary: 214 100% 41%;  /* Blue #0056D2 */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 82% 56%;
+    --sidebar-ring: 214 100% 41%;  /* Blue #0056D2 */
   }
 
   .dark {
@@ -55,7 +55,7 @@
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 82% 56%;
+    --primary: 214 100% 41%;  /* Blue #0056D2 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 20%;
@@ -64,7 +64,7 @@
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 0 0% 20%;
+    --accent: 120 68% 50%;  /* Green #32CD32 */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -72,16 +72,16 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 0 82% 56%;
+    --ring: 214 100% 41%;  /* Blue #0056D2 */
 
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 82% 56%;
+    --sidebar-primary: 214 100% 41%;  /* Blue #0056D2 */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 20%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 0 82% 56%;
+    --sidebar-ring: 214 100% 41%;  /* Blue #0056D2 */
   }
 }
 
@@ -96,7 +96,7 @@
 }
 
 .loan-input {
-  @apply h-11 rounded-md border border-input px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-loan-red bg-white w-full;
+  @apply h-11 rounded-md border border-input px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-loan-blue bg-white w-full;
 }
 
 .loan-label {
@@ -104,15 +104,15 @@
 }
 
 .loan-button {
-  @apply rounded-full bg-loan-red hover:bg-red-700 text-white font-medium px-6 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-loan-red;
+  @apply rounded-full bg-loan-green hover:bg-green-600 text-white font-medium px-6 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-loan-blue;
 }
 
 .loan-button-outline {
-  @apply rounded-full bg-white border border-loan-red text-loan-red hover:bg-red-50 font-medium px-6 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-loan-red;
+  @apply rounded-full bg-white border border-loan-blue text-loan-blue hover:bg-blue-50 font-medium px-6 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-loan-blue;
 }
 
 .loan-step-active {
-  @apply bg-loan-red text-white;
+  @apply bg-loan-blue text-white;
 }
 
 .loan-step-completed {

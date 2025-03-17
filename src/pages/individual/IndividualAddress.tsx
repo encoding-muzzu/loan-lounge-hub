@@ -114,7 +114,7 @@ const IndividualAddress = () => {
           <div className="flex justify-end mt-6">
             <Button 
               type="submit"
-              className="rounded-full bg-[#E53935] hover:bg-red-700 text-white px-6 py-2"
+              className="loan-button"
             >
               Next
             </Button>

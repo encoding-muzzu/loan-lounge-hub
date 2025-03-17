@@ -32,7 +32,7 @@ const AccountTypeSimple = () => {
     <StepLayout title="" showBack={false}>
       <div className="flex flex-col items-center justify-center px-4 py-8 max-w-md mx-auto">
         <h1 className="text-xl font-medium text-center mb-6">
-          <span className="text-[#E53935]">Select</span> Your Account Type
+          <span className="text-[#0056D2]">Select</span> Your Account Type
         </h1>
         
         <div className="w-full mb-6">

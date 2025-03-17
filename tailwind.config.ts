@@ -65,11 +65,11 @@ export default {
 				},
 				// Custom colors based on requirements
 				loan: {
-					red: '#E53935',
-					green: '#43A047',
-					blue: '#1E88E5',
-					yellow: '#FDD835',
-					orange: '#FB8C00',
+					blue: '#0056D2',
+					green: '#32CD32',
+					lightblue: '#8EC0E4',
+					white: '#FFFFFF',
+					gray: '#888888',
 					lightgray: '#F5F5F5',
 				}
 			},

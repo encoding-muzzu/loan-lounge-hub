@@ -8,16 +8,12 @@ const LoanHeader: React.FC = () => {
     <header className="bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-full bg-[#E53935] text-white flex items-center justify-center font-bold">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-              <line x1="8" x2="16" y1="6" y2="6" />
-              <line x1="8" x2="16" y1="10" y2="10" />
-              <line x1="8" x2="16" y1="14" y2="14" />
-              <line x1="8" x2="16" y1="18" y2="18" />
-            </svg>
-          </div>
-          <span className="font-bold text-xl">EasyLoan</span>
+          <img 
+            src="/lovable-uploads/40d781d6-b290-470a-8a3c-949feaef014b.png" 
+            alt="gro logo" 
+            className="h-8"
+          />
+          <span className="font-bold text-xl text-[#0056D2]">EasyLoan</span>
         </Link>
         
         <div className="flex items-center">
