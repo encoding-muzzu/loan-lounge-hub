@@ -19,7 +19,7 @@ import ProprietorKYC from "./pages/proprietor/ProprietorKYC";
 import CompanyDetails from "./pages/company/CompanyDetails";
 import CompanyDetailsNext from "./pages/company/CompanyDetailsNext";
 import CompanyDocuments from "./pages/company/CompanyDocuments";
-import CompanyKYC from "./pages/company/CompanyKYC";
+import CompanyProjection from "./pages/company/CompanyProjection";
 
 const queryClient = new QueryClient();
 
@@ -50,7 +50,7 @@ const App = () => (
           <Route path="/company/details" element={<CompanyDetails />} />
           <Route path="/company/details-next" element={<CompanyDetailsNext />} />
           <Route path="/company/documents" element={<CompanyDocuments />} />
-          <Route path="/company/kyc" element={<CompanyKYC />} />
+          <Route path="/company/projection" element={<CompanyProjection />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

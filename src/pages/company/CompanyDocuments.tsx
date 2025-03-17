@@ -55,7 +55,8 @@ const CompanyDocuments = () => {
   };
 
   const handleNext = () => {
-    navigate('/company/kyc');
+    // Updated to navigate to the projection page
+    navigate('/company/projection');
   };
 
   const handleBack = () => {
