@@ -24,7 +24,9 @@ import AvailableOffers from "./pages/AvailableOffers";
 import KYCVerification from "./pages/KYCVerification";
 import UploadDocuments from "./pages/UploadDocuments";
 import DocumentVerification from "./pages/DocumentVerification";
-import ApplicationStatus from "./pages/ApplicationStatus";
+import ApplicationInProcess from "./pages/ApplicationInProcess";
+import AdditionalInfoNeeded from "./pages/AdditionalInfoNeeded";
+import ApplicationApproved from "./pages/ApplicationApproved";
 
 const queryClient = new QueryClient();
 
@@ -64,7 +66,11 @@ const App = () => (
           <Route path="/kyc-verification" element={<KYCVerification />} />
           <Route path="/upload-documents" element={<UploadDocuments />} />
           <Route path="/document-verification" element={<DocumentVerification />} />
-          <Route path="/application-status" element={<ApplicationStatus />} />
+          
+          {/* Application Status Screens - now separated */}
+          <Route path="/application-in-process" element={<ApplicationInProcess />} />
+          <Route path="/additional-info-needed" element={<AdditionalInfoNeeded />} />
+          <Route path="/application-approved" element={<ApplicationApproved />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

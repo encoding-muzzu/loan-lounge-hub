@@ -79,7 +79,7 @@ const DocumentVerification = () => {
         
         <div className="flex justify-center mt-6">
           <Button 
-            onClick={() => navigate('/application-status')}
+            onClick={() => navigate('/application-in-process')}
             className="loan-button w-full max-w-md flex items-center justify-center gap-2"
           >
             Continue to Application Process
