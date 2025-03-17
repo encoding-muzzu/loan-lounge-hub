@@ -41,3 +41,29 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Loan application specific styles */
+.loan-button {
+  background-color: #32CD32;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+
+.loan-button:hover {
+  background-color: #2db82d;
+}
+
+.loan-input {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+}
+
+.loan-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #4a5568;
+}

@@ -21,8 +21,10 @@ const AccountTypeSimple = () => {
     if (accountType) {
       if (accountType === 'individual') {
         navigate('/individual/details');
+      } else if (accountType === 'soleProprietor') {
+        navigate('/proprietor/details');
       } else {
-        // For future implementation
+        // For future implementation of private limited
         navigate('/details');
       }
     }
@@ -52,7 +54,7 @@ const AccountTypeSimple = () => {
           <Button 
             onClick={handleContinue} 
             disabled={!accountType}
-            className="loan-button"
+            className="bg-[#32CD32] hover:bg-green-600 text-white"
           >
             Continue
           </Button>
