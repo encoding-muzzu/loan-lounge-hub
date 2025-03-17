@@ -15,8 +15,8 @@ const FindingBestOffers = () => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(timer);
-          // Navigate to welcome screen after completion
-          setTimeout(() => navigate('/welcome'), 500);
+          // Navigate to available offers screen after completion
+          setTimeout(() => navigate('/available-offers'), 500);
           return 100;
         }
         
@@ -39,7 +39,7 @@ const FindingBestOffers = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
       <div className="max-w-md w-full mx-auto text-center">
-        <div className="bg-red-500 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6">
+        <div className="bg-loan-blue w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6">
           <Loader className="w-12 h-12 text-white animate-spin" />
         </div>
 

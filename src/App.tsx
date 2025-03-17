@@ -20,6 +20,9 @@ import CompanyDetailsNext from "./pages/company/CompanyDetailsNext";
 import CompanyDocuments from "./pages/company/CompanyDocuments";
 import CompanyProjection from "./pages/company/CompanyProjection";
 import FindingBestOffers from "./pages/FindingBestOffers";
+import AvailableOffers from "./pages/AvailableOffers";
+import KYCVerification from "./pages/KYCVerification";
+import UploadDocuments from "./pages/UploadDocuments";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +56,11 @@ const App = () => (
           
           {/* Finding Best Offers screen */}
           <Route path="/finding-best-offers" element={<FindingBestOffers />} />
+          
+          {/* New screens after Finding Best Offers */}
+          <Route path="/available-offers" element={<AvailableOffers />} />
+          <Route path="/kyc-verification" element={<KYCVerification />} />
+          <Route path="/upload-documents" element={<UploadDocuments />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
