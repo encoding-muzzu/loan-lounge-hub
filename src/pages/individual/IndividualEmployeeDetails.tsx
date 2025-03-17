@@ -20,9 +20,8 @@ const IndividualEmployeeDetails = () => {
   };
 
   const handleSubmit = () => {
-    // In a real app, we would validate and submit the form here
-    alert('Form submitted successfully! Next steps would include document uploading and KYC verification.');
-    navigate('/welcome');
+    // Navigate to the Finding Best Offers page instead of Welcome
+    navigate('/finding-best-offers');
   };
 
   return (

@@ -15,11 +15,11 @@ import IndividualEmployeeDetails from "./pages/individual/IndividualEmployeeDeta
 import ProprietorDetails from "./pages/proprietor/ProprietorDetails";
 import ProprietorAddress from "./pages/proprietor/ProprietorAddress";
 import ProprietorRevenue from "./pages/proprietor/ProprietorRevenue";
-import ProprietorKYC from "./pages/proprietor/ProprietorKYC";
 import CompanyDetails from "./pages/company/CompanyDetails";
 import CompanyDetailsNext from "./pages/company/CompanyDetailsNext";
 import CompanyDocuments from "./pages/company/CompanyDocuments";
 import CompanyProjection from "./pages/company/CompanyProjection";
+import FindingBestOffers from "./pages/FindingBestOffers";
 
 const queryClient = new QueryClient();
 
@@ -44,13 +44,15 @@ const App = () => (
           <Route path="/proprietor/details" element={<ProprietorDetails />} />
           <Route path="/proprietor/address" element={<ProprietorAddress />} />
           <Route path="/proprietor/revenue" element={<ProprietorRevenue />} />
-          <Route path="/proprietor/kyc" element={<ProprietorKYC />} />
           
           {/* Private Limited account type routes */}
           <Route path="/company/details" element={<CompanyDetails />} />
           <Route path="/company/details-next" element={<CompanyDetailsNext />} />
           <Route path="/company/documents" element={<CompanyDocuments />} />
           <Route path="/company/projection" element={<CompanyProjection />} />
+          
+          {/* Finding Best Offers screen */}
+          <Route path="/finding-best-offers" element={<FindingBestOffers />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

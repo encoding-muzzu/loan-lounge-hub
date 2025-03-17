@@ -43,8 +43,8 @@ const CompanyProjection = () => {
   };
 
   const handleNext = () => {
-    // Navigate to welcome for now, since KYC is removed
-    navigate('/welcome');
+    // Navigate to finding best offers page instead of welcome
+    navigate('/finding-best-offers');
   };
 
   const handleBack = () => {
