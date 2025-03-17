@@ -20,7 +20,7 @@ const AccountType = () => {
   };
 
   return (
-    <StepLayout title="Select Account Type" previousPath="/welcome">
+    <StepLayout title="Select Account Type" backUrl="/welcome">
       <div className="flex flex-col items-center">
         <h2 className="text-xl font-medium text-center mb-6">What type of account do you need?</h2>
         

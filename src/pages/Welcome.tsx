@@ -9,9 +9,9 @@ const Welcome = () => {
   return (
     <StepLayout title="" showBack={false}>
       <div className="flex flex-col items-center justify-center h-[calc(100vh-72px)] px-4 md:px-0">
-        <h1 className="text-2xl font-bold text-left w-full mb-8">Discover the Perfect Loan for You</h1>
+        <h1 className="text-2xl font-bold text-center w-full mb-8">Discover the Perfect Loan for You</h1>
         
-        <div className="w-20 h-20 rounded-full bg-[#ff5252] flex items-center justify-center text-white mb-6">
+        <div className="w-20 h-20 rounded-full bg-[#E53935] flex items-center justify-center text-white mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
             <line x1="8" x2="16" y1="6" y2="6" />
@@ -27,7 +27,7 @@ const Welcome = () => {
         
         <button 
           onClick={() => navigate('/account-type')}
-          className="w-full max-w-xs rounded-md bg-[#ff5252] text-white font-medium py-3"
+          className="w-full max-w-xs rounded-md bg-[#E53935] text-white font-medium py-3"
         >
           Get Started Now
         </button>
