@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { User, Briefcase, Building, Check } from 'lucide-react';
-import StepLayout from '@/components/StepLayout';
 
 type AccountType = 'individual' | 'soleProprietor' | 'privateLimited' | null;
 
@@ -47,16 +46,16 @@ const AccountTypeSimple = () => {
   ];
 
   return (
-    <StepLayout title="" showBack={false}>
-      <div className="max-w-md mx-auto">
-        {/* Styled header with gradient background */}
-        <div className="bg-[#0056D2] text-white p-6 rounded-lg mb-6">
-          <h1 className="text-2xl font-bold">Select Your Account Type</h1>
-          <p className="text-sm opacity-90 mt-1">
-            We need to know what type of account you need
-          </p>
-        </div>
-        
+    <div className="min-h-screen bg-white flex flex-col">
+      {/* Header with gradient background */}
+      <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
+        <h1 className="text-2xl font-semibold">Select Your Account Type</h1>
+        <p className="text-sm opacity-90 mt-1">
+          We need to know what type of account you need
+        </p>
+      </div>
+      
+      <div className="flex-1 container mx-auto py-6 px-4 max-w-md">
         {/* Account type selection cards */}
         <div className="space-y-4 mb-6">
           {accountTypes.map((type) => (
@@ -92,13 +91,13 @@ const AccountTypeSimple = () => {
           <Button
             onClick={handleContinue}
             disabled={!accountType}
-            className="bg-[#32CD32] hover:bg-green-600 text-white font-medium px-8 py-2 rounded-full disabled:opacity-50"
+            className="bg-[#32CD32] hover:bg-green-600 text-white font-medium px-8 py-2 rounded-full disabled:opacity-50 h-12 w-full"
           >
             Continue
           </Button>
         </div>
       </div>
-    </StepLayout>
+    </div>
   );
 };
 
