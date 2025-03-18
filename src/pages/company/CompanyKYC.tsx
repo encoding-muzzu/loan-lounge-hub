@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Menu } from 'lucide-react';
+import { ArrowLeft, Menu, Building, Shield } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
@@ -36,13 +36,14 @@ const CompanyKYC = () => {
       </div>
       
       <div className="flex-1">
-        <div className="mb-6">
-          <h1 className="text-xl font-medium">
-            KYC <span className="font-bold">Verification</span>
-          </h1>
-          <p className="text-sm text-gray-600 mt-2">
-            Please select one of the KYC verification methods below to continue with your application.
-          </p>
+        <div className="flex items-center gap-2 mb-2">
+          <Building className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Private Limited <span className="text-[#0056D2]">KYC Verification</span></h1>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <Shield className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please select one of the KYC verification methods below</p>
         </div>
 
         <div className="mb-8">

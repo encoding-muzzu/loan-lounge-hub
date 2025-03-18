@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Shield } from 'lucide-react';
+import { Shield, User } from 'lucide-react';
 import FormField from '@/components/FormField';
 
 const IndividualDetails = () => {
@@ -30,7 +30,10 @@ const IndividualDetails = () => {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
-        <h1 className="text-2xl font-semibold">Personal Details</h1>
+        <div className="flex items-center gap-2 mb-1">
+          <User className="h-5 w-5" />
+          <h1 className="text-2xl font-semibold">Individual Details</h1>
+        </div>
         <p className="text-sm opacity-90 mt-1">
           We need your details to match you with the best lenders
         </p>
@@ -46,7 +49,9 @@ const IndividualDetails = () => {
         </Button>
         
         <Card className="p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-medium text-gray-700 mb-4">Your Details</h2>
+          <h2 className="text-xl font-medium text-gray-700 mb-4">
+            <span className="text-[#0056D2]">Individual</span> Personal Information
+          </h2>
           
           <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
             <div className="space-y-4">

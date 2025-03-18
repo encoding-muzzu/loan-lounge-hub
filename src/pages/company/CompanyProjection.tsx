@@ -10,7 +10,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { ArrowLeft, Menu } from 'lucide-react';
+import { ArrowLeft, Menu, Building, TrendingUp } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 
 const CompanyProjection = () => {
@@ -63,6 +63,16 @@ const CompanyProjection = () => {
       </div>
       
       <div className="flex-1">
+        <div className="flex items-center gap-2 mb-2">
+          <Building className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Private Limited <span className="text-[#0056D2]">Financial Projections</span></h1>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <TrendingUp className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please provide financial projections and statements</p>
+        </div>
+        
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           {/* Projection Section */}
           <div className="mb-6">

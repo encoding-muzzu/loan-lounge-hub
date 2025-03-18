@@ -10,7 +10,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { ArrowLeft, Menu } from 'lucide-react';
+import { ArrowLeft, Menu, Building, FileText } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
@@ -75,10 +75,14 @@ const CompanyDocuments = () => {
       </div>
       
       <div className="flex-1">
-        <div className="mb-6">
-          <h1 className="text-xl font-bold">
-            Documents <span className="font-normal">Upload</span>
-          </h1>
+        <div className="flex items-center gap-2 mb-2">
+          <Building className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Private Limited <span className="text-[#0056D2]">Document Upload</span></h1>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <FileText className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please provide required financial documents</p>
         </div>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>

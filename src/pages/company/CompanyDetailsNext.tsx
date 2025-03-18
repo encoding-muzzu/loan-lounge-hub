@@ -10,7 +10,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { ArrowLeft, Menu } from 'lucide-react';
+import { ArrowLeft, Menu, Building, FileText } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 
 const CompanyDetailsNext = () => {
@@ -50,6 +50,16 @@ const CompanyDetailsNext = () => {
       </div>
       
       <div className="flex-1">
+        <div className="flex items-center gap-2 mb-2">
+          <Building className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Private Limited <span className="text-[#0056D2]">Additional Information</span></h1>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <FileText className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please provide your company's registration and contact details</p>
+        </div>
+        
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <div className="mb-4">
             <Label htmlFor="loanType" className="block text-sm mb-1">Loan Type:</Label>

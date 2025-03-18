@@ -11,7 +11,7 @@ import {
   SelectValue 
 } from '@/components/ui/select';
 import { Card } from '@/components/ui/card';
-import { Shield } from 'lucide-react';
+import { Shield, Building } from 'lucide-react';
 import StepLayout from '@/components/StepLayout';
 
 const CompanyDetails = () => {
@@ -39,8 +39,11 @@ const CompanyDetails = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header with gradient background */}
-      <div className="bg-gradient-to-r from-[#ff3366] to-[#ff5f6d] text-white p-6">
-        <h1 className="text-2xl font-semibold">Company Details</h1>
+      <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
+        <div className="flex items-center gap-2 mb-1">
+          <Building className="h-5 w-5" />
+          <h1 className="text-2xl font-semibold">Private Limited Company Details</h1>
+        </div>
         <p className="text-sm opacity-90 mt-1">
           We need your details to match you with the best lenders
         </p>
@@ -56,7 +59,9 @@ const CompanyDetails = () => {
         </Button>
         
         <Card className="p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-medium text-gray-700 mb-4">Your Details</h2>
+          <h2 className="text-xl font-medium text-gray-700 mb-4">
+            <span className="text-[#0056D2]">Company</span> Basic Information
+          </h2>
           
           <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
             <div className="space-y-4">

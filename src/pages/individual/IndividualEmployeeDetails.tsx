@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import StepLayout from '@/components/StepLayout';
 import FormField from '@/components/FormField';
+import { User, Briefcase } from 'lucide-react';
 
 const IndividualEmployeeDetails = () => {
   const navigate = useNavigate();
@@ -27,7 +28,15 @@ const IndividualEmployeeDetails = () => {
   return (
     <StepLayout title="" backUrl="/individual/address">
       <div className="max-w-md mx-auto px-4">
-        <h1 className="text-xl font-bold mb-6">Employee Details</h1>
+        <div className="flex items-center gap-2 mb-2">
+          <User className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Individual <span className="text-[#0056D2]">Employment Details</span></h1>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-6">
+          <Briefcase className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please enter your employment and income information</p>
+        </div>
         
         <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <FormField

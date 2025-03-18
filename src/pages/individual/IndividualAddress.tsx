@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import StepLayout from '@/components/StepLayout';
 import FormField from '@/components/FormField';
-import { MapPin } from 'lucide-react';
+import { MapPin, User } from 'lucide-react';
 
 const IndividualAddress = () => {
   const navigate = useNavigate();
@@ -31,12 +31,15 @@ const IndividualAddress = () => {
   return (
     <StepLayout title="" backUrl="/individual/details">
       <div className="max-w-md mx-auto px-4">
-        <div className="flex items-center gap-2 mb-6">
-          <MapPin className="h-5 w-5 text-[#0056D2]" />
-          <h1 className="text-xl font-semibold">Personal <span className="text-[#0056D2]">Address Details</span></h1>
+        <div className="flex items-center gap-2 mb-2">
+          <User className="h-5 w-5 text-[#0056D2]" />
+          <h1 className="text-xl font-semibold">Individual <span className="text-[#0056D2]">Address Details</span></h1>
         </div>
         
-        <p className="text-gray-600 mb-6">Please enter your current residential address information</p>
+        <div className="flex items-center gap-2 mb-6">
+          <MapPin className="h-5 w-5 text-[#0056D2]" />
+          <p className="text-gray-600">Please enter your current residential address information</p>
+        </div>
         
         <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
           <FormField
