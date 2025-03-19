@@ -7,7 +7,7 @@ const AadhaarSuccess = () => {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    navigate('/nach-setup');
+    navigate('/e-sign-transaction');
   };
 
   return (
@@ -56,7 +56,7 @@ const AadhaarSuccess = () => {
           onClick={handleContinue}
           className="bg-[#0056D2] text-white rounded-md px-8 py-2"
         >
-          Continue to NACH Setup
+          Continue to eSign Transaction
         </button>
       </div>
       

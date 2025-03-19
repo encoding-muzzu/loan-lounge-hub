@@ -1,8 +1,11 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Import all pages
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Welcome from "./pages/Welcome";
@@ -35,6 +38,7 @@ import DisbursementConfirmation from "./pages/DisbursementConfirmation";
 import AadhaarAuth from "./pages/AadhaarAuth";
 import AadhaarOtp from "./pages/AadhaarOtp";
 import AadhaarSuccess from "./pages/AadhaarSuccess";
+import ESignTransaction from "./pages/ESignTransaction";
 
 const queryClient = new QueryClient();
 
@@ -85,10 +89,11 @@ const App = () => (
           <Route path="/loan-documents" element={<LoanDocuments />} />
           <Route path="/e-sign-agreement" element={<ESignAgreement />} />
           
-          {/* New Aadhaar authentication screens */}
+          {/* Aadhaar authentication screens */}
           <Route path="/aadhaar-auth" element={<AadhaarAuth />} />
           <Route path="/aadhaar-otp" element={<AadhaarOtp />} />
           <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
+          <Route path="/e-sign-transaction" element={<ESignTransaction />} />
           
           <Route path="/loan-agreement" element={<LoanAgreement />} />
           <Route path="/nach-setup" element={<NACHSetup />} />
