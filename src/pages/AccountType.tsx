@@ -15,8 +15,15 @@ const AccountType = () => {
 
   const handleContinue = () => {
     if (selectedType) {
-      // In a real app, you would save this to state management or context
-      navigate('/details');
+      // Navigate to the appropriate route based on account type
+      if (selectedType === 'individual') {
+        navigate('/individual/details');
+      } else if (selectedType === 'soleProprietor') {
+        navigate('/proprietor/details');
+      } else {
+        // For private limited
+        navigate('/company/details');
+      }
     }
   };
 

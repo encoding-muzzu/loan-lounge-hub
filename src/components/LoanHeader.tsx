@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from 'lucide-react';
 
 const LoanHeader: React.FC = () => {
   return (
@@ -15,10 +14,6 @@ const LoanHeader: React.FC = () => {
           />
           <span className="font-bold text-xl text-[#0056D2]">EasyLoan</span>
         </Link>
-        
-        <div className="flex items-center">
-          <Menu className="h-6 w-6" />
-        </div>
       </div>
     </header>
   );

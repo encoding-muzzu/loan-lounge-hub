@@ -44,7 +44,7 @@ const Welcome = () => {
           </p>
           
           <button 
-            onClick={() => navigate('/account-type-details')}
+            onClick={() => navigate('/account-type')}
             className="w-full max-w-xs rounded-md bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3 mx-auto block shadow-md"
           >
             Get Started Now
