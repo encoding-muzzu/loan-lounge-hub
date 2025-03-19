@@ -26,7 +26,7 @@ const ProprietorDocuments = () => {
     navigate('/proprietor/kyc');
   };
 
-  const allDocsUploaded = Object.values(uploadedDocs).every(Boolean);
+  // Removed the allDocsUploaded check since we want to enable the button for demo
 
   return (
     <StepLayout title="" backUrl="/proprietor/revenue">
@@ -118,7 +118,6 @@ const ProprietorDocuments = () => {
         <div className="flex justify-center mt-8">
           <Button 
             onClick={handleContinue}
-            disabled={!allDocsUploaded}
             className="bg-[#32CD32] hover:bg-green-600 text-white w-full"
           >
             Continue to Application Process

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, Check, Upload } from 'lucide-react';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import MobileContainer from '@/components/MobileContainer';
 
 interface DocumentFile {
   file: File | null;
@@ -36,9 +37,9 @@ const UploadDocuments = () => {
     navigate('/document-verification');
   };
 
-  const allDocumentsUploaded = Object.values(documents).every(doc => doc.uploaded);
+  // Removed the allDocumentsUploaded check since we want to enable the button for demo
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4">
       <div className="flex justify-between items-center mb-6">
         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-loan-blue text-white">
@@ -149,7 +150,6 @@ const UploadDocuments = () => {
         <div className="flex justify-center mt-auto">
           <Button 
             onClick={handleSubmit}
-            disabled={!allDocumentsUploaded}
             className="loan-button w-full"
           >
             Submit Documents
@@ -158,6 +158,8 @@ const UploadDocuments = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default UploadDocuments;
