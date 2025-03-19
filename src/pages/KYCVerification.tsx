@@ -7,19 +7,18 @@ import MobileContainer from '@/components/MobileContainer';
 
 const KYCVerification = () => {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>('upload');
 
   const handleOptionSelect = (optionId: string) => {
-    setSelectedOption(optionId);
+    // Only allow selecting 'upload' option
+    if (optionId === 'upload') {
+      setSelectedOption(optionId);
+    }
   };
 
   const handleProceed = () => {
     if (selectedOption === 'upload') {
       navigate('/upload-documents');
-    } else if (selectedOption === 'ekyc') {
-      navigate('/aadhaar-auth');
-    } else if (selectedOption === 'video') {
-      navigate('/video-kyc');
     }
   };
 
@@ -38,56 +37,50 @@ const KYCVerification = () => {
         <h1 className="text-2xl font-bold mb-6">KYC Verification</h1>
         
         <div className="flex flex-col gap-6 mb-8">
-          {/* eKYC Option */}
-          <div 
-            className={`rounded-2xl shadow-sm overflow-hidden cursor-pointer ${selectedOption === 'ekyc' ? 'border-2 border-[#0056D2]' : 'border border-gray-100'}`}
-            onClick={() => handleOptionSelect('ekyc')}
-          >
+          {/* eKYC Option - Unavailable */}
+          <div className="rounded-2xl shadow-sm overflow-hidden border border-gray-100">
             <div className="flex p-5">
-              <div className={`mr-4 ${selectedOption === 'ekyc' ? 'bg-[#0056D2]' : 'bg-gray-100'} rounded-full w-14 h-14 flex items-center justify-center`}>
-                <FileText className={`h-6 w-6 ${selectedOption === 'ekyc' ? 'text-white' : 'text-gray-500'}`} />
+              <div className="mr-4 bg-gray-100 rounded-full w-14 h-14 flex items-center justify-center">
+                <FileText className="h-6 w-6 text-gray-500" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-medium text-gray-700">eKYC (Aadhaar based)</h3>
                 <p className="text-gray-500">Verify instantly using your Aadhaar and OTP</p>
               </div>
               <div className="flex items-center">
-                <span className="px-4 py-1 rounded-full bg-green-50 text-green-600 text-sm">
-                  Available
+                <span className="px-4 py-1 rounded-full bg-gray-100 text-gray-500 text-sm">
+                  Unavailable
                 </span>
               </div>
             </div>
           </div>
           
-          {/* Video KYC Option */}
-          <div 
-            className={`rounded-2xl shadow-sm overflow-hidden cursor-pointer ${selectedOption === 'video' ? 'border-2 border-[#0056D2]' : 'border border-gray-100'}`}
-            onClick={() => handleOptionSelect('video')}
-          >
+          {/* Video KYC Option - Unavailable */}
+          <div className="rounded-2xl shadow-sm overflow-hidden border border-gray-100">
             <div className="flex p-5">
-              <div className={`mr-4 ${selectedOption === 'video' ? 'bg-[#0056D2]' : 'bg-gray-100'} rounded-full w-14 h-14 flex items-center justify-center`}>
-                <Video className={`h-6 w-6 ${selectedOption === 'video' ? 'text-white' : 'text-gray-500'}`} />
+              <div className="mr-4 bg-gray-100 rounded-full w-14 h-14 flex items-center justify-center">
+                <Video className="h-6 w-6 text-gray-500" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-medium text-gray-700">Video KYC</h3>
                 <p className="text-gray-500">Complete verification through a short video call</p>
               </div>
               <div className="flex items-center">
-                <span className="px-4 py-1 rounded-full bg-green-50 text-green-600 text-sm">
-                  Available
+                <span className="px-4 py-1 rounded-full bg-gray-100 text-gray-500 text-sm">
+                  Unavailable
                 </span>
               </div>
             </div>
           </div>
           
-          {/* Upload Documents Option */}
+          {/* Upload Documents Option - Available and Selected by default */}
           <div 
-            className={`rounded-2xl shadow-sm overflow-hidden cursor-pointer ${selectedOption === 'upload' ? 'border-2 border-[#0056D2]' : 'border border-gray-100'}`}
+            className="rounded-2xl shadow-sm overflow-hidden cursor-pointer border-2 border-[#0056D2]"
             onClick={() => handleOptionSelect('upload')}
           >
             <div className="flex p-5">
-              <div className={`mr-4 ${selectedOption === 'upload' ? 'bg-[#0056D2]' : 'bg-gray-100'} rounded-full w-14 h-14 flex items-center justify-center`}>
-                <Upload className={`h-6 w-6 ${selectedOption === 'upload' ? 'text-white' : 'text-gray-500'}`} />
+              <div className="mr-4 bg-[#0056D2] rounded-full w-14 h-14 flex items-center justify-center">
+                <Upload className="h-6 w-6 text-white" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-medium text-gray-700">Upload Documents</h3>
@@ -105,12 +98,9 @@ const KYCVerification = () => {
         <div className="flex justify-center mt-8">
           <Button 
             onClick={handleProceed}
-            disabled={selectedOption === null}
             className="bg-[#32CD32] hover:bg-green-600 text-white w-full"
           >
-            {selectedOption === 'ekyc' ? 'Proceed with eKYC' : 
-             selectedOption === 'video' ? 'Proceed with Video KYC' : 
-             'Proceed with Document Upload'}
+            Proceed with Document Upload
           </Button>
         </div>
       </div>
