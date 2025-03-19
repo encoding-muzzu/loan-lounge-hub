@@ -11,13 +11,12 @@ const Welcome = () => {
       <div className="min-h-screen bg-[#0056D2] flex flex-col max-w-md w-full mx-auto border-2 border-gray-300 shadow-lg rounded-xl overflow-hidden">
         {/* Header with blue background */}
         <div className="p-4 flex justify-between items-center text-white">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center">
             <img 
               src="/lovable-uploads/40d781d6-b290-470a-8a3c-949feaef014b.png" 
               alt="EasyLoan logo" 
               className="h-6 invert"
             />
-            <h2 className="text-xl font-medium">EasyLoan</h2>
           </div>
         </div>
 
