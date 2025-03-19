@@ -1,154 +1,175 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import StepLayout from '@/components/StepLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Landmark, CheckCircle, ArrowRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import FormField from '@/components/FormField';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
+import { ArrowRight, Info, AlertCircle } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const NACHSetup = () => {
   const navigate = useNavigate();
   const [bankDetails, setBankDetails] = useState({
-    accountHolder: '',
     accountNumber: '',
     ifscCode: '',
-    bankName: '',
-    accountType: 'savings'
   });
-  const [isComplete, setIsComplete] = useState(false);
+  const [upiId, setUpiId] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'upi'>('bank');
+  const [agreed, setAgreed] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setBankDetails(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleAccountTypeChange = (value: string) => {
-    setBankDetails(prev => ({ ...prev, accountType: value }));
+  const handleUpiChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUpiId(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate successful NACH setup
-    setIsComplete(true);
+  const handleSubmit = () => {
+    // Process submission and navigate
+    navigate('/disbursement-confirmation');
   };
 
   return (
-    <StepLayout title="Set Up Auto-Debit" backUrl="/loan-agreement">
-      <div className="max-w-md mx-auto">
-        {!isComplete ? (
-          <form onSubmit={handleSubmit}>
-            <Card className="mb-6">
-              <CardContent className="pt-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-blue-100 rounded-full">
-                    <Landmark className="h-5 w-5 text-[#0056D2]" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">Bank Account Details</h3>
-                    <p className="text-sm text-gray-500">For EMI auto-debit setup</p>
-                  </div>
-                </div>
-                
-                <FormField label="Account Holder Name" htmlFor="accountHolder">
-                  <Input
-                    id="accountHolder"
-                    name="accountHolder"
-                    value={bankDetails.accountHolder}
-                    onChange={handleChange}
-                    className="loan-input"
-                    required
-                  />
-                </FormField>
-                
-                <FormField label="Account Number" htmlFor="accountNumber">
-                  <Input
-                    id="accountNumber"
-                    name="accountNumber"
-                    value={bankDetails.accountNumber}
-                    onChange={handleChange}
-                    className="loan-input"
-                    required
-                  />
-                </FormField>
-                
-                <FormField label="IFSC Code" htmlFor="ifscCode">
-                  <Input
-                    id="ifscCode"
-                    name="ifscCode"
-                    value={bankDetails.ifscCode}
-                    onChange={handleChange}
-                    className="loan-input"
-                    required
-                  />
-                </FormField>
-                
-                <FormField label="Bank Name" htmlFor="bankName">
-                  <Input
-                    id="bankName"
-                    name="bankName"
-                    value={bankDetails.bankName}
-                    onChange={handleChange}
-                    className="loan-input"
-                    required
-                  />
-                </FormField>
-                
-                <FormField label="Account Type" htmlFor="accountType">
-                  <RadioGroup
-                    value={bankDetails.accountType}
-                    onValueChange={handleAccountTypeChange}
-                    className="flex gap-4"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="savings" id="savings" />
-                      <Label htmlFor="savings">Savings</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="current" id="current" />
-                      <Label htmlFor="current">Current</Label>
-                    </div>
-                  </RadioGroup>
-                </FormField>
-              </CardContent>
-            </Card>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="bg-green-50 p-4">
+        <h1 className="text-lg font-semibold text-[#32CD32]">NACH Setup</h1>
+        <p className="text-sm text-gray-600">Set up auto-debit authorization for EMI payments</p>
+      </div>
+      
+      <div className="p-4 max-w-3xl mx-auto">
+        {/* Description */}
+        <div className="mb-6">
+          <p className="text-gray-700">
+            NACH (National Automated Clearing House) allows automatic deduction of your EMI from your bank account on the due date. This ensures timely payments and helps you avoid late fees.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Left column - Bank Account Form */}
+          <div>
+            <h2 className="font-medium mb-3">Bank Account</h2>
             
-            <div className="text-sm text-gray-600 mb-6">
-              <p className="mb-2">
-                By proceeding, you authorize the bank to debit your account for loan EMIs as per the schedule.
-              </p>
-              <p>
-                The auto-debit mandate will remain active until the loan is fully repaid.
-              </p>
+            <div className="mb-4">
+              <label htmlFor="accountNumber" className="block text-sm font-medium text-gray-700 mb-1">
+                Bank Account Number
+              </label>
+              <Input 
+                id="accountNumber"
+                name="accountNumber"
+                value={bankDetails.accountNumber}
+                onChange={handleChange}
+                placeholder="Enter account number"
+                className="border-gray-300"
+              />
             </div>
             
-            <Button type="submit" className="w-full loan-button">
-              Authorize NACH Mandate
-            </Button>
-          </form>
-        ) : (
-          <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div className="mb-4">
+              <label htmlFor="ifscCode" className="block text-sm font-medium text-gray-700 mb-1">
+                IFSC Code
+              </label>
+              <Input 
+                id="ifscCode"
+                name="ifscCode"
+                value={bankDetails.ifscCode}
+                onChange={handleChange}
+                placeholder="Enter IFSC code"
+                className="border-gray-300"
+              />
             </div>
-            <h2 className="text-xl font-bold mb-2">NACH Setup Complete</h2>
-            <p className="text-gray-600 mb-6">
-              Your auto-debit mandate has been successfully set up for EMI payments.
-            </p>
-            <Button 
-              onClick={() => navigate('/disbursement-confirmation')}
-              className="loan-button inline-flex items-center"
+            
+            <div className="mt-6">
+              <h3 className="font-medium mb-2">Important Information</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>Auto-debit will occur on your EMI due date each month</span>
+                </li>
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>You can cancel the NACH mandate at any time by contacting customer support</span>
+                </li>
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>Ensure sufficient balance in your account to avoid payment failures</span>
+                </li>
+              </ul>
+            </div>
+            
+            <Button
+              onClick={handleSubmit} 
+              disabled={!bankDetails.accountNumber || !bankDetails.ifscCode}
+              className="mt-6 bg-red-500 hover:bg-red-600 text-white rounded-full"
             >
-              Proceed to Disbursement
+              Submit for Disbursement
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
-        )}
+          
+          {/* Right column - UPI Section */}
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <h2 className="font-medium mb-4">UPI</h2>
+            
+            <div className="mb-4">
+              <label htmlFor="upiId" className="block text-sm font-medium text-gray-700 mb-1">
+                UPI ID
+              </label>
+              <Input
+                id="upiId"
+                name="upiId"
+                value={upiId}
+                onChange={handleUpiChange}
+                placeholder="username@bankname"
+                className="border-gray-300"
+              />
+            </div>
+            
+            <div className="mt-6">
+              <h3 className="font-medium mb-2">Important Information</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>Auto-debit will occur on your EMI due date each month</span>
+                </li>
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>You can cancel the NACH mandate at any time by contacting customer support</span>
+                </li>
+                <li className="flex gap-2">
+                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span>Ensure sufficient balance in your account to avoid payment failures</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="flex items-center space-x-2 mt-6 mb-6">
+              <Checkbox 
+                id="terms" 
+                checked={agreed}
+                onCheckedChange={(checked) => setAgreed(checked as boolean)}
+              />
+              <label 
+                htmlFor="terms" 
+                className="text-sm leading-none"
+              >
+                I understand and agree to the auto-debit terms
+              </label>
+            </div>
+            
+            <Button
+              onClick={handleSubmit}
+              disabled={!upiId || !agreed}
+              className="w-full bg-red-500 hover:bg-red-600 text-white rounded-full"
+            >
+              Submit for Disbursement
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
-    </StepLayout>
+    </div>
   );
 };
 

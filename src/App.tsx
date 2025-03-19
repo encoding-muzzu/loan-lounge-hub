@@ -32,7 +32,7 @@ import ApplicationApproved from "./pages/ApplicationApproved";
 import ApplicationNotApproved from "./pages/ApplicationNotApproved";
 import LoanDocuments from "./pages/LoanDocuments";
 import ESignAgreement from "./pages/ESignAgreement";
-import LoanAgreement from "./pages/LoanAgreement";
+// import LoanAgreement from "./pages/LoanAgreement"; // Temporarily removed
 import NACHSetup from "./pages/NACHSetup";
 import DisbursementConfirmation from "./pages/DisbursementConfirmation";
 import AadhaarAuth from "./pages/AadhaarAuth";
@@ -95,7 +95,9 @@ const App = () => (
           <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
           <Route path="/e-sign-transaction" element={<ESignTransaction />} />
           
-          <Route path="/loan-agreement" element={<LoanAgreement />} />
+          {/* Temporarily commented out LoanAgreement route */}
+          {/* <Route path="/loan-agreement" element={<LoanAgreement />} /> */}
+          
           <Route path="/nach-setup" element={<NACHSetup />} />
           <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />
           
