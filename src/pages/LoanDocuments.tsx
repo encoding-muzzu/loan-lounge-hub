@@ -79,11 +79,12 @@ const LoanDocuments = () => {
       </div>
 
       {/* Acceptance Checkbox */}
-      <div className="flex items-center space-x-2 mb-6">
+      <div className="flex items-start space-x-2 mb-6">
         <Checkbox 
           id="terms" 
           checked={termsAccepted}
           onCheckedChange={(checked) => setTermsAccepted(!!checked)}
+          className="mt-1"
         />
         <label 
           htmlFor="terms" 

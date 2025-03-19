@@ -28,6 +28,8 @@ import ApplicationInProcess from "./pages/ApplicationInProcess";
 import AdditionalInfoNeeded from "./pages/AdditionalInfoNeeded";
 import ApplicationApproved from "./pages/ApplicationApproved";
 import ApplicationNotApproved from "./pages/ApplicationNotApproved";
+import LoanDocuments from "./pages/LoanDocuments";
+import ESignAgreement from "./pages/ESignAgreement";
 import LoanAgreement from "./pages/LoanAgreement";
 import NACHSetup from "./pages/NACHSetup";
 import DisbursementConfirmation from "./pages/DisbursementConfirmation";
@@ -78,6 +80,8 @@ const App = () => (
           <Route path="/application-not-approved" element={<ApplicationNotApproved />} />
           
           {/* Loan Agreement, NACH Setup, and Disbursement Screens */}
+          <Route path="/loan-documents" element={<LoanDocuments />} />
+          <Route path="/e-sign-agreement" element={<ESignAgreement />} />
           <Route path="/loan-agreement" element={<LoanAgreement />} />
           <Route path="/nach-setup" element={<NACHSetup />} />
           <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />

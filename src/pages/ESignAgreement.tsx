@@ -8,7 +8,7 @@ const ESignAgreement = () => {
   const navigate = useNavigate();
 
   const handleProceed = () => {
-    navigate('/loan-agreement');
+    navigate('/nach-setup');
   };
 
   const handleViewDocument = () => {
@@ -38,7 +38,6 @@ const ESignAgreement = () => {
             <rect x="20" y="10" width="80" height="100" fill="white" stroke="black" strokeWidth="2"/>
             <path d="M70 30 L100 30 L70 0 Z" fill="black"/>
             <text x="40" y="70" fontWeight="bold" fontSize="16" fill="black">PDF</text>
-            <path d="M85 95 C85 90 75 90 75 95 C75 100 85 100 85 95 Z" fill="black"/>
           </svg>
         </div>
 
@@ -53,7 +52,7 @@ const ESignAgreement = () => {
 
         <Button 
           onClick={handleProceed}
-          className="w-full bg-[#FF6B6B] text-white rounded-md py-3 max-w-md"
+          className="w-full max-w-md bg-[#FF6B6B] text-white rounded-md py-3"
         >
           Proceed
         </Button>
