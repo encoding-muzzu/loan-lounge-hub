@@ -6,15 +6,15 @@ const Welcome = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#0056D2] flex flex-col">
-      {/* Header with blue background - simplified without My Dashboard and menu icon */}
+    <div className="min-h-screen bg-[#0056D2] flex flex-col max-w-md mx-auto">
+      {/* Header with blue background */}
       <div className="p-4 flex justify-between items-center text-white">
         <h2 className="text-xl font-medium">EasyLoan</h2>
       </div>
 
-      {/* Profile Section - with EasyLoan title but without progress bar */}
-      <div className="px-4 pt-2 pb-6 text-white">
-        <h1 className="text-lg font-light mb-0">EasyLoan</h1>
+      {/* Profile Section with descriptive heading */}
+      <div className="px-4 pt-2 pb-8 text-white">
+        <h1 className="text-3xl font-light mb-2">Financial Freedom</h1>
         <p className="text-sm font-light text-blue-100 mb-4">Simple, fast loan approvals for your financial needs</p>
       </div>
 
