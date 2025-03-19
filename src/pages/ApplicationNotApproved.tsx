@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { XCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,15 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const ApplicationNotApproved = () => {
   const navigate = useNavigate();
+
+  // For demo purposes, automatically navigate to the next screen after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/application-approved');
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <StepLayout title="Application Status" showBack={false}>
@@ -33,7 +42,7 @@ const ApplicationNotApproved = () => {
             
             <div className="w-full">
               <Button 
-                onClick={() => navigate('/available-offers')}
+                onClick={() => navigate('/application-approved')}
                 className="w-full bg-red-500 hover:bg-red-600 text-white font-medium rounded-full py-3 flex items-center justify-center"
               >
                 Try a Different Offer

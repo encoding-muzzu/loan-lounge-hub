@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Clock } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import StepLayout from '@/components/StepLayout';
 
 const ApplicationInProcess = () => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
     { text: "Verifying your information" },
@@ -14,10 +16,24 @@ const ApplicationInProcess = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep(prev => (prev + 1) % steps.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+      setActiveStep(prev => {
+        if (prev < steps.length - 1) {
+          return prev + 1;
+        }
+        return prev;
+      });
+    }, 2000);
+    
+    // For demo purposes, navigate to the next screen after animations
+    const timer = setTimeout(() => {
+      navigate('/additional-info-needed');
+    }, 7000);
+    
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timer);
+    };
+  }, [navigate]);
 
   return (
     <StepLayout title="Application Status" showBack={false}>

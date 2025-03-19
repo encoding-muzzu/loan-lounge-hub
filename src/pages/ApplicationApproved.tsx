@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, ArrowRight, Calendar, Percent, CreditCard, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,15 @@ const ApplicationApproved = () => {
     { label: 'Monthly EMI', value: '₹6,500', icon: <Calendar className="h-4 w-4" /> },
     { label: 'Tenure', value: '60 months', icon: <Clock className="h-4 w-4" /> },
   ];
+  
+  // For demo purposes, automatically navigate to the next screen after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/loan-documents');
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, [navigate]);
   
   return (
     <StepLayout title="" showBack={false}>
@@ -62,10 +71,10 @@ const ApplicationApproved = () => {
         {/* Button to proceed */}
         <div className="w-full mt-8">
           <Button 
-            onClick={() => navigate('/welcome')}
+            onClick={() => navigate('/loan-documents')}
             className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium rounded-full py-3 flex items-center justify-center"
           >
-            Proceed to Loan Agreement
+            Proceed to Loan Documents
             <ArrowRight size={18} className="ml-2" />
           </Button>
         </div>

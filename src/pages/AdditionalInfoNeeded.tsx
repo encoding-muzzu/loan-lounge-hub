@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertTriangle, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,15 @@ import StepLayout from '@/components/StepLayout';
 
 const AdditionalInfoNeeded = () => {
   const navigate = useNavigate();
+  
+  // For demo purposes, automatically navigate to the next screen after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/application-not-approved');
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, [navigate]);
   
   return (
     <StepLayout title="Application Status" showBack={false}>
@@ -68,7 +77,7 @@ const AdditionalInfoNeeded = () => {
             </div>
             
             <Button 
-              onClick={() => navigate('/upload-documents')}
+              onClick={() => navigate('/application-not-approved')}
               className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3"
             >
               Upload Documents Now
