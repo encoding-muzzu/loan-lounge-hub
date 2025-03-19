@@ -12,20 +12,20 @@ const ApplicationNotApproved = () => {
   return (
     <StepLayout title="Application Status" showBack={false}>
       <div className="flex flex-col items-center max-w-md mx-auto animate-fade-in">
-        <Card className="w-full border-purple-100 shadow-sm">
+        <Card className="w-full border-purple-100 shadow-md rounded-lg">
           <CardContent className="pt-8 pb-6 flex flex-col items-center text-center">
             <div className="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center mb-6">
               <XCircle className="h-12 w-12 text-purple-500" />
             </div>
             
-            <h2 className="text-2xl font-bold mb-3">This offer is not applicable</h2>
+            <h2 className="text-2xl font-light mb-3">This offer is not applicable</h2>
             
-            <p className="text-gray-600 mb-6 max-w-xs">
+            <p className="text-gray-600 mb-6 max-w-xs font-light">
               We're sorry, but your application for this offer cannot be processed at this time.
             </p>
             
             <div className="bg-purple-50 w-full p-4 rounded-lg mb-6">
-              <p className="text-sm text-purple-700">
+              <p className="text-sm text-purple-700 font-light">
                 You may still be eligible for our other loan products with different terms.
                 We encourage you to explore alternative options.
               </p>
@@ -34,7 +34,7 @@ const ApplicationNotApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/application-approved')}
-                className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium rounded-full py-3 flex items-center justify-center"
+                className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-light rounded-full py-3 flex items-center justify-center"
               >
                 Try a Different Offer
                 <ArrowRight className="ml-2 h-4 w-4" />
