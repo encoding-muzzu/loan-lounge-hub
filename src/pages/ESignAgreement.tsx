@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import MobileContainer from '@/components/MobileContainer';
 
 const ESignAgreement = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const ESignAgreement = () => {
     // This would open the document for viewing
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4 font-ubuntu">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
@@ -59,6 +60,8 @@ const ESignAgreement = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default ESignAgreement;

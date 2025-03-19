@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import MobileContainer from '@/components/MobileContainer';
 
 const ESignTransaction = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const ESignTransaction = () => {
     navigate('/nach-setup');
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4 font-ubuntu">
       {/* Header */}
       <div className="text-center mb-4">
@@ -44,6 +45,8 @@ const ESignTransaction = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default ESignTransaction;

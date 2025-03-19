@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
+import MobileContainer from '@/components/MobileContainer';
 
 const AadhaarAuth = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const AadhaarAuth = () => {
     navigate(-1);
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4 font-ubuntu">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
@@ -108,6 +109,8 @@ const AadhaarAuth = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default AadhaarAuth;

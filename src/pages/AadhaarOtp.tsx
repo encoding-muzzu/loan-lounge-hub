@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import MobileContainer from '@/components/MobileContainer';
 
 const AadhaarOtp = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AadhaarOtp = () => {
     navigate(-1);
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4 font-ubuntu">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
@@ -112,6 +113,8 @@ const AadhaarOtp = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default AadhaarOtp;
