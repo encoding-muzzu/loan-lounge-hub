@@ -10,7 +10,7 @@ const LoanHeader: React.FC = () => {
         <Link to="/" className="flex items-center space-x-2">
           <img 
             src="/lovable-uploads/40d781d6-b290-470a-8a3c-949feaef014b.png" 
-            alt="gro logo" 
+            alt="EasyLoan logo" 
             className="h-8"
           />
           <span className="font-bold text-xl text-[#0056D2]">EasyLoan</span>
