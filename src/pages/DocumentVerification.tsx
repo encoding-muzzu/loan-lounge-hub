@@ -3,11 +3,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, ArrowRight, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import MobileContainer from '@/components/MobileContainer';
 
 const DocumentVerification = () => {
   const navigate = useNavigate();
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4">
       <div className="flex justify-between items-center mb-6">
         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-loan-blue text-white">
@@ -89,6 +90,8 @@ const DocumentVerification = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default DocumentVerification;
