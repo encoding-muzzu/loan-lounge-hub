@@ -15,7 +15,7 @@ const Welcome = () => {
       {/* Profile Section - with EasyLoan title but without progress bar */}
       <div className="px-4 pt-2 pb-6 text-white">
         <h1 className="text-lg font-light mb-0">EasyLoan</h1>
-        <p className="text-sm font-light text-blue-100 mb-4">Discover the Perfect Loan for You</p>
+        <p className="text-sm font-light text-blue-100 mb-4">Simple, fast loan approvals for your financial needs</p>
       </div>
 
       {/* White Content Area with Cards */}
