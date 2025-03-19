@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Shield } from 'lucide-react';
+import { Shield, Building, ChevronLeft } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import MobileContainer from '@/components/MobileContainer';
 
 const ProprietorDetails = () => {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ const ProprietorDetails = () => {
     udhyam: '',
     panNumber: ''
   });
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,11 +31,14 @@ const ProprietorDetails = () => {
     navigate('/proprietor/address');
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
-        <h1 className="text-2xl font-semibold">Business Details</h1>
+        <div className="flex items-center gap-2 mb-1">
+          <Building className="h-5 w-5" />
+          <h1 className="text-2xl font-semibold">Sole Proprietor Account Type</h1>
+        </div>
         <p className="text-sm opacity-90 mt-1">
           We need your details to match you with the best lenders
         </p>
@@ -42,8 +48,9 @@ const ProprietorDetails = () => {
         <Button
           variant="ghost"
           onClick={() => navigate('/account-type')}
-          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
+          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2 flex items-center"
         >
+          <ChevronLeft className="h-5 w-5 mr-1" />
           Back
         </Button>
         
@@ -158,13 +165,22 @@ const ProprietorDetails = () => {
               </div>
             </div>
             
-            {/* Consent box */}
+            {/* Consent box with checkbox */}
             <div className="mt-6 bg-blue-50 p-4 rounded-md border border-blue-100">
               <div className="flex items-start gap-3">
-                <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
+                <div className="flex items-center h-5 mt-1">
+                  <Checkbox 
+                    id="consent" 
+                    checked={consentChecked}
+                    onCheckedChange={(checked) => setConsentChecked(checked as boolean)}
+                  />
+                </div>
                 <div>
-                  <h3 className="text-blue-800 font-medium">Consent Required</h3>
-                  <p className="text-sm text-blue-700">
+                  <label htmlFor="consent" className="text-blue-800 font-medium cursor-pointer flex items-center">
+                    <Shield className="h-5 w-5 text-blue-600 mr-2" />
+                    Consent Required
+                  </label>
+                  <p className="text-sm text-blue-700 mt-1">
                     By proceeding, you consent to a full bureau pull which allows us to match you with different lenders and their best offers.
                   </p>
                 </div>
@@ -178,6 +194,7 @@ const ProprietorDetails = () => {
             <div className="mt-6">
               <Button 
                 type="submit"
+                disabled={!consentChecked}
                 className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full h-12 font-medium"
               >
                 Proceed with Consent
@@ -188,6 +205,8 @@ const ProprietorDetails = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default ProprietorDetails;
