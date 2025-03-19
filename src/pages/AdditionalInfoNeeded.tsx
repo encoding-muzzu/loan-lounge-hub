@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AlertTriangle, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import StepLayout from '@/components/StepLayout';
@@ -75,13 +74,6 @@ const AdditionalInfoNeeded = () => {
                 <strong>Note:</strong> Please provide these documents as soon as possible to avoid delays in processing your application.
               </p>
             </div>
-            
-            <Button 
-              onClick={() => navigate('/application-not-approved')}
-              className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3"
-            >
-              Upload Documents Now
-            </Button>
           </CardContent>
         </Card>
       </div>
