@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { MapPin, User } from 'lucide-react';
+import { MapPin, User, ChevronLeft } from 'lucide-react';
 import FormField from '@/components/FormField';
 import MobileContainer from '@/components/MobileContainer';
 
@@ -45,8 +45,9 @@ const IndividualAddress = () => {
         <Button
           variant="ghost"
           onClick={() => navigate('/individual/details')}
-          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
+          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2 flex items-center"
         >
+          <ChevronLeft className="h-5 w-5 mr-1" />
           Back
         </Button>
         

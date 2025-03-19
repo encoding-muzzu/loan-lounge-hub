@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { User, Briefcase, DollarSign, HelpCircle, FileDigit } from 'lucide-react';
+import { User, Briefcase, IndianRupee, HelpCircle, FileDigit, ChevronLeft } from 'lucide-react';
 import FormField from '@/components/FormField';
 import { Checkbox } from '@/components/ui/checkbox';
 import MobileContainer from '@/components/MobileContainer';
@@ -44,8 +44,9 @@ const IndividualEmployeeDetails = () => {
         <Button
           variant="ghost"
           onClick={() => navigate('/individual/address')}
-          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
+          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2 flex items-center"
         >
+          <ChevronLeft className="h-5 w-5 mr-1" />
           Back
         </Button>
         
@@ -63,7 +64,7 @@ const IndividualEmployeeDetails = () => {
               >
                 <div className="relative">
                   <div className="absolute left-0 top-0 bottom-0 flex items-center justify-center w-12 bg-gray-50 border-r border-gray-100 rounded-l-md">
-                    <DollarSign className="h-5 w-5 text-gray-500" />
+                    <IndianRupee className="h-5 w-5 text-gray-500" />
                   </div>
                   <Input
                     id="annualIncome"
@@ -110,7 +111,7 @@ const IndividualEmployeeDetails = () => {
               >
                 <div className="relative">
                   <div className="absolute left-0 top-0 bottom-0 flex items-center justify-center w-12 bg-gray-50 border-r border-gray-100 rounded-l-md">
-                    <DollarSign className="h-5 w-5 text-gray-500" />
+                    <IndianRupee className="h-5 w-5 text-gray-500" />
                   </div>
                   <Input
                     id="otherIncome"

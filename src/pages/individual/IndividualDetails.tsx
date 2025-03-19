@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Shield, User } from 'lucide-react';
+import { Shield, User, ChevronLeft } from 'lucide-react';
 import FormField from '@/components/FormField';
 import { Checkbox } from '@/components/ui/checkbox';
 import MobileContainer from '@/components/MobileContainer';
@@ -46,8 +46,9 @@ const IndividualDetails = () => {
         <Button
           variant="ghost"
           onClick={() => navigate('/account-type')}
-          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2"
+          className="mb-6 -ml-2 text-gray-600 hover:text-black hover:bg-transparent p-2 flex items-center"
         >
+          <ChevronLeft className="h-5 w-5 mr-1" />
           Back
         </Button>
         
