@@ -12,6 +12,8 @@ import {
 } from '@/components/ui/select';
 import { ArrowLeft, Menu, Building, TrendingUp } from 'lucide-react';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import MobileContainer from '@/components/MobileContainer';
 
 const CompanyProjection = () => {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ const CompanyProjection = () => {
     financialStatementNumber: '',
     financialUpload: null
   });
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const handleSelectChange = (name: string, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -51,7 +54,7 @@ const CompanyProjection = () => {
     navigate('/company/documents');
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col p-4">
       <div className="flex justify-between items-center mb-6">
         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#0056D2] text-white">
@@ -188,10 +191,24 @@ const CompanyProjection = () => {
             </div>
           </div>
           
+          {/* Consent checkbox */}
+          <div className="mb-6 flex items-start gap-2">
+            <Checkbox 
+              id="consent" 
+              checked={consentChecked}
+              onCheckedChange={(checked) => setConsentChecked(checked as boolean)}
+              className="mt-1"
+            />
+            <Label htmlFor="consent" className="text-sm">
+              I certify that the financial information provided is accurate and complete to the best of my knowledge
+            </Label>
+          </div>
+          
           <div className="flex justify-center mt-8 mb-4">
             <Button 
               type="submit"
               className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
+              disabled={!consentChecked}
             >
               Next
             </Button>
@@ -200,6 +217,9 @@ const CompanyProjection = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default CompanyProjection;
+

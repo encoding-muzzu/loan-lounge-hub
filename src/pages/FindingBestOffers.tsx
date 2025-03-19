@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Progress } from '@/components/ui/progress';
 import { Loader } from 'lucide-react';
+import MobileContainer from '@/components/MobileContainer';
 
 const FindingBestOffers = () => {
   const navigate = useNavigate();
@@ -36,10 +37,10 @@ const FindingBestOffers = () => {
     };
   }, [navigate]);
 
-  return (
+  const content = (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
       <div className="max-w-md w-full mx-auto text-center">
-        <div className="bg-loan-blue w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6">
+        <div className="bg-[#0056D2] w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6">
           <Loader className="w-12 h-12 text-white animate-spin" />
         </div>
 
@@ -57,6 +58,9 @@ const FindingBestOffers = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default FindingBestOffers;
+
