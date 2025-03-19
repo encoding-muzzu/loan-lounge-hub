@@ -39,7 +39,7 @@ const NACHSetup = () => {
         <p className="text-sm text-gray-600">Set up auto-debit authorization for EMI payments</p>
       </div>
       
-      <div className="p-4 max-w-3xl mx-auto">
+      <div className="p-4 max-w-3xl mx-auto animate-fade-in">
         {/* Description */}
         <div className="mb-6">
           <p className="text-gray-700">
@@ -49,7 +49,7 @@ const NACHSetup = () => {
         
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left column - Bank Account Form */}
-          <div>
+          <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
             <h2 className="font-medium mb-3">Bank Account</h2>
             
             <div className="mb-4">
@@ -84,24 +84,38 @@ const NACHSetup = () => {
               <h3 className="font-medium mb-2">Important Information</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>Auto-debit will occur on your EMI due date each month</span>
                 </li>
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>You can cancel the NACH mandate at any time by contacting customer support</span>
                 </li>
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>Ensure sufficient balance in your account to avoid payment failures</span>
                 </li>
               </ul>
             </div>
+
+            <div className="flex items-center space-x-2 mt-6 mb-6">
+              <Checkbox 
+                id="terms-bank" 
+                checked={agreed}
+                onCheckedChange={(checked) => setAgreed(checked as boolean)}
+              />
+              <label 
+                htmlFor="terms-bank" 
+                className="text-sm leading-none"
+              >
+                I understand and agree to the auto-debit terms
+              </label>
+            </div>
             
             <Button
               onClick={handleSubmit} 
-              disabled={!bankDetails.accountNumber || !bankDetails.ifscCode}
-              className="mt-6 bg-red-500 hover:bg-red-600 text-white rounded-full"
+              disabled={!bankDetails.accountNumber || !bankDetails.ifscCode || !agreed}
+              className="mt-6 bg-[#32CD32] hover:bg-green-600 text-white rounded-full"
             >
               Submit for Disbursement
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -109,7 +123,7 @@ const NACHSetup = () => {
           </div>
           
           {/* Right column - UPI Section */}
-          <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="bg-gray-50 p-5 rounded-lg shadow-sm border border-gray-100">
             <h2 className="font-medium mb-4">UPI</h2>
             
             <div className="mb-4">
@@ -130,15 +144,15 @@ const NACHSetup = () => {
               <h3 className="font-medium mb-2">Important Information</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>Auto-debit will occur on your EMI due date each month</span>
                 </li>
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>You can cancel the NACH mandate at any time by contacting customer support</span>
                 </li>
                 <li className="flex gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-4 w-4 text-[#0056D2] flex-shrink-0 mt-0.5" />
                   <span>Ensure sufficient balance in your account to avoid payment failures</span>
                 </li>
               </ul>
@@ -146,12 +160,12 @@ const NACHSetup = () => {
             
             <div className="flex items-center space-x-2 mt-6 mb-6">
               <Checkbox 
-                id="terms" 
+                id="terms-upi" 
                 checked={agreed}
                 onCheckedChange={(checked) => setAgreed(checked as boolean)}
               />
               <label 
-                htmlFor="terms" 
+                htmlFor="terms-upi" 
                 className="text-sm leading-none"
               >
                 I understand and agree to the auto-debit terms
@@ -161,7 +175,7 @@ const NACHSetup = () => {
             <Button
               onClick={handleSubmit}
               disabled={!upiId || !agreed}
-              className="w-full bg-red-500 hover:bg-red-600 text-white rounded-full"
+              className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full"
             >
               Submit for Disbursement
               <ArrowRight className="ml-2 h-4 w-4" />

@@ -17,22 +17,22 @@ const DisbursementConfirmation = () => {
         <p className="text-sm text-gray-600">Your loan has been processed successfully</p>
       </div>
       
-      <div className="p-4 max-w-md mx-auto">
+      <div className="p-4 max-w-md mx-auto animate-fade-in">
         {/* Success Message */}
-        <div className="bg-green-50 p-4 rounded-lg mb-6">
+        <div className="bg-green-50 p-4 rounded-lg mb-6 shadow-sm">
           <h2 className="text-[#32CD32] font-medium">Disbursement Request Submitted</h2>
           <p className="text-gray-600">Your loan is now being processed for disbursement</p>
         </div>
         
         {/* Success Icon */}
         <div className="flex justify-center my-8">
-          <div className="w-20 h-20 rounded-full bg-[#32CD32] flex items-center justify-center">
+          <div className="w-20 h-20 rounded-full bg-[#32CD32] flex items-center justify-center hover-scale">
             <CheckCircle className="h-10 w-10 text-white" />
           </div>
         </div>
         
         {/* Disbursement Timeline */}
-        <div className="bg-green-50 p-4 rounded-lg text-center mb-8">
+        <div className="bg-green-50 p-4 rounded-lg text-center mb-8 shadow-sm">
           <p className="text-gray-600">
             Your loan will be disbursed to your bank account within 2-3 business days.
           </p>
