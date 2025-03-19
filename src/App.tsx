@@ -82,6 +82,12 @@ const App = () => (
           {/* Loan Agreement, NACH Setup, and Disbursement Screens */}
           <Route path="/loan-documents" element={<LoanDocuments />} />
           <Route path="/e-sign-agreement" element={<ESignAgreement />} />
+          
+          {/* New Aadhaar authentication screens */}
+          <Route path="/aadhaar-auth" element={<AadhaarAuth />} />
+          <Route path="/aadhaar-otp" element={<AadhaarOtp />} />
+          <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
+          
           <Route path="/loan-agreement" element={<LoanAgreement />} />
           <Route path="/nach-setup" element={<NACHSetup />} />
           <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />
