@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -32,9 +33,6 @@ import ESignAgreement from "./pages/ESignAgreement";
 import LoanAgreement from "./pages/LoanAgreement";
 import NACHSetup from "./pages/NACHSetup";
 import DisbursementConfirmation from "./pages/DisbursementConfirmation";
-import AadhaarAuth from "./pages/AadhaarAuth";
-import AadhaarOtp from "./pages/AadhaarOtp";
-import AadhaarSuccess from "./pages/AadhaarSuccess";
 
 const queryClient = new QueryClient();
 
