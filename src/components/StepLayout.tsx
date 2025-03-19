@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LoanHeader from './LoanHeader';
+import MobileContainer from './MobileContainer';
 
 interface StepLayoutProps {
   title: string;
@@ -28,7 +29,7 @@ const StepLayout: React.FC<StepLayoutProps> = ({
     }
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col">
       <LoanHeader />
       
@@ -50,6 +51,8 @@ const StepLayout: React.FC<StepLayoutProps> = ({
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default StepLayout;
