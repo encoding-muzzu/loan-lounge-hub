@@ -20,8 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Ubuntu', 'system-ui', 'sans-serif'],
+				display: ['Ubuntu', 'system-ui', 'sans-serif'],
+				ubuntu: ['Ubuntu', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
