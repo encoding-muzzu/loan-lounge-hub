@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Shield, User } from 'lucide-react';
 import FormField from '@/components/FormField';
+import { Checkbox } from '@/components/ui/checkbox';
+import MobileContainer from '@/components/MobileContainer';
 
 const IndividualDetails = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const IndividualDetails = () => {
     mobileNumber: '',
     panNumber: ''
   });
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,13 +29,13 @@ const IndividualDetails = () => {
     navigate('/individual/address');
   };
 
-  return (
+  const content = (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
         <div className="flex items-center gap-2 mb-1">
           <User className="h-5 w-5" />
-          <h1 className="text-2xl font-semibold">Individual Details</h1>
+          <h1 className="text-2xl font-semibold">Individual Account Type</h1>
         </div>
         <p className="text-sm opacity-90 mt-1">
           We need your details to match you with the best lenders
@@ -109,15 +112,23 @@ const IndividualDetails = () => {
               </div>
             </div>
             
-            {/* Consent box */}
+            {/* Consent checkbox */}
             <div className="mt-6 bg-blue-50 p-4 rounded-md border border-blue-100">
               <div className="flex items-start gap-3">
-                <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
-                <div>
+                <Shield className="h-5 w-5 text-blue-600 mt-1" />
+                <div className="flex-1">
                   <h3 className="text-blue-800 font-medium">Consent Required</h3>
-                  <p className="text-sm text-blue-700">
-                    By proceeding, you consent to a full bureau pull which allows us to match you with different lenders and their best offers.
-                  </p>
+                  <div className="flex items-start mt-2">
+                    <Checkbox 
+                      id="consent" 
+                      checked={consentChecked} 
+                      onCheckedChange={() => setConsentChecked(!consentChecked)}
+                      className="mt-1"
+                    />
+                    <label htmlFor="consent" className="ml-2 text-sm text-blue-700">
+                      I consent to a full bureau pull which allows matching with different lenders and their best offers.
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,7 +140,8 @@ const IndividualDetails = () => {
             <div className="mt-6">
               <Button 
                 type="submit"
-                className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full h-12 font-medium"
+                disabled={!consentChecked}
+                className={`w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full h-12 font-medium ${!consentChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Proceed with Consent
               </Button>
@@ -139,6 +151,8 @@ const IndividualDetails = () => {
       </div>
     </div>
   );
+
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default IndividualDetails;
