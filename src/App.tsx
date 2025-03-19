@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Welcome from "./pages/Welcome";
 import AccountType from "./pages/AccountType";
-import AccountTypeSimple from "./pages/AccountTypeSimple";
 import IndividualDetails from "./pages/individual/IndividualDetails";
 import IndividualAddress from "./pages/individual/IndividualAddress";
 import IndividualEmployeeDetails from "./pages/individual/IndividualEmployeeDetails";
@@ -51,8 +50,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/account-type" element={<AccountTypeSimple />} />
-          <Route path="/account-type-details" element={<AccountType />} />
+          <Route path="/account-type" element={<AccountType />} />
           
           {/* Individual account type routes */}
           <Route path="/individual/details" element={<IndividualDetails />} />
