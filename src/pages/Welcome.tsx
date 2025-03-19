@@ -2,11 +2,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import MobileContainer from '@/components/MobileContainer';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const Welcome = () => {
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
 
   // The actual content of the page
   const content = (
@@ -46,7 +44,7 @@ const Welcome = () => {
           </p>
           
           <button 
-            onClick={() => navigate('/account-type')}
+            onClick={() => navigate('/account-type-details')}
             className="w-full max-w-xs rounded-md bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3 mx-auto block shadow-md"
           >
             Get Started Now

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check, User, Briefcase, Building } from 'lucide-react';
 import StepLayout from '@/components/StepLayout';
+import MobileContainer from '@/components/MobileContainer';
 
 type AccountType = 'individual' | 'soleProprietor' | 'privateLimited' | null;
 
@@ -19,50 +20,52 @@ const AccountType = () => {
     }
   };
 
-  return (
-    <StepLayout title="Select Account Type" backUrl="/welcome">
-      <div className="flex flex-col items-center">
-        <h2 className="text-xl font-medium text-center mb-6">What type of account do you need?</h2>
+  const content = (
+    <div className="flex flex-col items-center font-ubuntu">
+      <h2 className="text-xl font-medium text-center mb-6">What type of account do you need?</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-8">
+        <AccountTypeCard
+          type="individual"
+          title="Individual"
+          description="Personal loans for your needs"
+          icon={<User className="h-6 w-6" />}
+          selected={selectedType === 'individual'}
+          onClick={() => setSelectedType('individual')}
+        />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-8">
-          <AccountTypeCard
-            type="individual"
-            title="Individual"
-            description="Personal loans for your needs"
-            icon={<User className="h-6 w-6" />}
-            selected={selectedType === 'individual'}
-            onClick={() => setSelectedType('individual')}
-          />
-          
-          <AccountTypeCard
-            type="soleProprietor"
-            title="Sole Proprietor"
-            description="For small business owners"
-            icon={<Briefcase className="h-6 w-6" />}
-            selected={selectedType === 'soleProprietor'}
-            onClick={() => setSelectedType('soleProprietor')}
-          />
-          
-          <AccountTypeCard
-            type="privateLimited"
-            title="Private Limited"
-            description="For registered companies"
-            icon={<Building className="h-6 w-6" />}
-            selected={selectedType === 'privateLimited'}
-            onClick={() => setSelectedType('privateLimited')}
-          />
-        </div>
+        <AccountTypeCard
+          type="soleProprietor"
+          title="Sole Proprietor"
+          description="For small business owners"
+          icon={<Briefcase className="h-6 w-6" />}
+          selected={selectedType === 'soleProprietor'}
+          onClick={() => setSelectedType('soleProprietor')}
+        />
         
-        <Button
-          onClick={handleContinue}
-          disabled={!selectedType}
-          className={`loan-button w-full max-w-sm ${!selectedType ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Continue
-        </Button>
+        <AccountTypeCard
+          type="privateLimited"
+          title="Private Limited"
+          description="For registered companies"
+          icon={<Building className="h-6 w-6" />}
+          selected={selectedType === 'privateLimited'}
+          onClick={() => setSelectedType('privateLimited')}
+        />
       </div>
-    </StepLayout>
+      
+      <Button
+        onClick={handleContinue}
+        disabled={!selectedType}
+        className={`loan-button w-full max-w-sm ${!selectedType ? 'opacity-50 cursor-not-allowed' : ''}`}
+      >
+        Continue
+      </Button>
+    </div>
   );
+
+  return <StepLayout title="Select Account Type" backUrl="/welcome">
+    {content}
+  </StepLayout>;
 };
 
 interface AccountTypeCardProps {
@@ -85,7 +88,7 @@ const AccountTypeCard: React.FC<AccountTypeCardProps> = ({
   return (
     <Card
       className={`border-2 rounded-xl p-4 cursor-pointer transition-all ${
-        selected ? 'border-loan-red bg-red-50' : 'border-gray-200 hover:border-gray-300'
+        selected ? 'border-loan-blue bg-blue-50' : 'border-gray-200 hover:border-gray-300'
       }`}
       onClick={onClick}
     >
@@ -93,7 +96,7 @@ const AccountTypeCard: React.FC<AccountTypeCardProps> = ({
         <div className="p-2 bg-white rounded-lg border border-gray-100">
           {icon}
         </div>
-        {selected && <Check className="h-5 w-5 text-loan-red" />}
+        {selected && <Check className="h-5 w-5 text-loan-blue" />}
       </div>
       <h3 className="text-lg font-medium mb-1">{title}</h3>
       <p className="text-sm text-gray-500">{description}</p>
