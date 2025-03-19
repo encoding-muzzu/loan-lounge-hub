@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, Percent, Calendar, CreditCard, ArrowRight, CircleDollarSign } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,7 +8,28 @@ import MobileContainer from '@/components/MobileContainer';
 
 const AvailableOffers = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
+  const [isFromRejection, setIsFromRejection] = useState(false);
+
+  // Check if the user is coming from the application-not-approved page
+  useEffect(() => {
+    const prevPath = location.state?.from;
+    if (prevPath === '/application-not-approved') {
+      setIsFromRejection(true);
+    }
+  }, [location]);
+
+  // Automatically redirect to application-approved when an offer is selected
+  // and the user came from the not-approved page
+  useEffect(() => {
+    if (selectedOffer !== null && isFromRejection) {
+      const timer = setTimeout(() => {
+        navigate('/application-approved');
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedOffer, isFromRejection, navigate]);
 
   const handleOfferSelect = (offerId: number) => {
     setSelectedOffer(offerId);
@@ -16,7 +37,11 @@ const AvailableOffers = () => {
 
   const handleProceed = () => {
     if (selectedOffer !== null) {
-      navigate('/kyc-verification');
+      if (isFromRejection) {
+        navigate('/application-approved');
+      } else {
+        navigate('/kyc-verification');
+      }
     }
   };
 
