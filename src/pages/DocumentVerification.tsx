@@ -1,10 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Check, ArrowRight, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MobileContainer from '@/components/MobileContainer';
-
 const DocumentVerification = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,16 +12,13 @@ const DocumentVerification = () => {
   useEffect(() => {
     const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
     const accountType = sessionStorage.getItem('accountType');
-    
     console.log("DocumentVerification: verificationCount =", verificationCount);
     console.log("DocumentVerification: accountType =", accountType);
-    
+
     // Set isKYB based on verification count or account type
     setIsKYB(verificationCount === 1 || accountType === 'privateLimited');
   }, []);
-
-  const content = (
-    <div className="min-h-screen bg-white flex flex-col p-4">
+  const content = <div className="min-h-screen bg-white flex flex-col p-4">
       <div className="flex justify-between items-center mb-6">
         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-loan-blue text-white">
           <ArrowLeft size={20} onClick={() => navigate(-1)} />
@@ -49,7 +44,7 @@ const DocumentVerification = () => {
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div className="bg-white rounded-md p-3 flex justify-between items-center">
               <div>
-                <p className="font-medium text-sm">ID Proof (Front)</p>
+                <p className="font-medium text-sm">PAN Card (Front)</p>
                 <p className="text-xs text-gray-500">Uploaded</p>
               </div>
               <Check className="text-loan-green h-5 w-5" />
@@ -57,7 +52,7 @@ const DocumentVerification = () => {
             
             <div className="bg-white rounded-md p-3 flex justify-between items-center">
               <div>
-                <p className="font-medium text-sm">ID Proof (Back)</p>
+                <p className="font-medium text-sm">Aadhaar Card (Back)</p>
                 <p className="text-xs text-gray-500">Uploaded</p>
               </div>
               <Check className="text-loan-green h-5 w-5" />
@@ -65,7 +60,7 @@ const DocumentVerification = () => {
             
             <div className="bg-white rounded-md p-3 flex justify-between items-center">
               <div>
-                <p className="font-medium text-sm">Address Proof (Front)</p>
+                <p className="font-medium text-sm">Aadhaar Card (Back)</p>
                 <p className="text-xs text-gray-500">Uploaded</p>
               </div>
               <Check className="text-loan-green h-5 w-5" />
@@ -73,7 +68,7 @@ const DocumentVerification = () => {
             
             <div className="bg-white rounded-md p-3 flex justify-between items-center">
               <div>
-                <p className="font-medium text-sm">Address Proof (Back)</p>
+                <p className="font-medium text-sm">Income Proof</p>
                 <p className="text-xs text-gray-500">Uploaded</p>
               </div>
               <Check className="text-loan-green h-5 w-5" />
@@ -95,19 +90,13 @@ const DocumentVerification = () => {
         </div>
         
         <div className="flex justify-center mt-6">
-          <Button 
-            onClick={() => navigate('/application-in-process')}
-            className="loan-button w-full max-w-md flex items-center justify-center gap-2"
-          >
+          <Button onClick={() => navigate('/application-in-process')} className="loan-button w-full max-w-md flex items-center justify-center gap-2">
             Continue to Application Process
             <ArrowRight size={16} />
           </Button>
         </div>
       </div>
-    </div>
-  );
-
+    </div>;
   return <MobileContainer>{content}</MobileContainer>;
 };
-
 export default DocumentVerification;
