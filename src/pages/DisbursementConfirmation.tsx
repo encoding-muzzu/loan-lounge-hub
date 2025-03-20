@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,22 +5,19 @@ import { CheckCircle, Calendar, Download, Home, ArrowRight } from 'lucide-react'
 import StepLayout from '@/components/StepLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import MobileContainer from '@/components/MobileContainer';
-
 const DisbursementConfirmation = () => {
   const navigate = useNavigate();
-  
-  const content = (
-    <div className="min-h-screen bg-white">
+  const content = <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-green-50 p-4">
-        <h1 className="text-lg font-light text-[#32CD32]">Loan Disbursement Confirmation</h1>
+        <h1 className="text-lg text-[#32CD32] font-bold">Loan Disbursement Confirmation</h1>
         <p className="text-sm text-gray-600 font-light">Your loan has been processed successfully</p>
       </div>
       
       <div className="p-4 max-w-md mx-auto animate-fade-in">
         {/* Success Message */}
         <div className="bg-green-50 p-4 rounded-lg mb-6 shadow-sm">
-          <h2 className="text-[#32CD32] font-light">Disbursement Request Submitted</h2>
+          <h2 className="text-[#32CD32] font-bold">Disbursement Request Submitted</h2>
           <p className="text-gray-600 font-light">Your loan is now being processed for disbursement</p>
         </div>
         
@@ -64,18 +60,12 @@ const DisbursementConfirmation = () => {
         </Card>
         
         {/* Back to Home Button */}
-        <Button 
-          onClick={() => navigate('/welcome')}
-          className="w-full text-white rounded-full font-light"
-        >
+        <Button onClick={() => navigate('/welcome')} className="w-full text-white rounded-full font-light">
           Back to Home
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
-    </div>
-  );
-  
+    </div>;
   return <MobileContainer>{content}</MobileContainer>;
 };
-
 export default DisbursementConfirmation;
