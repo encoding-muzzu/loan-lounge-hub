@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Menu, Percent, Calendar, CreditCard, ArrowRight, CircleDollarSign } from 'lucide-react';
+import { ArrowLeft, Menu, Percent, Calendar, CreditCard, ArrowRight, IndianRupee } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import MobileContainer from '@/components/MobileContainer';
 
@@ -80,7 +81,7 @@ const AvailableOffers = () => {
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-center mb-8 flex justify-center items-center gap-2">
             <span className="w-8 h-8 rounded-full bg-[#0056D2] flex items-center justify-center">
-              <CircleDollarSign size={18} className="text-white" />
+              <IndianRupee size={18} className="text-white" />
             </span>
             Available Offers
           </h1>
@@ -124,7 +125,7 @@ const AvailableOffers = () => {
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-gray-600">
-                      <CircleDollarSign size={18} />
+                      <IndianRupee size={18} />
                       <span>Monthly EMI</span>
                     </div>
                     <div className="font-semibold">{offer.emi}</div>
@@ -139,7 +140,7 @@ const AvailableOffers = () => {
           <Button 
             onClick={handleProceed}
             disabled={selectedOffer === null}
-            className="w-full max-w-md flex items-center justify-center gap-2 py-6"
+            className="w-full max-w-md flex items-center justify-center gap-2 py-6 bg-[#32CD32] hover:bg-[#0056D2] rounded-full"
           >
             <span>Proceed with Selected Offer</span>
             <ArrowRight size={18} />

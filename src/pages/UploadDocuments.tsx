@@ -145,7 +145,7 @@ const UploadDocuments = () => {
         <div className="flex justify-center mt-auto">
           <Button 
             onClick={handleSubmit}
-            className="w-full rounded-full bg-[#32CD32] hover:bg-green-600 text-white py-6 font-medium text-base shadow-md"
+            className="w-full rounded-full bg-[#32CD32] hover:bg-[#0056D2] text-white py-6 font-medium text-base shadow-md"
           >
             Submit Documents
           </Button>

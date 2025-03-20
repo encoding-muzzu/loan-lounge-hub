@@ -74,7 +74,7 @@ const LoanDocuments = () => {
             <Button 
               variant="outline"
               onClick={() => handleViewDocument('Loan Agreement')}
-              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2]/10 flex items-center gap-2"
+              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2] hover:text-white rounded-full flex items-center gap-2"
               size="sm"
             >
               <Eye size={16} />
@@ -97,7 +97,7 @@ const LoanDocuments = () => {
             <Button 
               variant="outline"
               onClick={() => handleViewDocument('Terms & Conditions')}
-              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2]/10 flex items-center gap-2"
+              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2] hover:text-white rounded-full flex items-center gap-2"
               size="sm"
             >
               <Eye size={16} />
@@ -120,7 +120,7 @@ const LoanDocuments = () => {
             <Button 
               variant="outline"
               onClick={() => handleViewDocument('Privacy Policy')}
-              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2]/10 flex items-center gap-2"
+              className="mt-3 text-[#0056D2] border-[#0056D2] hover:bg-[#0056D2] hover:text-white rounded-full flex items-center gap-2"
               size="sm"
             >
               <Eye size={16} />
@@ -152,7 +152,7 @@ const LoanDocuments = () => {
           <Button 
             onClick={handleSubmit}
             disabled={!termsAccepted}
-            className="w-full py-6 rounded-full bg-[#32CD32] hover:bg-green-600 text-white font-medium text-base shadow-md"
+            className="w-full py-6 rounded-full bg-[#32CD32] hover:bg-[#0056D2] text-white font-medium text-base shadow-md"
           >
             Submit
           </Button>

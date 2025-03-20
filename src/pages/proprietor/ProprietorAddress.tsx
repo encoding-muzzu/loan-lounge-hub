@@ -146,7 +146,8 @@ const ProprietorAddress = () => {
             <div className="flex justify-end mt-6">
               <Button 
                 type="submit"
-                className="bg-[#32CD32] hover:bg-green-600 text-white"
+                variant="next"
+                className="bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-md"
               >
                 Next
               </Button>

@@ -51,7 +51,7 @@ const LoanAgreement = () => {
               <Button 
                 variant="outline" 
                 size="sm"
-                className="flex items-center"
+                className="flex items-center rounded-full hover:bg-[#0056D2] hover:text-white"
                 onClick={handleDownloadDoc}
               >
                 <Download className="h-4 w-4 mr-1" /> Download
@@ -103,7 +103,7 @@ const LoanAgreement = () => {
             <Button
               onClick={handleESign}
               disabled={!termsAccepted || signatureComplete}
-              className="w-full bg-[#0056D2] hover:bg-blue-700 mb-4"
+              className="w-full bg-[#32CD32] hover:bg-[#0056D2] rounded-full mb-4"
             >
               {signatureComplete ? (
                 <>
@@ -117,7 +117,7 @@ const LoanAgreement = () => {
             <Button
               onClick={handleProceedToNACH}
               disabled={!signatureComplete}
-              className="w-full bg-[#32CD32] hover:bg-green-600 text-white"
+              className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full"
             >
               Proceed to NACH Setup
             </Button>

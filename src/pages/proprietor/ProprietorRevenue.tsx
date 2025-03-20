@@ -132,7 +132,7 @@ const ProprietorRevenue = () => {
               <Button 
                 type="submit"
                 disabled={!consentChecked}
-                className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
+                className="bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full"
               >
                 Next
               </Button>

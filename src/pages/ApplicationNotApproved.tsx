@@ -18,14 +18,14 @@ const ApplicationNotApproved = () => {
               <XCircle className="h-12 w-12 text-purple-500" />
             </div>
             
-            <h2 className="text-2xl font-light mb-3">This offer is not applicable</h2>
+            <h2 className="text-2xl font-semibold mb-3">This offer is not applicable</h2>
             
-            <p className="text-gray-600 mb-6 max-w-xs font-light">
+            <p className="text-gray-600 mb-6 max-w-xs">
               We're sorry, but your application for this offer cannot be processed at this time.
             </p>
             
             <div className="bg-purple-50 w-full p-4 rounded-lg mb-6">
-              <p className="text-sm text-purple-700 font-light">
+              <p className="text-sm text-purple-700">
                 You may still be eligible for our other loan products with different terms.
                 We encourage you to explore alternative options.
               </p>
@@ -34,7 +34,7 @@ const ApplicationNotApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/available-offers', { state: { from: '/application-not-approved' } })}
-                className="w-full text-white font-light flex items-center justify-center"
+                className="w-full text-white bg-[#32CD32] hover:bg-[#0056D2] rounded-full flex items-center justify-center"
               >
                 Try a Different Offer
                 <ArrowRight className="ml-2 h-4 w-4" />

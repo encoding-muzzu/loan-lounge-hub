@@ -98,7 +98,7 @@ const KYCVerification = () => {
         <div className="flex justify-center mt-8">
           <Button 
             onClick={handleProceed}
-            className="bg-[#32CD32] hover:bg-green-600 text-white w-full"
+            className="bg-[#32CD32] hover:bg-[#0056D2] text-white w-full rounded-full"
           >
             Proceed with Document Upload
           </Button>

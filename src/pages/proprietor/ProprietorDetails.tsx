@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -6,6 +7,7 @@ import { Card } from '@/components/ui/card';
 import { Shield, Building, ChevronLeft } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import MobileContainer from '@/components/MobileContainer';
+
 const ProprietorDetails = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,6 +21,7 @@ const ProprietorDetails = () => {
     panNumber: ''
   });
   const [consentChecked, setConsentChecked] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       name,
@@ -29,9 +32,11 @@ const ProprietorDetails = () => {
       [name]: value
     }));
   };
+
   const handleNext = () => {
     navigate('/proprietor/address');
   };
+
   const content = <div className="min-h-screen bg-white flex flex-col">
       {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
@@ -130,7 +135,7 @@ const ProprietorDetails = () => {
             </div>
             
             <div className="mt-6">
-              <Button type="submit" disabled={!consentChecked} className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full h-12 font-medium">
+              <Button type="submit" disabled={!consentChecked} className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full h-12 font-medium">
                 Proceed with Consent
               </Button>
             </div>
