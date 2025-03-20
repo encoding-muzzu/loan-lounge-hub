@@ -24,13 +24,9 @@ const CompanyDocuments = () => {
     fiscalYear: '',
     bankStatementNumber: '',
     bankStatementUpload: null,
-    projectionFiscalYear: '',
-    projectionNumber: '',
-    projectionUpload: null,
-    financialStatementNumber: '',
-    financialFiscalYear: '',
-    financialUpload: null,
-    securityType: 'unsecured', // Changed default to 'unsecured'
+    panCardNumber: '',
+    panCardUpload: null,
+    securityType: 'unsecured',
     purpose: '',
     collateralUpload: null
   });
@@ -138,17 +134,6 @@ const CompanyDocuments = () => {
                   </SelectContent>
                 </Select>
               </div>
-
-              <div className="mb-3">
-                <Label htmlFor="bankStatementNumber" className="block text-sm mb-1">Number</Label>
-                <Input
-                  id="bankStatementNumber"
-                  name="bankStatementNumber"
-                  value={documents.bankStatementNumber}
-                  onChange={handleChange}
-                  className="border rounded-md w-full"
-                />
-              </div>
               
               <FileUploadBox 
                 id="bankStatementUpload" 
@@ -158,80 +143,27 @@ const CompanyDocuments = () => {
             </div>
 
             <div className="mb-6">
-              <h2 className="font-medium mb-2">Projection</h2>
+              <h2 className="font-medium mb-2">PAN Card Document</h2>
+              <p className="text-sm text-gray-600 mb-3">
+                Please provide the PAN card details of your company for verification purposes
+              </p>
               
               <div className="mb-3">
-                <Label htmlFor="projectionFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
-                <Select
-                  onValueChange={(value) => handleSelectChange('projectionFiscalYear', value)}
-                  value={documents.projectionFiscalYear}
-                >
-                  <SelectTrigger className="w-full border rounded-md">
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="2023">2023</SelectItem>
-                    <SelectItem value="2022">2022</SelectItem>
-                    <SelectItem value="2021">2021</SelectItem>
-                    <SelectItem value="2020">2020</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="mb-3">
-                <Label htmlFor="projectionNumber" className="block text-sm mb-1">Number</Label>
+                <Label htmlFor="panCardNumber" className="block text-sm mb-1">PAN Card Number</Label>
                 <Input
-                  id="projectionNumber"
-                  name="projectionNumber"
-                  value={documents.projectionNumber}
+                  id="panCardNumber"
+                  name="panCardNumber"
+                  value={documents.panCardNumber}
                   onChange={handleChange}
                   className="border rounded-md w-full"
+                  placeholder="Enter Company PAN Number"
                 />
               </div>
               
               <FileUploadBox 
-                id="projectionUpload" 
-                onChange={(e) => handleFileChange(e, 'projectionUpload')} 
-                label="File attachment" 
-              />
-            </div>
-
-            <div className="mb-6">
-              <h2 className="font-medium mb-2">Financial Statement Number</h2>
-              
-              <div className="mb-3">
-                <Label htmlFor="financialFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
-                <Select
-                  onValueChange={(value) => handleSelectChange('financialFiscalYear', value)}
-                  value={documents.financialFiscalYear}
-                >
-                  <SelectTrigger className="w-full border rounded-md">
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="2023">2023</SelectItem>
-                    <SelectItem value="2022">2022</SelectItem>
-                    <SelectItem value="2021">2021</SelectItem>
-                    <SelectItem value="2020">2020</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="mb-3">
-                <Label htmlFor="financialStatementNumber" className="block text-sm mb-1">Number</Label>
-                <Input
-                  id="financialStatementNumber"
-                  name="financialStatementNumber"
-                  value={documents.financialStatementNumber}
-                  onChange={handleChange}
-                  className="border rounded-md w-full"
-                />
-              </div>
-              
-              <FileUploadBox 
-                id="financialUpload" 
-                onChange={(e) => handleFileChange(e, 'financialUpload')} 
-                label="File attachment" 
+                id="panCardUpload" 
+                onChange={(e) => handleFileChange(e, 'panCardUpload')} 
+                label="Upload PAN Card" 
               />
             </div>
 
@@ -253,7 +185,6 @@ const CompanyDocuments = () => {
               </RadioGroup>
             </div>
 
-            {/* Collateral Documents Section - Only shown when "Secured" is selected */}
             {documents.securityType === 'secured' && (
               <div className="mb-6 p-4 border rounded-md bg-gray-50">
                 <h2 className="font-medium mb-2">Collateral Documents</h2>
