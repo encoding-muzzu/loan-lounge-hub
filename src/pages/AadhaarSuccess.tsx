@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import MobileContainer from '@/components/MobileContainer';
 
 const AadhaarSuccess = () => {
@@ -12,60 +12,58 @@ const AadhaarSuccess = () => {
   };
 
   const content = (
-    <div className="min-h-screen bg-white flex flex-col p-4 font-ubuntu">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#0056D2] text-white">
-          <ArrowLeft size={20} onClick={() => navigate(-1)} />
-        </div>
-        <div className="flex items-center">
-          <img src="/lovable-uploads/26e8ad22-a12d-4ac8-9206-8c5fe8dcef79.png" alt="Protean Logo" className="h-8" />
+    <div className="min-h-screen bg-white flex flex-col font-ubuntu text-[#333]">
+      {/* Header with Protean logo */}
+      <div className="bg-white p-4 border-b">
+        <div className="flex justify-start">
+          <img 
+            src="/lovable-uploads/c3422ba9-a0c1-42ff-b9fd-01338f80150b.png" 
+            alt="Protean Logo" 
+            className="h-8" 
+          />
         </div>
       </div>
 
-      <div className="mt-4 bg-white border border-gray-200 rounded-md shadow-sm p-6">
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center">
-            <img src="/lovable-uploads/26e8ad22-a12d-4ac8-9206-8c5fe8dcef79.png" alt="Protean Logo" className="h-8 mr-2" />
-            <div>
-              <h3 className="text-sm font-semibold">Systech Technologies Private Limited</h3>
-              <p className="text-xs text-gray-600">has requested to Digitally Sign the document</p>
-              <p className="text-xs text-gray-600">Transaction ID: UIDC.xyz.xyz.9911232 dated 2023-12-27T10:58:58</p>
-            </div>
-          </div>
-          <div className="flex space-x-2">
-            <button className="text-xs bg-[#0056D2] text-white px-4 py-1 rounded">Select Lang</button>
-            <button className="text-xs bg-[#0056D2] text-white px-4 py-1 rounded">Help Guide</button>
-          </div>
+      {/* Main Content */}
+      <div className="p-4 flex-1">
+        {/* Transaction details section */}
+        <div className="text-center mb-4">
+          <p className="font-semibold text-sm">Syntizen Technologies Private Limited</p>
+          <p className="text-xs">has requested to Digitally sign the document</p>
+          <p className="text-xs mb-3">Transaction ID: UKC-eSign:991332 dated 2024-12-31T15:59:45</p>
         </div>
-
-        <div className="flex flex-col items-center justify-center py-8">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
+        
+        {/* Success message */}
+        <div className="flex flex-col items-center justify-center py-8 space-y-4">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
             <CheckCircle size={48} className="text-[#32CD32]" />
           </div>
-          <p className="text-lg font-semibold mb-1">Success! OTP verified.</p>
-          <div className="text-center mt-6">
-            <p className="text-xs text-gray-600">
-              Click here to generate Virtual ID. Download Instructions to generate Virtual ID in lieu of Aadhaar
-            </p>
-          </div>
+          <p className="text-lg font-semibold text-center">Success! OTP verified.</p>
+          <p className="text-sm text-gray-600 text-center">
+            Your Aadhaar authentication was successful. You can now proceed to the next step.
+          </p>
+        </div>
+        
+        {/* Action button */}
+        <div className="flex justify-center pt-4">
+          <button 
+            onClick={handleContinue}
+            className="bg-[#4c91cd] text-white px-6 py-2 rounded-md text-sm font-medium"
+          >
+            CONTINUE TO eSIGN TRANSACTION
+          </button>
+        </div>
+        
+        {/* Help text */}
+        <div className="text-center text-[#0056D2] text-xs pt-6">
+          <a href="#" className="underline">Click Here</a> to generate Virtual ID. <a href="#" className="underline">Download Instructions</a> to generate Virtual ID in lieu of Aadhaar.
         </div>
       </div>
-      
-      <div className="mt-6 flex justify-center">
-        <button 
-          onClick={handleContinue}
-          className="bg-[#0056D2] text-white rounded-md px-8 py-2"
-        >
-          Continue to eSign Transaction
-        </button>
-      </div>
-      
-      <div className="flex justify-center items-center mt-auto mb-4">
-        <div className="text-xs text-center text-gray-500">
-          <p>Copyright © 2023 | Protean eGov Technologies Limited</p>
-          <p>(Formerly NSDL e-Governance Infrastructure Limited)</p>
-        </div>
+
+      {/* Footer */}
+      <div className="p-4 text-center text-xs text-gray-500 border-t">
+        <p>Copyright © 2023 | Protean eGov Technologies Limited</p>
+        <p>(Formerly NSDL e-Governance Infrastructure Limited)</p>
       </div>
     </div>
   );

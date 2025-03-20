@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import MobileContainer from '@/components/MobileContainer';
@@ -10,8 +9,21 @@ const AadhaarAuth = () => {
   const navigate = useNavigate();
   const [aadhaarNumber, setAadhaarNumber] = useState('');
   const [agreed, setAgreed] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleAadhaarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+    if (value.length <= 12) {
+      setAadhaarNumber(value);
+      setError('');
+    }
+  };
 
   const handleSendOtp = () => {
+    if (aadhaarNumber.length !== 12) {
+      setError('Please enter a valid 12-digit Aadhaar number');
+      return;
+    }
     navigate('/aadhaar-otp');
   };
 
@@ -23,7 +35,7 @@ const AadhaarAuth = () => {
     <div className="min-h-screen bg-white flex flex-col font-ubuntu text-[#333]">
       {/* Header with Protean logo */}
       <div className="bg-white p-4 border-b">
-        <div className="flex justify-start">
+        <div className="flex justify-center">
           <img 
             src="/lovable-uploads/c3422ba9-a0c1-42ff-b9fd-01338f80150b.png" 
             alt="Protean Logo" 
@@ -88,18 +100,22 @@ const AadhaarAuth = () => {
             <label className="block text-xs mb-1">VID/Aadhaar:</label>
             <Input 
               value={aadhaarNumber}
-              onChange={(e) => setAadhaarNumber(e.target.value)}
-              placeholder="Enter VID/Aadhaar"
+              onChange={handleAadhaarChange}
+              placeholder="Enter 12-digit Aadhaar number"
               className="border border-gray-300 h-9 text-sm"
+              maxLength={12}
             />
+            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
           </div>
           
           {/* Action buttons */}
           <div className="flex justify-center gap-2 pt-4">
             <button 
               onClick={handleSendOtp}
-              disabled={!agreed || !aadhaarNumber}
-              className="bg-[#4c91cd] text-white px-6 py-2 rounded-md text-sm font-medium"
+              disabled={!agreed || aadhaarNumber.length !== 12}
+              className={`bg-[#4c91cd] text-white px-6 py-2 rounded-md text-sm font-medium ${
+                (!agreed || aadhaarNumber.length !== 12) ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               SEND OTP
             </button>
