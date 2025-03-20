@@ -58,20 +58,9 @@ const App = () => {
   // Determine which verification route to use based on the count
   const VerificationRoute = () => {
     const count = parseInt(sessionStorage.getItem('verificationCount') || '0');
-    const accountType = sessionStorage.getItem('accountType');
+    console.log(`Verification count is: ${count}`);
     
-    console.log(`Verification count is: ${count}, Account type: ${accountType}`);
-    
-    if (accountType === 'privateLimited' || accountType === 'company') {
-      console.log('Account type is private limited or company, redirecting to KYB verification');
-      return <Navigate to="/kyb-verification" />;
-    } else if (count === 1) {
-      console.log('Verification count is 1, redirecting to KYB verification');
-      return <Navigate to="/kyb-verification" />;
-    } else {
-      console.log('Redirecting to KYC verification');
-      return <Navigate to="/kyc-verification" />;
-    }
+    return count === 1 ? <Navigate to="/kyb-verification" /> : <Navigate to="/kyc-verification" />;
   };
 
   return (
