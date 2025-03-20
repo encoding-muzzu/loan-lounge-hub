@@ -11,12 +11,27 @@ const AvailableOffers = () => {
   const location = useLocation();
   const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
   const [isFromRejection, setIsFromRejection] = useState(false);
+  const [accountType, setAccountType] = useState<string>('individual');
 
   // Check if the user is coming from the application-not-approved page
+  // and determine account type from location state
   useEffect(() => {
     const prevPath = location.state?.from;
+    const accountTypeFromState = location.state?.accountType;
+    
+    console.log("Location state:", location.state);
+    console.log("Previous path:", prevPath);
+    console.log("Account type from state:", accountTypeFromState);
+    
     if (prevPath === '/application-not-approved') {
       setIsFromRejection(true);
+    }
+    
+    // Set account type based on state or path information
+    if (accountTypeFromState) {
+      setAccountType(accountTypeFromState);
+    } else if (document.referrer.includes('/company/') || location.pathname.includes('company')) {
+      setAccountType('company');
     }
   }, [location]);
 
@@ -40,7 +55,12 @@ const AvailableOffers = () => {
       if (isFromRejection) {
         navigate('/application-approved');
       } else {
-        navigate('/kyc-verification');
+        // Navigate to appropriate verification page based on account type
+        if (accountType === 'company') {
+          navigate('/kyb-verification');
+        } else {
+          navigate('/kyc-verification');
+        }
       }
     }
   };

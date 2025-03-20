@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,6 +24,7 @@ import FindingBestOffers from "./pages/FindingBestOffers";
 import AvailableOffers from "./pages/AvailableOffers";
 import AlternativeOffers from "./pages/AlternativeOffers";
 import KYCVerification from "./pages/KYCVerification";
+import KYBVerification from "./pages/KYBVerification";
 import UploadDocuments from "./pages/UploadDocuments";
 import DocumentVerification from "./pages/DocumentVerification";
 import ApplicationInProcess from "./pages/ApplicationInProcess";
@@ -78,6 +80,7 @@ const App = () => (
           <Route path="/available-offers" element={<AvailableOffers />} />
           <Route path="/alternative-offers" element={<AlternativeOffers />} />
           <Route path="/kyc-verification" element={<KYCVerification />} />
+          <Route path="/kyb-verification" element={<KYBVerification />} />
           <Route path="/upload-documents" element={<UploadDocuments />} />
           <Route path="/document-verification" element={<DocumentVerification />} />
           

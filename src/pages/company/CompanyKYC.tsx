@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -21,8 +20,8 @@ const CompanyKYC = () => {
   };
 
   const handleNext = () => {
-    // Make sure to pass the company state explicitly
-    navigate('/kyc-verification', { state: { from: 'company' } });
+    // Navigate to KYB verification for company flow
+    navigate('/kyb-verification', { state: { from: 'company' } });
   };
 
   const content = (
