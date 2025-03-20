@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -32,13 +31,14 @@ import ApplicationApproved from "./pages/ApplicationApproved";
 import ApplicationNotApproved from "./pages/ApplicationNotApproved";
 import LoanDocuments from "./pages/LoanDocuments";
 import ESignAgreement from "./pages/ESignAgreement";
-// import LoanAgreement from "./pages/LoanAgreement"; // Temporarily removed
 import NACHSetup from "./pages/NACHSetup";
 import DisbursementConfirmation from "./pages/DisbursementConfirmation";
 import AadhaarAuth from "./pages/AadhaarAuth";
 import AadhaarOtp from "./pages/AadhaarOtp";
 import AadhaarSuccess from "./pages/AadhaarSuccess";
 import ESignTransaction from "./pages/ESignTransaction";
+import CompanyKYC from "./pages/company/CompanyKYC";
+import AccountTypeSimple from "./pages/AccountTypeSimple";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +52,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/account-type" element={<AccountType />} />
+          <Route path="/account-type-simple" element={<AccountTypeSimple />} />
           
           {/* Individual account type routes */}
           <Route path="/individual/details" element={<IndividualDetails />} />
@@ -68,6 +69,7 @@ const App = () => (
           <Route path="/company/details-next" element={<CompanyDetailsNext />} />
           <Route path="/company/documents" element={<CompanyDocuments />} />
           <Route path="/company/projection" element={<CompanyProjection />} />
+          <Route path="/company/kyc" element={<CompanyKYC />} />
           
           {/* Finding Best Offers screen */}
           <Route path="/finding-best-offers" element={<FindingBestOffers />} />

@@ -13,9 +13,15 @@ const KYCVerification = () => {
 
   // Check if the user is coming from the Private Limited flow
   useEffect(() => {
-    // Check if user navigated from a company route
-    const isFromCompany = location.state?.from?.includes('company') || 
+    console.log("Location state:", location.state);
+    console.log("Document referrer:", document.referrer);
+    
+    // Check if user navigated from a company route or has company in state
+    const isFromCompany = location.state?.from === 'company' || 
+                          location.pathname.includes('company') ||
                           document.referrer.includes('company');
+                          
+    console.log("Is from company:", isFromCompany);
     setIsPrivateLimited(isFromCompany);
   }, [location]);
 
