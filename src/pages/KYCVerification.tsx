@@ -1,13 +1,23 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, FileText, Video, Upload } from 'lucide-react';
 import MobileContainer from '@/components/MobileContainer';
 
 const KYCVerification = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedOption, setSelectedOption] = useState<string | null>('upload');
+  const [isPrivateLimited, setIsPrivateLimited] = useState(false);
+
+  // Check if the user is coming from the Private Limited flow
+  useEffect(() => {
+    // Check if user navigated from a company route
+    const isFromCompany = location.state?.from?.includes('company') || 
+                          document.referrer.includes('company');
+    setIsPrivateLimited(isFromCompany);
+  }, [location]);
 
   const handleOptionSelect = (optionId: string) => {
     // Only allow selecting 'upload' option
@@ -34,7 +44,9 @@ const KYCVerification = () => {
       </div>
       
       <div className="flex-1">
-        <h1 className="text-2xl font-bold mb-6">KYC Verification</h1>
+        <h1 className="text-2xl font-bold mb-6">
+          {isPrivateLimited ? "KYB FOR AUTHORIZED SECRETARY" : "KYC VERIFICATION"}
+        </h1>
         
         <div className="flex flex-col gap-6 mb-8">
           {/* eKYC Option - Unavailable */}

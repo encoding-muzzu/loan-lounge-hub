@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -21,9 +20,7 @@ const CompanyKYC = () => {
   };
 
   const handleNext = () => {
-    // This would typically lead to the next screen in the flow
-    // For now we'll navigate to the welcome page as a placeholder
-    navigate('/welcome');
+    navigate('/kyc-verification', { state: { from: 'company' } });
   };
 
   const content = (
