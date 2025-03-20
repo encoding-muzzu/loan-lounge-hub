@@ -15,11 +15,11 @@ const AadhaarSuccess = () => {
     <div className="min-h-screen bg-white flex flex-col font-ubuntu text-[#333]">
       {/* Header with Protean logo */}
       <div className="bg-white p-4 border-b">
-        <div className="flex justify-start">
+        <div className="flex justify-center">
           <img 
-            src="/lovable-uploads/c3422ba9-a0c1-42ff-b9fd-01338f80150b.png" 
+            src="/lovable-uploads/98650108-79a0-4a2d-8de9-01ac6cc631b2.png" 
             alt="Protean Logo" 
-            className="h-8" 
+            className="h-12" 
           />
         </div>
       </div>
