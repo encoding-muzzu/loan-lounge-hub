@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import MobileContainer from '@/components/MobileContainer';
+import { ArrowRight } from 'lucide-react';
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -45,9 +46,9 @@ const Welcome = () => {
           
           <button 
             onClick={() => navigate('/account-type')}
-            className="w-full max-w-xs rounded-md bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3 mx-auto block shadow-md"
+            className="w-full max-w-xs rounded-md bg-[#32CD32] hover:bg-green-600 text-white font-medium py-3 mx-auto block shadow-md flex items-center justify-center"
           >
-            Get Started Now
+            Get Started Now <ArrowRight className="ml-2" size={18} />
           </button>
         </div>
       </div>
