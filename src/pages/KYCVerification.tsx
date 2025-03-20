@@ -14,14 +14,19 @@ const KYCVerification = () => {
   // Check if the user is coming from the Private Limited flow
   useEffect(() => {
     console.log("Location state:", location.state);
+    console.log("Location pathname:", location.pathname);
     console.log("Document referrer:", document.referrer);
     
-    // Check if user navigated from a company route or has company in state
-    const isFromCompany = location.state?.from === 'company' || 
-                          location.pathname.includes('company') ||
-                          document.referrer.includes('company');
+    // Improved detection logic for private limited accounts
+    const isFromCompany = 
+      // Check state passed explicitly
+      location.state?.from === 'company' || 
+      // Check if navigated from company routes
+      document.referrer.includes('/company/') ||
+      // Check if pathname has company in it (fallback)
+      location.pathname.includes('company');
                           
-    console.log("Is from company:", isFromCompany);
+    console.log("Is from company flow:", isFromCompany);
     setIsPrivateLimited(isFromCompany);
   }, [location]);
 
@@ -34,7 +39,9 @@ const KYCVerification = () => {
 
   const handleProceed = () => {
     if (selectedOption === 'upload') {
-      navigate('/upload-documents');
+      navigate('/upload-documents', { 
+        state: { from: isPrivateLimited ? 'company' : 'individual' }
+      });
     }
   };
 
