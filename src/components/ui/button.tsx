@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         loan: "bg-[#32CD32] text-white hover:bg-[#0056D2] rounded-full",
-        next: "bg-[#32CD32] text-white hover:bg-[#0056D2]", // Square next button
+        next: "bg-[#32CD32] text-white hover:bg-[#0056D2] rounded-md", // Square next button
       },
       size: {
         default: "h-10 px-4 py-2",

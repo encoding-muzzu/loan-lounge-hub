@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -280,6 +281,7 @@ const CompanyDocuments = () => {
               <Button 
                 type="submit"
                 disabled={!consentChecked}
+                className="bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-md"
               >
                 Next
               </Button>

@@ -160,7 +160,7 @@ const CompanyDetails = () => {
             <div className="mt-6">
               <Button 
                 type="submit"
-                className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-md h-12 font-medium"
+                className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full h-12 font-medium"
                 disabled={!consentChecked}
               >
                 Proceed with Consent

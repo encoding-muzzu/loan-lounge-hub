@@ -38,7 +38,7 @@ const ESignTransaction = () => {
         {/* Proceed Button */}
         <Button 
           onClick={handleProceed}
-          className="w-full max-w-xs bg-[#0056D2] hover:bg-[#004BB9] text-white rounded-md py-3"
+          className="w-full max-w-xs bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full py-3"
         >
           Proceed
         </Button>

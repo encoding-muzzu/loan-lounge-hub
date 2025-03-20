@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -31,7 +30,6 @@ const IndividualDetails = () => {
 
   const content = (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
         <div className="flex items-center gap-2 mb-1">
           <User className="h-5 w-5" />
@@ -113,7 +111,6 @@ const IndividualDetails = () => {
               </div>
             </div>
             
-            {/* Consent checkbox */}
             <div className="mt-6 bg-blue-50 p-4 rounded-md border border-blue-100">
               <div className="flex items-start gap-3">
                 <Shield className="h-5 w-5 text-blue-600 mt-1" />
@@ -142,7 +139,7 @@ const IndividualDetails = () => {
               <Button 
                 type="submit"
                 disabled={!consentChecked}
-                className={`w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full h-12 font-medium ${!consentChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full h-12 font-medium"
               >
                 Proceed with Consent
               </Button>

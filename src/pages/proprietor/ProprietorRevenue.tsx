@@ -131,9 +131,9 @@ const ProprietorRevenue = () => {
             <div className="flex justify-end mt-8">
               <Button 
                 type="submit"
-                variant="next"
+                variant="loan"
                 disabled={!consentChecked}
-                className="bg-[#32CD32] hover:bg-[#0056D2] text-white"
+                className="bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full"
               >
                 Next
               </Button>

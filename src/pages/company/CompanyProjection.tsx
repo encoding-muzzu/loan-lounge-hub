@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -46,7 +45,6 @@ const CompanyProjection = () => {
   };
 
   const handleNext = () => {
-    // Navigate to finding best offers page instead of welcome
     navigate('/finding-best-offers');
   };
 
@@ -207,7 +205,7 @@ const CompanyProjection = () => {
           <div className="flex justify-center mt-8 mb-4">
             <Button 
               type="submit"
-              className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
+              className="rounded-md px-6 bg-[#32CD32] hover:bg-[#0056D2] text-white"
               disabled={!consentChecked}
             >
               Next
@@ -222,4 +220,3 @@ const CompanyProjection = () => {
 };
 
 export default CompanyProjection;
-

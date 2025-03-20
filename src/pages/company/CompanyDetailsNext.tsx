@@ -175,7 +175,7 @@ const CompanyDetailsNext = () => {
             <div className="flex justify-end mt-8">
               <Button 
                 type="submit"
-                className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
+                className="rounded-md px-6 bg-[#32CD32] hover:bg-[#0056D2] text-white"
               >
                 Next
               </Button>
