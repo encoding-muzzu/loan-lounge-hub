@@ -1,12 +1,26 @@
 
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Check, ArrowRight, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MobileContainer from '@/components/MobileContainer';
 
 const DocumentVerification = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isKYB, setIsKYB] = useState(false);
+
+  // Check if this is for KYB (private limited) or KYC (other account types)
+  useEffect(() => {
+    const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+    const accountType = sessionStorage.getItem('accountType');
+    
+    console.log("DocumentVerification: verificationCount =", verificationCount);
+    console.log("DocumentVerification: accountType =", accountType);
+    
+    // Set isKYB based on verification count or account type
+    setIsKYB(verificationCount === 1 || accountType === 'privateLimited');
+  }, []);
 
   const content = (
     <div className="min-h-screen bg-white flex flex-col p-4">
@@ -18,7 +32,9 @@ const DocumentVerification = () => {
       
       <div className="flex-1">
         <div className="border-b pb-3 mb-4">
-          <h1 className="text-xl font-bold text-loan-blue text-center">KYC Verification</h1>
+          <h1 className="text-xl font-bold text-loan-blue text-center">
+            {isKYB ? 'KYB Verification' : 'KYC Verification'}
+          </h1>
         </div>
         
         <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
