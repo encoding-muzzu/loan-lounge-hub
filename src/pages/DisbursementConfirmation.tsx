@@ -66,7 +66,7 @@ const DisbursementConfirmation = () => {
         {/* Back to Home Button */}
         <Button 
           onClick={() => navigate('/welcome')}
-          className="w-full bg-[#0056D2] hover:bg-[#004bb9] text-white rounded-full font-light"
+          className="w-full text-white rounded-full font-light"
         >
           Back to Home
           <ArrowRight className="ml-2 h-4 w-4" />

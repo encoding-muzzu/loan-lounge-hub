@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -10,7 +9,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { ArrowLeft, Menu, Building, FileText, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, Menu, Building, FileText, ChevronLeft, Upload } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
@@ -58,7 +57,6 @@ const CompanyDocuments = () => {
   };
 
   const handleNext = () => {
-    // Updated to navigate to the projection page
     navigate('/company/projection');
   };
 
@@ -66,9 +64,26 @@ const CompanyDocuments = () => {
     navigate('/company/details-next');
   };
 
+  const FileUploadBox = ({ id, onChange, label }: { id: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; label: string }) => (
+    <div className="mb-4">
+      <Label htmlFor={id} className="block text-sm mb-1">{label}</Label>
+      <div className="border rounded-md p-4 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer text-center">
+        <label htmlFor={id} className="w-full cursor-pointer flex flex-col items-center">
+          <Upload className="h-5 w-5 text-gray-500 mb-2" />
+          <span className="text-sm text-gray-500">Click to select file</span>
+          <Input
+            id={id}
+            type="file"
+            className="hidden"
+            onChange={onChange}
+          />
+        </label>
+      </div>
+    </div>
+  );
+
   const content = (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#0056D2] to-[#0078FF] text-white p-6">
         <div className="flex items-center gap-2 mb-1">
           <Building className="h-5 w-5" />
@@ -101,11 +116,9 @@ const CompanyDocuments = () => {
           </div>
           
           <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
-            {/* Bank Statement Section */}
             <div className="mb-6">
               <h2 className="font-medium mb-2">Bank Statements</h2>
               
-              {/* Fiscal Year */}
               <div className="mb-3">
                 <Label htmlFor="fiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
                 <Select
@@ -124,7 +137,6 @@ const CompanyDocuments = () => {
                 </Select>
               </div>
 
-              {/* Number */}
               <div className="mb-3">
                 <Label htmlFor="bankStatementNumber" className="block text-sm mb-1">Number</Label>
                 <Input
@@ -136,25 +148,16 @@ const CompanyDocuments = () => {
                 />
               </div>
               
-              {/* File attachment */}
-              <div className="mb-4">
-                <Label htmlFor="bankStatementUpload" className="block text-sm mb-1">File attachment</Label>
-                <div className="border rounded-md px-3 py-2 bg-gray-50">
-                  <Input
-                    id="bankStatementUpload"
-                    type="file"
-                    className="border-0 p-0 bg-transparent"
-                    onChange={(e) => handleFileChange(e, 'bankStatementUpload')}
-                  />
-                </div>
-              </div>
+              <FileUploadBox 
+                id="bankStatementUpload" 
+                onChange={(e) => handleFileChange(e, 'bankStatementUpload')} 
+                label="File attachment" 
+              />
             </div>
 
-            {/* Projection Section */}
             <div className="mb-6">
               <h2 className="font-medium mb-2">Projection</h2>
               
-              {/* Fiscal Year */}
               <div className="mb-3">
                 <Label htmlFor="projectionFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
                 <Select
@@ -173,7 +176,6 @@ const CompanyDocuments = () => {
                 </Select>
               </div>
 
-              {/* Number */}
               <div className="mb-3">
                 <Label htmlFor="projectionNumber" className="block text-sm mb-1">Number</Label>
                 <Input
@@ -185,25 +187,16 @@ const CompanyDocuments = () => {
                 />
               </div>
               
-              {/* File attachment */}
-              <div className="mb-4">
-                <Label htmlFor="projectionUpload" className="block text-sm mb-1">File attachment</Label>
-                <div className="border rounded-md px-3 py-2 bg-gray-50">
-                  <Input
-                    id="projectionUpload"
-                    type="file"
-                    className="border-0 p-0 bg-transparent"
-                    onChange={(e) => handleFileChange(e, 'projectionUpload')}
-                  />
-                </div>
-              </div>
+              <FileUploadBox 
+                id="projectionUpload" 
+                onChange={(e) => handleFileChange(e, 'projectionUpload')} 
+                label="File attachment" 
+              />
             </div>
 
-            {/* Financial Statement Section */}
             <div className="mb-6">
               <h2 className="font-medium mb-2">Financial Statement Number</h2>
               
-              {/* Fiscal Year */}
               <div className="mb-3">
                 <Label htmlFor="financialFiscalYear" className="block text-sm mb-1">Fiscal Year</Label>
                 <Select
@@ -222,7 +215,6 @@ const CompanyDocuments = () => {
                 </Select>
               </div>
 
-              {/* Number */}
               <div className="mb-3">
                 <Label htmlFor="financialStatementNumber" className="block text-sm mb-1">Number</Label>
                 <Input
@@ -234,21 +226,13 @@ const CompanyDocuments = () => {
                 />
               </div>
               
-              {/* File attachment */}
-              <div className="mb-4">
-                <Label htmlFor="financialUpload" className="block text-sm mb-1">File attachment</Label>
-                <div className="border rounded-md px-3 py-2 bg-gray-50">
-                  <Input
-                    id="financialUpload"
-                    type="file"
-                    className="border-0 p-0 bg-transparent"
-                    onChange={(e) => handleFileChange(e, 'financialUpload')}
-                  />
-                </div>
-              </div>
+              <FileUploadBox 
+                id="financialUpload" 
+                onChange={(e) => handleFileChange(e, 'financialUpload')} 
+                label="File attachment" 
+              />
             </div>
 
-            {/* Type of Security */}
             <div className="mb-4">
               <Label className="block text-sm mb-2 font-medium">Type of security:</Label>
               <RadioGroup 
@@ -267,7 +251,6 @@ const CompanyDocuments = () => {
               </RadioGroup>
             </div>
 
-            {/* Purpose */}
             <div className="mb-6">
               <Label htmlFor="purpose" className="block text-sm mb-2 font-medium">Purpose:</Label>
               <Textarea
@@ -281,7 +264,6 @@ const CompanyDocuments = () => {
               />
             </div>
             
-            {/* Consent checkbox */}
             <div className="mb-6 flex items-start gap-2">
               <Checkbox 
                 id="consent" 
@@ -297,7 +279,6 @@ const CompanyDocuments = () => {
             <div className="flex justify-center mt-8 mb-4">
               <Button 
                 type="submit"
-                className="rounded-md px-6 bg-[#32CD32] hover:bg-green-600 text-white"
                 disabled={!consentChecked}
               >
                 Next

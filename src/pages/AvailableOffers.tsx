@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -140,7 +139,7 @@ const AvailableOffers = () => {
           <Button 
             onClick={handleProceed}
             disabled={selectedOffer === null}
-            className="loan-button w-full max-w-md rounded-full flex items-center justify-center gap-2 py-6"
+            className="w-full max-w-md flex items-center justify-center gap-2 py-6"
           >
             <span>Proceed with Selected Offer</span>
             <ArrowRight size={18} />

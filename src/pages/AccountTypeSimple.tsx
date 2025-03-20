@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -91,7 +90,7 @@ const AccountTypeSimple = () => {
           <Button
             onClick={handleContinue}
             disabled={!accountType}
-            className="bg-[#32CD32] hover:bg-green-600 text-white font-medium px-8 py-2 rounded-full disabled:opacity-50 h-12 w-full"
+            className="text-white font-medium px-8 py-2 disabled:opacity-50 h-12 w-full"
           >
             Continue
           </Button>

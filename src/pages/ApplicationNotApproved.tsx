@@ -34,7 +34,7 @@ const ApplicationNotApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/available-offers', { state: { from: '/application-not-approved' } })}
-                className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-light rounded-full py-3 flex items-center justify-center"
+                className="w-full text-white font-light flex items-center justify-center"
               >
                 Try a Different Offer
                 <ArrowRight className="ml-2 h-4 w-4" />
