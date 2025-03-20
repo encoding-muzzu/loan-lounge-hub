@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, Percent, Calendar, CreditCard, ArrowRight, IndianRupee } from 'lucide-react';
@@ -28,7 +28,8 @@ const AlternativeOffers = () => {
       interestRate: '10.5%',
       tenure: '60 months',
       emi: '₹6,500',
-      color: 'orange-500',
+      bgColor: 'bg-orange-500',
+      borderColor: 'border-orange-500',
     },
     {
       id: 2,
@@ -37,7 +38,8 @@ const AlternativeOffers = () => {
       interestRate: '9.75%',
       tenure: '48 months',
       emi: '₹6,300',
-      color: 'teal-500',
+      bgColor: 'bg-purple-500',
+      borderColor: 'border-purple-500',
     },
   ];
 
@@ -70,9 +72,9 @@ const AlternativeOffers = () => {
               className={`cursor-pointer transition-all duration-300 transform ${selectedOffer === offer.id ? 'scale-[1.02]' : ''}`}
             >
               <Card className={`overflow-hidden rounded-xl border-2 ${
-                selectedOffer === offer.id ? `border-${offer.color}` : 'border-transparent'
+                selectedOffer === offer.id ? offer.borderColor : 'border-transparent'
               }`}>
-                <div className={`p-4 bg-${offer.color} text-white`}>
+                <div className={`p-4 ${offer.bgColor} text-white`}>
                   <div className="flex items-center gap-2 mb-1">
                     <CreditCard size={20} />
                     <span className="text-lg font-medium">{offer.bank}</span>

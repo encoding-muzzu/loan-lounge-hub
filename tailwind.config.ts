@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -69,7 +68,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors based on requirements
 				loan: {
 					blue: '#0056D2',
 					green: '#32CD32',
@@ -77,6 +75,9 @@ export default {
 					white: '#FFFFFF',
 					gray: '#888888',
 					lightgray: '#F5F5F5',
+					orange: '#FF7A00',
+					purple: '#9747FF',
+					teal: '#00BCD4'
 				}
 			},
 			borderRadius: {
