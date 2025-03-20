@@ -30,8 +30,7 @@ const KYCVerification = () => {
     // Additional checks based on location
     const isFromCompany = 
       location.state?.from === 'company' || 
-      document.referrer.includes('/company/') ||
-      location.pathname.includes('company');
+      accountType === 'privateLimited';
                           
     console.log("KYCVerification: Is from company flow:", isFromCompany);
     setIsPrivateLimited(isFromCompany);
@@ -72,7 +71,7 @@ const KYCVerification = () => {
       
       <div className="flex-1">
         <h1 className="text-2xl font-bold mb-6">
-          {isPrivateLimited ? "KYB FOR AUTHORIZED SECRETARY" : "KYC VERIFICATION"}
+          KYC VERIFICATION
         </h1>
         
         <div className="flex flex-col gap-6 mb-8">

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -14,34 +13,26 @@ const AvailableOffers = () => {
   const [accountType, setAccountType] = useState<string>('individual');
 
   // Check if the user is coming from the application-not-approved page
-  // and determine account type from location state
+  // and determine account type from session storage
   useEffect(() => {
     const prevPath = location.state?.from;
-    const accountTypeFromState = location.state?.accountType;
+    const storedAccountType = sessionStorage.getItem('accountType');
     
     console.log("Location state:", location.state);
     console.log("Previous path:", prevPath);
-    console.log("Account type from state:", accountTypeFromState);
+    console.log("Account type from session storage:", storedAccountType);
     
     if (prevPath === '/application-not-approved') {
       setIsFromRejection(true);
     }
     
-    // Set account type based on state or path information
-    if (accountTypeFromState) {
-      setAccountType(accountTypeFromState);
-    } else if (
-      document.referrer.includes('/company/') || 
-      location.pathname.includes('company') ||
-      sessionStorage.getItem('accountType') === 'company'
-    ) {
-      setAccountType('company');
-      // Store account type in session storage for persistence
-      sessionStorage.setItem('accountType', 'company');
+    // Set account type based on session storage
+    if (storedAccountType) {
+      setAccountType(storedAccountType);
     }
     
     console.log("Account type determined:", accountType);
-  }, [location]);
+  }, [location, accountType]);
 
   // Automatically redirect to application-approved when an offer is selected
   // and the user came from the not-approved page
@@ -63,18 +54,17 @@ const AvailableOffers = () => {
       if (isFromRejection) {
         navigate('/application-approved');
       } else {
-        // Navigate to appropriate verification page based on account type
-        console.log("Proceeding with account type:", accountType);
-        if (accountType === 'company') {
+        // Get verification count from sessionStorage
+        const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+        console.log("Current verification count before proceeding:", verificationCount);
+        
+        // Navigate to appropriate verification page based on verification count
+        if (verificationCount === 1) {
           console.log("Navigating to KYB verification");
-          navigate('/kyb-verification', { 
-            state: { from: 'company', accountType: 'company' } 
-          });
+          navigate('/kyb-verification');
         } else {
           console.log("Navigating to KYC verification");
-          navigate('/kyc-verification', { 
-            state: { from: 'individual', accountType: 'individual' } 
-          });
+          navigate('/kyc-verification');
         }
       }
     }

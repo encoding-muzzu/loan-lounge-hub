@@ -16,7 +16,19 @@ const AlternativeOffers = () => {
 
   const handleProceed = () => {
     if (selectedOffer !== null) {
-      navigate('/application-approved');
+      // Get verification count from sessionStorage to determine the correct route
+      const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+      console.log("AlternativeOffers: verificationCount =", verificationCount);
+      
+      if (verificationCount === 1) {
+        // For Private Limited companies
+        console.log("AlternativeOffers: Navigating to KYB verification");
+        navigate('/kyb-verification');
+      } else {
+        // For individual and sole proprietor
+        console.log("AlternativeOffers: Navigating to KYC verification");
+        navigate('/kyc-verification');
+      }
     }
   };
 
