@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -26,6 +26,13 @@ const CompanyDetailsNext = () => {
     phoneNumber: ''
   });
 
+  // Set verification count when this component mounts
+  useEffect(() => {
+    // Ensure verification count is set to 1 for private limited
+    sessionStorage.setItem('verificationCount', '1');
+    console.log("CompanyDetailsNext: Setting verification count to 1 for private limited");
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -36,6 +43,8 @@ const CompanyDetailsNext = () => {
   };
 
   const handleNext = () => {
+    // Ensure verification count is set to 1 before navigating
+    sessionStorage.setItem('verificationCount', '1');
     navigate('/company/documents');
   };
 

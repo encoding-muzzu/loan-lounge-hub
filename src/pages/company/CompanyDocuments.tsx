@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -31,6 +31,13 @@ const CompanyDocuments = () => {
     collateralUpload: null
   });
   const [consentChecked, setConsentChecked] = useState(false);
+  
+  // Set verification count when this component mounts
+  useEffect(() => {
+    // Ensure verification count is set to 1 for private limited
+    sessionStorage.setItem('verificationCount', '1');
+    console.log("CompanyDocuments: Setting verification count to 1 for private limited");
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -55,6 +62,8 @@ const CompanyDocuments = () => {
   };
 
   const handleNext = () => {
+    // Ensure verification count is set to 1 before navigating
+    sessionStorage.setItem('verificationCount', '1');
     navigate('/company/projection');
   };
 

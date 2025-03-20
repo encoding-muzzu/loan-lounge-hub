@@ -99,7 +99,7 @@ const AccountTypeSimple = () => {
           <Button
             onClick={handleContinue}
             disabled={!accountType}
-            className="text-white font-medium px-8 py-2 disabled:opacity-50 h-12 w-full"
+            className="bg-[#32CD32] hover:bg-[#0056D2] text-white font-medium px-8 py-2 disabled:opacity-50 h-12 w-full"
           >
             Continue
           </Button>

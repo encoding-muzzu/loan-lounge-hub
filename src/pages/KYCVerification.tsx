@@ -11,24 +11,38 @@ const KYCVerification = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>('upload');
   const [isPrivateLimited, setIsPrivateLimited] = useState(false);
 
-  // Check if the user is coming from the Private Limited flow
+  // Check verification count and account type
   useEffect(() => {
-    console.log("Location state:", location.state);
-    console.log("Location pathname:", location.pathname);
-    console.log("Document referrer:", document.referrer);
+    const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+    const accountType = sessionStorage.getItem('accountType');
     
-    // Improved detection logic for private limited accounts
+    console.log("KYCVerification: verificationCount =", verificationCount);
+    console.log("KYCVerification: accountType =", accountType);
+    
+    // If verification count is 1, this should be a private limited account
+    // Redirect to KYB verification
+    if (verificationCount === 1) {
+      console.log("KYCVerification: Redirecting to KYB verification");
+      navigate('/kyb-verification');
+      return;
+    }
+    
+    // Additional checks based on location
     const isFromCompany = 
-      // Check state passed explicitly
       location.state?.from === 'company' || 
-      // Check if navigated from company routes
       document.referrer.includes('/company/') ||
-      // Check if pathname has company in it (fallback)
       location.pathname.includes('company');
                           
-    console.log("Is from company flow:", isFromCompany);
+    console.log("KYCVerification: Is from company flow:", isFromCompany);
     setIsPrivateLimited(isFromCompany);
-  }, [location]);
+    
+    // If it's from company flow but verification count is not 1, fix it
+    if (isFromCompany && verificationCount !== 1) {
+      console.log("KYCVerification: Fixing verification count for company flow");
+      sessionStorage.setItem('verificationCount', '1');
+      navigate('/kyb-verification');
+    }
+  }, [location, navigate]);
 
   const handleOptionSelect = (optionId: string) => {
     // Only allow selecting 'upload' option

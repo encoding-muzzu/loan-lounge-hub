@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, FileText, Video, Upload } from 'lucide-react';
@@ -8,6 +8,22 @@ import MobileContainer from '@/components/MobileContainer';
 const KYBVerification = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>('upload');
+
+  // Check verification count and account type
+  useEffect(() => {
+    const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+    const accountType = sessionStorage.getItem('accountType');
+    
+    console.log("KYBVerification: verificationCount =", verificationCount);
+    console.log("KYBVerification: accountType =", accountType);
+    
+    // If verification count is not 1, this should not be a private limited account
+    // Redirect to KYC verification
+    if (verificationCount !== 1) {
+      console.log("KYBVerification: Redirecting to KYC verification");
+      navigate('/kyc-verification');
+    }
+  }, [navigate]);
 
   const handleOptionSelect = (optionId: string) => {
     // Only allow selecting 'upload' option
