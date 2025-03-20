@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,6 +13,14 @@ const AccountTypeSimple = () => {
 
   const handleContinue = () => {
     if (accountType) {
+      // Initialize a verification count based on account type
+      // Set to 1 for private limited, 0 for others
+      const verificationCount = accountType === 'privateLimited' ? 1 : 0;
+      sessionStorage.setItem('verificationCount', verificationCount.toString());
+      sessionStorage.setItem('accountType', accountType);
+      
+      console.log(`Setting verification count to: ${verificationCount} for ${accountType}`);
+      
       if (accountType === 'individual') {
         navigate('/individual/details');
       } else if (accountType === 'soleProprietor') {

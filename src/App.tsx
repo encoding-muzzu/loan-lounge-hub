@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Import all pages
 import Index from "./pages/Index";
@@ -49,6 +49,19 @@ const App = () => {
   if (!sessionStorage.getItem('accountType')) {
     sessionStorage.setItem('accountType', 'individual');
   }
+  
+  // Initialize verification count if not set
+  if (!sessionStorage.getItem('verificationCount')) {
+    sessionStorage.setItem('verificationCount', '0');
+  }
+
+  // Determine which verification route to use based on the count
+  const VerificationRoute = () => {
+    const count = parseInt(sessionStorage.getItem('verificationCount') || '0');
+    console.log(`Verification count is: ${count}`);
+    
+    return count === 1 ? <Navigate to="/kyb-verification" /> : <Navigate to="/kyc-verification" />;
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -85,8 +98,12 @@ const App = () => {
             {/* New screens after Finding Best Offers */}
             <Route path="/available-offers" element={<AvailableOffers />} />
             <Route path="/alternative-offers" element={<AlternativeOffers />} />
+            
+            {/* Verification routes - the route will be determined dynamically */}
+            <Route path="/verification" element={<VerificationRoute />} />
             <Route path="/kyc-verification" element={<KYCVerification />} />
             <Route path="/kyb-verification" element={<KYBVerification />} />
+            
             <Route path="/upload-documents" element={<UploadDocuments />} />
             <Route path="/document-verification" element={<DocumentVerification />} />
             

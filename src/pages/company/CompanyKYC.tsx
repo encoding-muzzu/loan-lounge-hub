@@ -23,11 +23,12 @@ const CompanyKYC = () => {
     // Store account type in session storage for persistence
     sessionStorage.setItem('accountType', 'company');
     
-    // Navigate directly to KYB verification for company flow
-    console.log("CompanyKYC: Navigating to KYB verification");
-    navigate('/kyb-verification', { 
-      state: { from: 'company', accountType: 'company' } 
-    });
+    // Ensure the verification count is set to 1 for company flow
+    sessionStorage.setItem('verificationCount', '1');
+    
+    // Navigate to the verification route which will handle the redirect
+    console.log("CompanyKYC: Setting verification count to 1 and navigating to verification route");
+    navigate('/verification');
   };
 
   const content = (
