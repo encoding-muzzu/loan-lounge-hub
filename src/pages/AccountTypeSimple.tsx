@@ -27,6 +27,8 @@ const AccountTypeSimple = () => {
         navigate('/proprietor/details');
       } else {
         // For private limited
+        // Ensure the verification count is set before navigating
+        sessionStorage.setItem('verificationCount', '1');
         navigate('/company/details');
       }
     }
