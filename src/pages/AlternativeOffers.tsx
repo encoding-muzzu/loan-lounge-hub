@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Menu, Percent, Calendar, CreditCard, ArrowRight, IndianRupee } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,7 +8,18 @@ import MobileContainer from '@/components/MobileContainer';
 
 const AlternativeOffers = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
+  const [isFromRejection, setIsFromRejection] = useState(false);
+
+  // Check if the user is coming from application-not-approved page
+  useEffect(() => {
+    const prevPath = location.state?.from;
+    
+    if (prevPath === 'application-not-approved' || location.state?.fromRejection) {
+      setIsFromRejection(true);
+    }
+  }, [location]);
 
   const handleOfferSelect = (offerId: number) => {
     setSelectedOffer(offerId);
@@ -16,18 +27,23 @@ const AlternativeOffers = () => {
 
   const handleProceed = () => {
     if (selectedOffer !== null) {
-      // Get verification count from sessionStorage to determine the correct route
-      const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
-      console.log("AlternativeOffers: verificationCount =", verificationCount);
-      
-      if (verificationCount === 1) {
-        // For Private Limited companies
-        console.log("AlternativeOffers: Navigating to KYB verification");
-        navigate('/kyb-verification');
+      // If coming from rejection, always go to application approved
+      if (isFromRejection) {
+        navigate('/application-approved');
       } else {
-        // For individual and sole proprietor
-        console.log("AlternativeOffers: Navigating to KYC verification");
-        navigate('/kyc-verification');
+        // Get verification count from sessionStorage to determine the correct route
+        const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
+        console.log("AlternativeOffers: verificationCount =", verificationCount);
+        
+        if (verificationCount === 1) {
+          // For Private Limited companies
+          console.log("AlternativeOffers: Navigating to KYB verification");
+          navigate('/kyb-verification');
+        } else {
+          // For individual and sole proprietor
+          console.log("AlternativeOffers: Navigating to KYC verification");
+          navigate('/kyc-verification');
+        }
       }
     }
   };
