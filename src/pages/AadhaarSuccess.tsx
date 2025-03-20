@@ -1,15 +1,30 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import MobileContainer from '@/components/MobileContainer';
+import { useToast } from '@/hooks/use-toast';
 
 const AadhaarSuccess = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
-  const handleContinue = () => {
-    navigate('/e-sign-transaction');
-  };
+  useEffect(() => {
+    // Show toast notification
+    toast({
+      title: "Redirecting...",
+      description: "Please wait while we redirect you to eSign Transaction page",
+      duration: 3000,
+    });
+
+    // Redirect after 3 seconds
+    const redirectTimer = setTimeout(() => {
+      navigate('/e-sign-transaction');
+    }, 3000);
+
+    // Clear the timeout when component unmounts
+    return () => clearTimeout(redirectTimer);
+  }, [navigate, toast]);
 
   const content = (
     <div className="min-h-screen bg-white flex flex-col font-ubuntu text-[#333]">
@@ -40,18 +55,8 @@ const AadhaarSuccess = () => {
           </div>
           <p className="text-lg font-semibold text-center">Success! OTP verified.</p>
           <p className="text-sm text-gray-600 text-center">
-            Your Aadhaar authentication was successful. You can now proceed to the next step.
+            Your Aadhaar authentication was successful. You are being redirected to the next step.
           </p>
-        </div>
-        
-        {/* Action button */}
-        <div className="flex justify-center pt-4">
-          <button 
-            onClick={handleContinue}
-            className="bg-[#4c91cd] text-white px-6 py-2 rounded-md text-sm font-medium"
-          >
-            CONTINUE TO eSIGN TRANSACTION
-          </button>
         </div>
         
         {/* Help text */}
