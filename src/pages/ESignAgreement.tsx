@@ -53,7 +53,7 @@ const ESignAgreement = () => {
 
         <Button 
           onClick={handleProceed}
-          className="w-full max-w-md bg-[#0056D2] text-white rounded-md py-3"
+          className="w-full max-w-md bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full py-3"
         >
           Proceed
         </Button>

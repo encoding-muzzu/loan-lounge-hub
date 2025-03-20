@@ -50,7 +50,7 @@ const ApplicationApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/loan-documents')}
-                className="w-full bg-[#32CD32] hover:bg-green-600 text-white font-medium rounded-full py-3 flex items-center justify-center"
+                className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white font-medium rounded-full py-3 flex items-center justify-center"
               >
                 Continue to Loan Documents
                 <ArrowRight className="ml-2 h-4 w-4" />

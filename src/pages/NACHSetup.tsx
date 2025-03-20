@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowRight, Info, AlertCircle } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { ArrowRight, AlertCircle } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import MobileContainer from '@/components/MobileContainer';
@@ -142,7 +141,7 @@ const NACHSetup = () => {
             <Button
               onClick={handleSubmit} 
               disabled={!bankDetails.accountNumber || !bankDetails.ifscCode || !agreed}
-              className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full"
+              className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full"
             >
               Submit for Disbursement
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -201,7 +200,7 @@ const NACHSetup = () => {
             <Button
               onClick={handleSubmit}
               disabled={!upiId || !agreed}
-              className="w-full bg-[#32CD32] hover:bg-green-600 text-white rounded-full"
+              className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full"
             >
               Submit for Disbursement
               <ArrowRight className="ml-2 h-4 w-4" />

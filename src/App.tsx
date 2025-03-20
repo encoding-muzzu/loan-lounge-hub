@@ -22,6 +22,7 @@ import CompanyDocuments from "./pages/company/CompanyDocuments";
 import CompanyProjection from "./pages/company/CompanyProjection";
 import FindingBestOffers from "./pages/FindingBestOffers";
 import AvailableOffers from "./pages/AvailableOffers";
+import AlternativeOffers from "./pages/AlternativeOffers";
 import KYCVerification from "./pages/KYCVerification";
 import UploadDocuments from "./pages/UploadDocuments";
 import DocumentVerification from "./pages/DocumentVerification";
@@ -73,6 +74,7 @@ const App = () => (
           
           {/* New screens after Finding Best Offers */}
           <Route path="/available-offers" element={<AvailableOffers />} />
+          <Route path="/alternative-offers" element={<AlternativeOffers />} />
           <Route path="/kyc-verification" element={<KYCVerification />} />
           <Route path="/upload-documents" element={<UploadDocuments />} />
           <Route path="/document-verification" element={<DocumentVerification />} />
