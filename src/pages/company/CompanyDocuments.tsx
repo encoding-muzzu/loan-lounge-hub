@@ -30,8 +30,9 @@ const CompanyDocuments = () => {
     financialStatementNumber: '',
     financialFiscalYear: '',
     financialUpload: null,
-    securityType: 'secured',
-    purpose: ''
+    securityType: 'unsecured', // Changed default to 'unsecured'
+    purpose: '',
+    collateralUpload: null
   });
   const [consentChecked, setConsentChecked] = useState(false);
 
@@ -252,6 +253,21 @@ const CompanyDocuments = () => {
               </RadioGroup>
             </div>
 
+            {/* Collateral Documents Section - Only shown when "Secured" is selected */}
+            {documents.securityType === 'secured' && (
+              <div className="mb-6 p-4 border rounded-md bg-gray-50">
+                <h2 className="font-medium mb-2">Collateral Documents</h2>
+                <p className="text-sm text-gray-600 mb-3">
+                  Please upload documents related to the collateral you're offering as security for this loan.
+                </p>
+                <FileUploadBox 
+                  id="collateralUpload" 
+                  onChange={(e) => handleFileChange(e, 'collateralUpload')} 
+                  label="Collateral document" 
+                />
+              </div>
+            )}
+
             <div className="mb-6">
               <Label htmlFor="purpose" className="block text-sm mb-2 font-medium">Purpose:</Label>
               <Textarea
@@ -282,6 +298,7 @@ const CompanyDocuments = () => {
                 type="submit"
                 disabled={!consentChecked}
                 className="bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-md"
+                variant="next"
               >
                 Next
               </Button>
