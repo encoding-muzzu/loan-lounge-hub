@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Calendar, Download, Home, ArrowRight } from 'lucide-react';
 import StepLayout from '@/components/StepLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import MobileContainer from '@/components/MobileContainer';
 
 const DisbursementConfirmation = () => {
   const navigate = useNavigate();
   
-  return (
+  const content = (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-green-50 p-4">
@@ -73,6 +74,8 @@ const DisbursementConfirmation = () => {
       </div>
     </div>
   );
+  
+  return <MobileContainer>{content}</MobileContainer>;
 };
 
 export default DisbursementConfirmation;
