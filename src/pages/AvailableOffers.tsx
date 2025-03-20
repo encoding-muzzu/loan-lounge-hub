@@ -30,9 +30,17 @@ const AvailableOffers = () => {
     // Set account type based on state or path information
     if (accountTypeFromState) {
       setAccountType(accountTypeFromState);
-    } else if (document.referrer.includes('/company/') || location.pathname.includes('company')) {
+    } else if (
+      document.referrer.includes('/company/') || 
+      location.pathname.includes('company') ||
+      sessionStorage.getItem('accountType') === 'company'
+    ) {
       setAccountType('company');
+      // Store account type in session storage for persistence
+      sessionStorage.setItem('accountType', 'company');
     }
+    
+    console.log("Account type determined:", accountType);
   }, [location]);
 
   // Automatically redirect to application-approved when an offer is selected
@@ -56,10 +64,17 @@ const AvailableOffers = () => {
         navigate('/application-approved');
       } else {
         // Navigate to appropriate verification page based on account type
+        console.log("Proceeding with account type:", accountType);
         if (accountType === 'company') {
-          navigate('/kyb-verification');
+          console.log("Navigating to KYB verification");
+          navigate('/kyb-verification', { 
+            state: { from: 'company', accountType: 'company' } 
+          });
         } else {
-          navigate('/kyc-verification');
+          console.log("Navigating to KYC verification");
+          navigate('/kyc-verification', { 
+            state: { from: 'individual', accountType: 'individual' } 
+          });
         }
       }
     }

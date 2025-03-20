@@ -20,8 +20,14 @@ const CompanyKYC = () => {
   };
 
   const handleNext = () => {
-    // Navigate to KYB verification for company flow
-    navigate('/kyb-verification', { state: { from: 'company' } });
+    // Store account type in session storage for persistence
+    sessionStorage.setItem('accountType', 'company');
+    
+    // Navigate directly to KYB verification for company flow
+    console.log("CompanyKYC: Navigating to KYB verification");
+    navigate('/kyb-verification', { 
+      state: { from: 'company', accountType: 'company' } 
+    });
   };
 
   const content = (

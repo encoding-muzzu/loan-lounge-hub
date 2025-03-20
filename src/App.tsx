@@ -44,74 +44,81 @@ import AccountTypeSimple from "./pages/AccountTypeSimple";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/account-type" element={<AccountType />} />
-          <Route path="/account-type-simple" element={<AccountTypeSimple />} />
-          
-          {/* Individual account type routes */}
-          <Route path="/individual/details" element={<IndividualDetails />} />
-          <Route path="/individual/address" element={<IndividualAddress />} />
-          <Route path="/individual/employee-details" element={<IndividualEmployeeDetails />} />
-          
-          {/* Sole Proprietor account type routes */}
-          <Route path="/proprietor/details" element={<ProprietorDetails />} />
-          <Route path="/proprietor/address" element={<ProprietorAddress />} />
-          <Route path="/proprietor/revenue" element={<ProprietorRevenue />} />
-          
-          {/* Private Limited account type routes */}
-          <Route path="/company/details" element={<CompanyDetails />} />
-          <Route path="/company/details-next" element={<CompanyDetailsNext />} />
-          <Route path="/company/documents" element={<CompanyDocuments />} />
-          <Route path="/company/projection" element={<CompanyProjection />} />
-          <Route path="/company/kyc" element={<CompanyKYC />} />
-          
-          {/* Finding Best Offers screen */}
-          <Route path="/finding-best-offers" element={<FindingBestOffers />} />
-          
-          {/* New screens after Finding Best Offers */}
-          <Route path="/available-offers" element={<AvailableOffers />} />
-          <Route path="/alternative-offers" element={<AlternativeOffers />} />
-          <Route path="/kyc-verification" element={<KYCVerification />} />
-          <Route path="/kyb-verification" element={<KYBVerification />} />
-          <Route path="/upload-documents" element={<UploadDocuments />} />
-          <Route path="/document-verification" element={<DocumentVerification />} />
-          
-          {/* Application Status Screens */}
-          <Route path="/application-in-process" element={<ApplicationInProcess />} />
-          <Route path="/additional-info-needed" element={<AdditionalInfoNeeded />} />
-          <Route path="/application-approved" element={<ApplicationApproved />} />
-          <Route path="/application-not-approved" element={<ApplicationNotApproved />} />
-          
-          {/* Loan Agreement, NACH Setup, and Disbursement Screens */}
-          <Route path="/loan-documents" element={<LoanDocuments />} />
-          <Route path="/e-sign-agreement" element={<ESignAgreement />} />
-          
-          {/* Aadhaar authentication screens */}
-          <Route path="/aadhaar-auth" element={<AadhaarAuth />} />
-          <Route path="/aadhaar-otp" element={<AadhaarOtp />} />
-          <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
-          <Route path="/e-sign-transaction" element={<ESignTransaction />} />
-          
-          {/* Temporarily commented out LoanAgreement route */}
-          {/* <Route path="/loan-agreement" element={<LoanAgreement />} /> */}
-          
-          <Route path="/nach-setup" element={<NACHSetup />} />
-          <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Initialize session storage for account type if not already set
+  if (!sessionStorage.getItem('accountType')) {
+    sessionStorage.setItem('accountType', 'individual');
+  }
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/account-type" element={<AccountType />} />
+            <Route path="/account-type-simple" element={<AccountTypeSimple />} />
+            
+            {/* Individual account type routes */}
+            <Route path="/individual/details" element={<IndividualDetails />} />
+            <Route path="/individual/address" element={<IndividualAddress />} />
+            <Route path="/individual/employee-details" element={<IndividualEmployeeDetails />} />
+            
+            {/* Sole Proprietor account type routes */}
+            <Route path="/proprietor/details" element={<ProprietorDetails />} />
+            <Route path="/proprietor/address" element={<ProprietorAddress />} />
+            <Route path="/proprietor/revenue" element={<ProprietorRevenue />} />
+            
+            {/* Private Limited account type routes */}
+            <Route path="/company/details" element={<CompanyDetails />} />
+            <Route path="/company/details-next" element={<CompanyDetailsNext />} />
+            <Route path="/company/documents" element={<CompanyDocuments />} />
+            <Route path="/company/projection" element={<CompanyProjection />} />
+            <Route path="/company/kyc" element={<CompanyKYC />} />
+            
+            {/* Finding Best Offers screen */}
+            <Route path="/finding-best-offers" element={<FindingBestOffers />} />
+            
+            {/* New screens after Finding Best Offers */}
+            <Route path="/available-offers" element={<AvailableOffers />} />
+            <Route path="/alternative-offers" element={<AlternativeOffers />} />
+            <Route path="/kyc-verification" element={<KYCVerification />} />
+            <Route path="/kyb-verification" element={<KYBVerification />} />
+            <Route path="/upload-documents" element={<UploadDocuments />} />
+            <Route path="/document-verification" element={<DocumentVerification />} />
+            
+            {/* Application Status Screens */}
+            <Route path="/application-in-process" element={<ApplicationInProcess />} />
+            <Route path="/additional-info-needed" element={<AdditionalInfoNeeded />} />
+            <Route path="/application-approved" element={<ApplicationApproved />} />
+            <Route path="/application-not-approved" element={<ApplicationNotApproved />} />
+            
+            {/* Loan Agreement, NACH Setup, and Disbursement Screens */}
+            <Route path="/loan-documents" element={<LoanDocuments />} />
+            <Route path="/e-sign-agreement" element={<ESignAgreement />} />
+            
+            {/* Aadhaar authentication screens */}
+            <Route path="/aadhaar-auth" element={<AadhaarAuth />} />
+            <Route path="/aadhaar-otp" element={<AadhaarOtp />} />
+            <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
+            <Route path="/e-sign-transaction" element={<ESignTransaction />} />
+            
+            {/* Temporarily commented out LoanAgreement route */}
+            {/* <Route path="/loan-agreement" element={<LoanAgreement />} /> */}
+            
+            <Route path="/nach-setup" element={<NACHSetup />} />
+            <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />
+            
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
