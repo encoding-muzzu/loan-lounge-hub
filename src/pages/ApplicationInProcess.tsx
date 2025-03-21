@@ -18,9 +18,11 @@ const ApplicationInProcess = () => {
   // Get routing info from location state
   const shouldApprove = location.state?.shouldApprove || false;
   const selectedOffer = location.state?.selectedOffer || null;
+  const rejectedOffers = location.state?.rejectedOffers || [];
   
   console.log("Should approve:", shouldApprove);
   console.log("Selected offer:", selectedOffer);
+  console.log("Rejected offers:", rejectedOffers);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,7 +39,11 @@ const ApplicationInProcess = () => {
       if (shouldApprove) {
         navigate('/application-approved');
       } else {
-        navigate('/application-not-approved');
+        navigate('/application-not-approved', {
+          state: {
+            rejectedOffer: selectedOffer
+          }
+        });
       }
     }, 7000);
     
@@ -45,7 +51,7 @@ const ApplicationInProcess = () => {
       clearInterval(interval);
       clearTimeout(timer);
     };
-  }, [navigate, shouldApprove]);
+  }, [navigate, shouldApprove, selectedOffer]);
 
   return (
     <StepLayout title="Application Status" showBack={false}>

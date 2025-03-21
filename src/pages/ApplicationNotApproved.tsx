@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { XCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import StepLayout from '@/components/StepLayout';
@@ -8,6 +8,8 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const ApplicationNotApproved = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const rejectedOffer = location.state?.rejectedOffer || null;
 
   return (
     <StepLayout title="Application Status" showBack={false}>
@@ -34,9 +36,13 @@ const ApplicationNotApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/available-offers', { 
-                  state: { from: 'application-not-approved', fromRejection: true } 
+                  state: { 
+                    from: 'application-not-approved', 
+                    fromRejection: true,
+                    rejectedOffer: rejectedOffer
+                  } 
                 })}
-                className="w-full text-white bg-[#32CD32] hover:bg-[#0056D2] rounded-full flex items-center justify-center"
+                className="w-full text-white bg-[#32CD32] hover:bg-[#0056D2] rounded-full flex items-center justify-center transition-colors"
               >
                 Try a Different Offer
                 <ArrowRight className="ml-2 h-4 w-4" />
