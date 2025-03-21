@@ -65,7 +65,7 @@ const DisbursementDetailsConfirmation = () => {
           </div>
 
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold">₹2,50,000</h2>
+            <h2 className="text-3xl font-bold">₹6,00,000</h2>
             <p className="text-gray-500">has been disbursed to your account</p>
           </div>
 
@@ -86,7 +86,7 @@ const DisbursementDetailsConfirmation = () => {
 
           <div className="bg-green-50 rounded-lg p-4 mb-6 text-center">
             <p className="text-green-700">
-              Your first EMI payment of ₹11,689 is scheduled for 10 August 2024
+              Your first EMI payment of ₹21,500 is scheduled for 10 August 2024
             </p>
           </div>
 
@@ -115,28 +115,28 @@ const DisbursementDetailsConfirmation = () => {
               <CreditCard className="text-gray-500 h-5 w-5 mb-2" />
               <div>
                 <span className="text-gray-600 text-sm">Loan Amount</span>
-                <p className="font-bold text-lg">₹2,50,000</p>
+                <p className="font-bold text-lg">₹6,00,000</p>
               </div>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
               <Calendar className="text-gray-500 h-5 w-5 mb-2" />
               <div>
                 <span className="text-gray-600 text-sm">Tenure</span>
-                <p className="font-bold text-lg">24 months</p>
+                <p className="font-bold text-lg">36 months</p>
               </div>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
               <BarChart3 className="text-gray-500 h-5 w-5 mb-2" />
               <div>
                 <span className="text-gray-600 text-sm">Interest Rate</span>
-                <p className="font-bold text-lg">11.5% p.a.</p>
+                <p className="font-bold text-lg">16% p.a.</p>
               </div>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
               <Calendar className="text-gray-500 h-5 w-5 mb-2" />
               <div>
                 <span className="text-gray-600 text-sm">Monthly EMI</span>
-                <p className="font-bold text-lg">₹11,689</p>
+                <p className="font-bold text-lg">₹21,500</p>
               </div>
             </div>
           </div>
@@ -158,59 +158,59 @@ const DisbursementDetailsConfirmation = () => {
                   <tr className="border-b">
                     <td className="py-2">1</td>
                     <td>10 August 2024</td>
-                    <td className="text-right">₹9,564</td>
-                    <td className="text-right">₹2,125</td>
-                    <td className="text-right">₹2,40,436</td>
+                    <td className="text-right">₹13,500</td>
+                    <td className="text-right">₹8,000</td>
+                    <td className="text-right">₹5,86,500</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">2</td>
                     <td>10 September 2024</td>
-                    <td className="text-right">₹9,645</td>
-                    <td className="text-right">₹2,044</td>
-                    <td className="text-right">₹2,30,791</td>
+                    <td className="text-right">₹13,680</td>
+                    <td className="text-right">₹7,820</td>
+                    <td className="text-right">₹5,72,820</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">3</td>
                     <td>10 October 2024</td>
-                    <td className="text-right">₹9,727</td>
-                    <td className="text-right">₹1,962</td>
-                    <td className="text-right">₹2,21,064</td>
+                    <td className="text-right">₹13,862</td>
+                    <td className="text-right">₹7,638</td>
+                    <td className="text-right">₹5,58,958</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">4</td>
                     <td>10 November 2024</td>
-                    <td className="text-right">₹9,810</td>
-                    <td className="text-right">₹1,879</td>
-                    <td className="text-right">₹2,11,254</td>
+                    <td className="text-right">₹14,047</td>
+                    <td className="text-right">₹7,453</td>
+                    <td className="text-right">₹5,44,911</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">5</td>
                     <td>10 December 2024</td>
-                    <td className="text-right">₹9,893</td>
-                    <td className="text-right">₹1,796</td>
-                    <td className="text-right">₹2,01,361</td>
+                    <td className="text-right">₹14,234</td>
+                    <td className="text-right">₹7,266</td>
+                    <td className="text-right">₹5,30,677</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">6</td>
                     <td>10 January 2025</td>
-                    <td className="text-right">₹9,977</td>
-                    <td className="text-right">₹1,712</td>
-                    <td className="text-right">₹1,91,384</td>
+                    <td className="text-right">₹14,424</td>
+                    <td className="text-right">₹7,076</td>
+                    <td className="text-right">₹5,16,253</td>
                   </tr>
                 </tbody>
               </table>
-              <p className="text-xs text-gray-500 mt-2">Showing first 6 months of 24 months</p>
+              <p className="text-xs text-gray-500 mt-2">Showing first 6 months of 36 months</p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
               <span className="text-gray-600 text-sm">Total Interest</span>
-              <p className="font-bold text-lg">₹30,536</p>
+              <p className="font-bold text-lg">₹1,74,000</p>
             </div>
             <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
               <span className="text-gray-600 text-sm">Total Repayment</span>
-              <p className="font-bold text-lg">₹2,80,536</p>
+              <p className="font-bold text-lg">₹7,74,000</p>
             </div>
           </div>
 
@@ -299,3 +299,4 @@ const DisbursementDetailsConfirmation = () => {
 };
 
 export default DisbursementDetailsConfirmation;
+
