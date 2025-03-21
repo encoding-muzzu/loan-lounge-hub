@@ -35,6 +35,7 @@ import LoanDocuments from "./pages/LoanDocuments";
 import ESignAgreement from "./pages/ESignAgreement";
 import NACHSetup from "./pages/NACHSetup";
 import DisbursementConfirmation from "./pages/DisbursementConfirmation";
+import DisbursementDetailsConfirmation from "./pages/DisbursementDetailsConfirmation";
 import AadhaarAuth from "./pages/AadhaarAuth";
 import AadhaarOtp from "./pages/AadhaarOtp";
 import AadhaarSuccess from "./pages/AadhaarSuccess";
@@ -123,11 +124,10 @@ const App = () => {
             <Route path="/aadhaar-success" element={<AadhaarSuccess />} />
             <Route path="/e-sign-transaction" element={<ESignTransaction />} />
             
-            {/* Temporarily commented out LoanAgreement route */}
-            {/* <Route path="/loan-agreement" element={<LoanAgreement />} /> */}
-            
+            {/* Disbursement screens */}
             <Route path="/nach-setup" element={<NACHSetup />} />
             <Route path="/disbursement-confirmation" element={<DisbursementConfirmation />} />
+            <Route path="/disbursement-details-confirmation" element={<DisbursementDetailsConfirmation />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Calendar, Download, Home, ArrowRight } from 'lucide-react';
-import StepLayout from '@/components/StepLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import MobileContainer from '@/components/MobileContainer';
+
 const DisbursementConfirmation = () => {
   const navigate = useNavigate();
+  
   const content = <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-green-50 p-4">
@@ -36,36 +37,36 @@ const DisbursementConfirmation = () => {
         </div>
         
         {/* Next Steps */}
-        <Card className="mb-8 border-gray-200 shadow-sm rounded-lg">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-light text-gray-700">Next Steps</CardTitle>
-          </CardHeader>
-          
-          <CardContent>
-            <ul className="space-y-3 list-disc pl-5">
-              <li className="text-gray-600 font-light">
-                You will receive an SMS notification when the funds are disbursed
-              </li>
-              <li className="text-gray-600 font-light">
-                Your first EMI will be due 30 days after disbursement
-              </li>
-              <li className="text-gray-600 font-light">
-                You can view your repayment schedule in the app
-              </li>
-              <li className="text-gray-600 font-light">
-                For any queries, please contact our customer support
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+        <div className="border border-gray-200 rounded-lg p-4 mb-8 shadow-sm">
+          <h3 className="text-lg font-light text-gray-700 mb-2">Next Steps</h3>
+          <ul className="space-y-3 list-disc pl-5">
+            <li className="text-gray-600 font-light">
+              You will receive an SMS notification when the funds are disbursed
+            </li>
+            <li className="text-gray-600 font-light">
+              Your first EMI will be due 30 days after disbursement
+            </li>
+            <li className="text-gray-600 font-light">
+              You can view your repayment schedule in the app
+            </li>
+            <li className="text-gray-600 font-light">
+              For any queries, please contact our customer support
+            </li>
+          </ul>
+        </div>
         
-        {/* Back to Home Button */}
-        <Button onClick={() => navigate('/welcome')} className="w-full text-white rounded-full font-light">
-          Back to Home
+        {/* Next Button */}
+        <Button 
+          onClick={() => navigate('/disbursement-details-confirmation')} 
+          className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white rounded-full font-light transition-colors"
+        >
+          Next
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </div>;
+    
   return <MobileContainer>{content}</MobileContainer>;
 };
+
 export default DisbursementConfirmation;
