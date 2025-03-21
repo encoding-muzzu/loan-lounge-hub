@@ -91,7 +91,7 @@ const DisbursementDetailsConfirmation = () => {
           </div>
 
           <Button 
-            className="w-full rounded-full bg-gradient-to-r from-red-500 to-orange-500 hover:bg-[#0056D2] text-white py-3"
+            className="w-full rounded-full bg-[#32CD32] hover:bg-[#0056D2] text-white py-3 transition-colors"
             onClick={() => setActiveTab("loan-details")}
           >
             View Loan Details <ArrowRight className="ml-1 h-4 w-4" />
@@ -215,7 +215,7 @@ const DisbursementDetailsConfirmation = () => {
           </div>
 
           <Button 
-            className="w-full rounded-full bg-gradient-to-r from-red-500 to-orange-500 hover:bg-[#0056D2] text-white py-3"
+            className="w-full rounded-full bg-[#32CD32] hover:bg-[#0056D2] text-white py-3 transition-colors"
             onClick={() => setActiveTab("support")}
           >
             Need Help? <HelpCircle className="ml-1 h-4 w-4" />
@@ -285,7 +285,7 @@ const DisbursementDetailsConfirmation = () => {
           </div>
 
           <Button 
-            className="w-full rounded-full bg-gradient-to-r from-red-500 to-orange-500 hover:bg-[#0056D2] text-white py-3"
+            className="w-full rounded-full bg-[#32CD32] hover:bg-[#0056D2] text-white py-3 transition-colors"
             onClick={() => navigate('/welcome')}
           >
             Back to Home <ArrowRight className="ml-1 h-4 w-4" />
