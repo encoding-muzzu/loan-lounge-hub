@@ -57,7 +57,6 @@ const AvailableOffers = () => {
       amount: '₹8,00,000',
       interestRate: '13.5%',
       tenure: '36 months',
-      emi: '₹27,200',
       color: 'bg-blue-500',
       borderColor: 'border-blue-500',
     },
@@ -67,7 +66,6 @@ const AvailableOffers = () => {
       amount: '₹6,00,000',
       interestRate: '16%',
       tenure: '36 months',
-      emi: '₹21,500',
       color: 'bg-purple-500',
       borderColor: 'border-purple-500',
     },
@@ -77,7 +75,6 @@ const AvailableOffers = () => {
       amount: '₹3,00,000',
       interestRate: '18%',
       tenure: '36 months',
-      emi: '₹10,800',
       color: 'bg-orange-500',
       borderColor: 'border-orange-500',
     },
@@ -142,14 +139,6 @@ const AvailableOffers = () => {
                         <span>Tenure</span>
                       </div>
                       <div className="font-semibold">{offer.tenure}</div>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-gray-600">
-                        <IndianRupee size={18} />
-                        <span>Monthly EMI</span>
-                      </div>
-                      <div className="font-semibold">{offer.emi}</div>
                     </div>
                   </CardContent>
                 </Card>
