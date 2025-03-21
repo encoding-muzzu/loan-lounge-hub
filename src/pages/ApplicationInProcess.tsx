@@ -1,18 +1,26 @@
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Clock } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import StepLayout from '@/components/StepLayout';
 
 const ApplicationInProcess = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
     { text: "Verifying your information" },
     { text: "Checking loan eligibility" },
     { text: "Preparing loan offer" }
   ];
+
+  // Get routing info from location state
+  const shouldApprove = location.state?.shouldApprove || false;
+  const selectedOffer = location.state?.selectedOffer || null;
+  
+  console.log("Should approve:", shouldApprove);
+  console.log("Selected offer:", selectedOffer);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,16 +32,20 @@ const ApplicationInProcess = () => {
       });
     }, 2000);
     
-    // For demo purposes, navigate to the next screen after animations
+    // For demo purposes, navigate to the appropriate screen based on shouldApprove flag
     const timer = setTimeout(() => {
-      navigate('/additional-info-needed');
+      if (shouldApprove) {
+        navigate('/application-approved');
+      } else {
+        navigate('/application-not-approved');
+      }
     }, 7000);
     
     return () => {
       clearInterval(interval);
       clearTimeout(timer);
     };
-  }, [navigate]);
+  }, [navigate, shouldApprove]);
 
   return (
     <StepLayout title="Application Status" showBack={false}>

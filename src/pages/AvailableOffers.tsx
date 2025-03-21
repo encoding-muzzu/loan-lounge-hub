@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,40 +11,15 @@ const AvailableOffers = () => {
   const location = useLocation();
   const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
   const [isFromRejection, setIsFromRejection] = useState(false);
-  const [accountType, setAccountType] = useState<string>('individual');
 
-  // Check if the user is coming from the application-not-approved page
-  // and determine account type from session storage
+  // Check if the user is coming from application-not-approved page
   useEffect(() => {
     const prevPath = location.state?.from;
-    const storedAccountType = sessionStorage.getItem('accountType');
     
-    console.log("Location state:", location.state);
-    console.log("Previous path:", prevPath);
-    console.log("Account type from session storage:", storedAccountType);
-    
-    if (prevPath === '/application-not-approved') {
+    if (prevPath === 'application-not-approved' || location.state?.fromRejection) {
       setIsFromRejection(true);
     }
-    
-    // Set account type based on session storage
-    if (storedAccountType) {
-      setAccountType(storedAccountType);
-    }
-    
-    console.log("Account type determined:", accountType);
-  }, [location, accountType]);
-
-  // Automatically redirect to application-approved when an offer is selected
-  // and the user came from the not-approved page
-  useEffect(() => {
-    if (selectedOffer !== null && isFromRejection) {
-      const timer = setTimeout(() => {
-        navigate('/application-approved');
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [selectedOffer, isFromRejection, navigate]);
+  }, [location]);
 
   const handleOfferSelect = (offerId: number) => {
     setSelectedOffer(offerId);
@@ -51,43 +27,47 @@ const AvailableOffers = () => {
 
   const handleProceed = () => {
     if (selectedOffer !== null) {
-      if (isFromRejection) {
-        navigate('/application-approved');
-      } else {
-        // Get verification count from sessionStorage
-        const verificationCount = parseInt(sessionStorage.getItem('verificationCount') || '0');
-        console.log("Current verification count before proceeding:", verificationCount);
-        
-        // Navigate to appropriate verification page based on verification count
-        if (verificationCount === 1) {
-          console.log("Navigating to KYB verification");
-          navigate('/kyb-verification');
-        } else {
-          console.log("Navigating to KYC verification");
-          navigate('/kyc-verification');
-        }
-      }
+      // First navigate to application in process screen
+      navigate('/application-in-process', { 
+        state: { 
+          selectedOffer,
+          // Only approve if Aditya Birla Finance is selected (offer ID 2)
+          shouldApprove: selectedOffer === 2
+        } 
+      });
     }
   };
 
   const offers = [
     {
       id: 1,
-      bank: 'ABC Bank',
-      amount: '₹5,00,000',
-      interestRate: '10.5%',
+      bank: 'Tata Capital',
+      amount: '₹8,00,000',
+      interestRate: '13.5%',
       tenure: '36 months',
-      emi: '₹16,200',
-      color: 'loan-blue',
+      emi: '₹27,200',
+      color: 'bg-blue-500',
+      borderColor: 'border-blue-500',
     },
     {
       id: 2,
-      bank: 'XYZ Finance',
-      amount: '₹4,50,000',
-      interestRate: '11%',
+      bank: 'Aditya Birla Finance Limited',
+      amount: '₹6,00,000',
+      interestRate: '16%',
       tenure: '36 months',
-      emi: '₹14,700',
-      color: 'loan-green',
+      emi: '₹21,500',
+      color: 'bg-purple-500',
+      borderColor: 'border-purple-500',
+    },
+    {
+      id: 3,
+      bank: 'Bajaj Finance Limited',
+      amount: '₹3,00,000',
+      interestRate: '18%',
+      tenure: '36 months',
+      emi: '₹10,800',
+      color: 'bg-orange-500',
+      borderColor: 'border-orange-500',
     },
   ];
 
@@ -120,9 +100,9 @@ const AvailableOffers = () => {
               className={`cursor-pointer transition-all duration-300 transform ${selectedOffer === offer.id ? 'scale-[1.02]' : ''}`}
             >
               <Card className={`overflow-hidden rounded-xl border-2 ${
-                selectedOffer === offer.id ? `border-${offer.color}` : 'border-transparent'
+                selectedOffer === offer.id ? offer.borderColor : 'border-transparent'
               }`}>
-                <div className={`p-4 bg-${offer.color} text-white`}>
+                <div className={`p-4 ${offer.color} text-white`}>
                   <div className="flex items-center gap-2 mb-1">
                     <CreditCard size={20} />
                     <span className="text-lg font-medium">{offer.bank}</span>
@@ -165,7 +145,7 @@ const AvailableOffers = () => {
           <Button 
             onClick={handleProceed}
             disabled={selectedOffer === null}
-            className="w-full max-w-md flex items-center justify-center gap-2 py-6 bg-[#32CD32] hover:bg-[#0056D2] rounded-full"
+            className="w-full max-w-md flex items-center justify-center gap-2 py-6 bg-[#32CD32] hover:bg-[#0056D2] rounded-full transition-colors"
           >
             <span>Proceed with Selected Offer</span>
             <ArrowRight size={18} />

@@ -26,20 +26,24 @@ const ApplicationApproved = () => {
             
             <div className="bg-gray-50 w-full p-4 rounded-lg mb-6">
               <div className="flex justify-between mb-2">
+                <span className="text-gray-600">Lender</span>
+                <span className="font-semibold">Aditya Birla Finance Limited</span>
+              </div>
+              <div className="flex justify-between mb-2">
                 <span className="text-gray-600">Loan Amount</span>
-                <span className="font-semibold">₹3,00,000</span>
+                <span className="font-semibold">₹6,00,000</span>
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600">Interest Rate</span>
-                <span className="font-semibold">10.5%</span>
+                <span className="font-semibold">16%</span>
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600">Tenure</span>
-                <span className="font-semibold">60 months</span>
+                <span className="font-semibold">36 months</span>
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600">Monthly EMI</span>
-                <span className="font-semibold">₹6,500</span>
+                <span className="font-semibold">₹21,500</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Processing Fee</span>
@@ -50,7 +54,7 @@ const ApplicationApproved = () => {
             <div className="w-full">
               <Button 
                 onClick={() => navigate('/loan-documents')}
-                className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white font-medium rounded-full py-3 flex items-center justify-center"
+                className="w-full bg-[#32CD32] hover:bg-[#0056D2] text-white font-medium rounded-full py-3 flex items-center justify-center transition-colors"
               >
                 Continue to Loan Documents
                 <ArrowRight className="ml-2 h-4 w-4" />
